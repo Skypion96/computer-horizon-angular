@@ -12,7 +12,7 @@ export class ProcServiceService {
 
   constructor(public http:HttpClient) { }
 
-  query():Observable<ProcList>{
+  queryBase():Observable<ProcList>{
     return this.http.get<ProcList>(ProcServiceService.URAL_API);
   }
 
