@@ -1,0 +1,66 @@
+a{
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 20px;
+}
+
+.btn{
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 20px;
+  outline: none;
+  transition:0.2s;
+}
+
+.btn:hover{
+  transform: scale(1.01);
+}
+
+.btn:active{
+  transform: scale(0.98);
+}
+
+.btnContainer{
+  margin-left: 34%;
+}
+
+#connexion{
+  background-color: dodgerblue;
+}
+
+img{
+  cursor: pointer;
+  position: absolute;
+}
+
+#inscrire{
+  background-color: limegreen;
+  margin-right: 10px;
+}
+
+li{
+  color: white;
+  cursor: pointer;
+  display: inline;
+  margin-right: 60px;
+}
+
+nav{
+  background-color: #343a40;
+  border: 1px #343a40 solid;
+  display: inline-block;
+  height: 90px;
+  left: 0;
+  max-height: 90px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+ul{
+  list-style-type: none;
+  margin-left: 70px;
+  margin-top: 30px;
+}

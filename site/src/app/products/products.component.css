@@ -1,0 +1,33 @@
+img{
+  filter: grayscale(100);
+}
+
+a:hover img{
+  filter: grayscale(0);
+}
+
+.card{
+  border-color: dimgray;
+  border-radius: 8px;
+  border-style: double;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+}
+
+h1{
+  color: black;
+  font-family: 'Yantramanav', sans-serif;
+  margin-top: 9%;
+}
+
+h3{
+  color: black;
+  font-family: 'Yantramanav', sans-serif;
+}
+
+.products{
+  margin-top: 20px;
+  margin-left: 8%;
+  margin-right: 8%;
+}
