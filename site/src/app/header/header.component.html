@@ -1,13 +1,15 @@
+<header></header>
+<router-outlet>
 <nav>
-  <a>
+  <a [routerLink]="'/'+ACCUEIL">
     <img src="{{logoPath}}" width="100px" height="100px"/>
   </a>
   <ul>
     <li>
-      <a>Accueil</a>
+      <a [routerLink]="'/'+ACCUEIL">Accueil</a>
     </li>
     <li class="items">
-      <a>Nos produits</a>
+      <a [routerLink]="'/'+PRODUCT">Nos produits</a>
     </li>
     <li>
       <a>Nous contacter</a>
@@ -18,4 +20,5 @@
     </li>
   </ul>
 </nav>
-
+</router-outlet>
+<footer></footer>

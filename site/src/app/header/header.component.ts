@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   logoPath:any = "assets/logo.png";
+  readonly PRODUCT: string = "produits";
+  readonly ACCUEIL:string ="Accueil";
 
   constructor() { }
 

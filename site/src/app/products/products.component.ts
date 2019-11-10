@@ -11,6 +11,7 @@ export class ProductsComponent implements OnInit {
   hard_drive:any = "assets/disque_durpdt.jpg";
   laptop:any = "assets/ordinateurpdt.jpg";
   processor:any = "assets/processeurpdt.jpg";
+  readonly PROCESSEUR: string = "processeurs";
 
   constructor() { }
 

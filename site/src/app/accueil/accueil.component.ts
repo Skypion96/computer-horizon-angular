@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
+  readonly ROUTES_NAMES: string[] =["produits","processeurs"];
 
   constructor() { }
 
