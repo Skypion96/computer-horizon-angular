@@ -1,26 +1,25 @@
 <h1>Nos produits</h1>
 <hr/>
 <div class="products">
-  <a href="">
+  <a [routerLink]="'/'+CARTEG" href={{CARTEG}}>
     <div class="card">
       <img src="{{graphic_card}}" width="300px" height="300px"/>
       <h3>Cartes graphique</h3>
     </div>
   </a>
-  <a href="">
+  <a [routerLink]="'/'+DISQUED" href={{DISQUED}}>
     <div class="card">
       <img src="{{hard_drive}}" width="300px" height="300px"/>
       <h3>Disques dur</h3>
     </div>
   </a>
-  <a href="">
+  <a [routerLink]="'/'+ORDINATEUR" href={{ORDINATEUR}}>
     <div class="card">
       <img src="{{laptop}}" width="300px" height="300px"/>
       <h3>Ordinateurs</h3>
     </div>
   </a>
   <a [routerLink]="'/'+PROCESSEUR" href={{PROCESSEUR}}>
-    <
     <div class="card">
       <img src="{{processor}}" width="300px" height="300px"/>
       <h3>Processeur</h3>

@@ -5,6 +5,9 @@ import {AccueilComponent} from '../accueil/accueil.component';
 import {ProcesseurComponent} from '../processeur/processeur.component';
 import {ProductsComponent} from '../products/products.component';
 import {ContactComponent} from '../contact/contact/contact.component';
+import {OrdinateurComponent} from '../ordinateur/ordinateur.component';
+import {DisqueDurComponent} from '../disque-dur/disque-dur.component';
+import {CarteGraphiqueComponent} from '../carte-graphique/carte-graphique.component';
 
 const routes:Routes =[
   {
@@ -27,11 +30,23 @@ const routes:Routes =[
   {
     path:"Contact",
     component: ContactComponent
+  },
+  {
+    path:"ordinateurs",
+    component: OrdinateurComponent
+  },
+  {
+    path:"disque-durs",
+    component: DisqueDurComponent
+  },
+  {
+    path:"carte-graphiques",
+    component: CarteGraphiqueComponent
   }
 ];
 
 @NgModule({
-  declarations: [AccueilComponent, ProcesseurComponent, ProductsComponent,ContactComponent],
+  declarations: [AccueilComponent, ProcesseurComponent, ProductsComponent,ContactComponent,OrdinateurComponent,DisqueDurComponent,CarteGraphiqueComponent],
   exports: [
     AccueilComponent
   ],

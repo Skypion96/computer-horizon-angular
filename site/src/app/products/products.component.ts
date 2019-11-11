@@ -12,6 +12,9 @@ export class ProductsComponent implements OnInit {
   laptop:any = "assets/ordinateurpdt.jpg";
   processor:any = "assets/processeurpdt.jpg";
   readonly PROCESSEUR: string = "processeurs";
+  readonly ORDINATEUR: string = "ordinateurs";
+  readonly CARTEG: string = "carte-graphiques";
+  readonly DISQUED: string = "disque-durs";
 
   constructor() { }
 
