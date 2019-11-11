@@ -1,1 +1,8 @@
-<p>carte-graphique works!</p>
+<div class="carteG"></div>
+<ul>
+  <li *ngFor="let carte of carteGList">
+    <img src="{{carte.img}}"><br>
+    <b>{{carte.nom}}</b> <br>
+    <b>{{carte.marque}}</b><br>
+  </li>
+</ul>

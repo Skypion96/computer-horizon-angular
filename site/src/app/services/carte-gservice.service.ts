@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ProcInterface, ProcList} from "../interfaces/proc-interface";
-import {CarteGInterface} from "../interfaces/carte-ginterface";
+import {CarteGInterface, CarteGList} from '../interfaces/carte-ginterface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,8 @@ export class CarteGServiceService {
 
   constructor(public http:HttpClient) { }
 
-  queryBase():Observable<CarteGInterface>{
-    return this.http.get<ProcList>(CarteGServiceService.URAL_API);
+  queryBase():Observable<CarteGList>{
+    return this.http.get<CarteGList>(CarteGServiceService.URAL_API);
   }
 
   post(carteG: CarteGInterface): Observable<CarteGInterface> {

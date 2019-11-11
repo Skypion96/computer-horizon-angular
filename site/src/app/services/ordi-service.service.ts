@@ -13,7 +13,7 @@ export class OrdiServiceService {
 
   constructor(public http:HttpClient) { }
 
-  queryBase():Observable<OrdiInterface>{
+  queryBase():Observable<OrdiList>{
     return this.http.get<OrdiList>(OrdiServiceService.URAL_API);
   }
 

@@ -10,7 +10,7 @@ import {OrdiInterface, OrdiList} from '../interfaces/ordi-interface';
 })
 export class OrdinateurComponent implements OnInit,OnDestroy {
 
-  private ordiList: OrdiInterface=[];
+  private ordiList: OrdiList=[];
   private subQuery:Subscription;
 
   constructor(public ordiService: OrdiServiceService) { }

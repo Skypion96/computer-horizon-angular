@@ -12,7 +12,7 @@ import {DisqueDInterface, DisqueDList} from '../interfaces/disque-dinterface';
 })
 export class DisqueDurComponent implements OnInit,OnDestroy {
 
-  private disqueDList: DisqueDInterface=[];
+  private disqueDList: DisqueDList=[];
   private subQuery:Subscription;
 
   constructor(public disqueDService: DisqueDServiceService) { }
