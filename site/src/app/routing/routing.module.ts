@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AccueilComponent} from '../accueil/accueil.component';
 import {ProcesseurComponent} from '../processeur/processeur.component';
 import {ProductsComponent} from '../products/products.component';
+import {ContactComponent} from '../contact/contact/contact.component';
 
 const routes:Routes =[
   {
@@ -22,11 +23,15 @@ const routes:Routes =[
   {
     path:"produits",
     component: ProductsComponent
+  },
+  {
+    path:"Contact",
+    component: ContactComponent
   }
 ];
 
 @NgModule({
-  declarations: [AccueilComponent, ProcesseurComponent, ProductsComponent],
+  declarations: [AccueilComponent, ProcesseurComponent, ProductsComponent,ContactComponent],
   exports: [
     AccueilComponent
   ],
