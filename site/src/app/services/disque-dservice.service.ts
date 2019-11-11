@@ -14,7 +14,7 @@ export class DisqueDServiceService {
 
   constructor(public http:HttpClient) { }
 
-  query():Observable<DisqueDInterface>{
+  queryBase():Observable<DisqueDInterface>{
     return this.http.get<DisqueDList>(DisqueDServiceService.URAL_API);
   }
 

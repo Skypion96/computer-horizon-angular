@@ -13,7 +13,7 @@ export class CarteGServiceService {
 
   constructor(public http:HttpClient) { }
 
-  query():Observable<CarteGInterface>{
+  queryBase():Observable<CarteGInterface>{
     return this.http.get<ProcList>(CarteGServiceService.URAL_API);
   }
 
