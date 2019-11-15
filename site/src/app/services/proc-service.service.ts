@@ -9,6 +9,7 @@ import {ProcInterface, ProcList} from "../interfaces/proc-interface";
 export class ProcServiceService {
 
   private static URAL_API: string = '/Processeur';
+  private nom: string;
 
   constructor(public http:HttpClient) { }
 
@@ -16,6 +17,9 @@ export class ProcServiceService {
     return this.http.get<ProcList>(ProcServiceService.URAL_API);
   }
 
+  Query(nom):Observable<ProcInterface>{
+    return this.http.get<ProcInterface>(ProcServiceService.URAL_API +"/"+ nom);
+  }
   post(proc: ProcInterface): Observable<ProcInterface> {
     return this.http.post<ProcInterface>(ProcServiceService.URAL_API, proc);
   }

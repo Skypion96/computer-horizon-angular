@@ -30,12 +30,12 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
       .subscribe(procs => this.procList = procs);
   }
 
-  private checkReduc(proc: ProcInterface) {
-    console.log(this.procList.length);
-    if(proc.reduction != 0){
-      document.getElementById("prix").classList.add("prixIReduc");
-      document.getElementById("reduction").innerHTML = "(" + proc.reduction + "%)";
-      document.getElementById("prixReduc").innerHTML = proc.prixReduc + " €";
-    }
+
+  private AffichageProc(proc: ProcInterface) {
+    document.getElementById("process").innerHTML = null;
+    document.getElementById("process").innerHTML = "<table><tr><b class='nom'>" + proc.nom +"</b></tr><tr>"  +
+    "<b class='description'>"+proc.marque+ "-" +proc.frequence+"</b><br>"+
+    "</tr><br><br><tr> <b class='prixI' id=prix>"+proc.prix+ "€</b> </tr> </table>";
+
   }
 }

@@ -4,16 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {RoutingModule} from './routing/routing.module';
+import {TokenInterceptorService} from './services/token-interceptor.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +22,11 @@ import {RoutingModule} from './routing/routing.module';
     RouterModule,
     RoutingModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass : TokenInterceptorService,
+    multi : true
+  }],
   exports: [
     HeaderComponent
   ],
