@@ -1,12 +1,73 @@
+.btnShow{
+  background-color: limegreen;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 20px;
+  outline: 0;
+  margin-left: 35%;
+  margin-top: 150px;
+}
+
+.btnShow:hover{
+  transform: scale(1.01);
+}
+
+.btnShow:active{
+  transform: scale(0.98);
+}
+
+.card{
+  border-color: black;
+  border-radius: 8px;
+  border-style: solid;
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-left: 16%;
+  margin-right: 16%;
+  width: 1000px;
+}
+
+.description{
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 15px;
+}
+
 img{
-  width: 20%;
+  float: left;
   height: 200px;
+  width: 30%;
 }
 
+.nom{
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 40px;
+}
 
-.processeur{
+.prixI{
+  color: red;
+  font-size: 35px;
+}
+
+.prixIReduc{
+  color: black;
+  font-size: 20px;
+  text-decoration: line-through;
+}
+
+.reduction{
+  color: black;
+  font-size: 15px;
+}
+
+table{
+  float: left;
+  margin-left: 4%;
+}
+
+ul{
+  list-style: none;
   margin-top: 10%;
-  margin-left: 8%;
-  margin-right: 8%;
 }
-

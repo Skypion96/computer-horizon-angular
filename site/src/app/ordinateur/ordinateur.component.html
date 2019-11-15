@@ -1,8 +1,11 @@
 <div class="ordinateur"></div>
 <ul>
   <li *ngFor="let ordi of ordiList">
-    <img src="{{ordi.img}}"><br>
-    <b>NOM : {{ordi.nom}}</b> <br>
-    <b>MARQUE : {{ordi.marque}}</b><br>
+    <div class="card">
+      <b class="nom">{{ordi.nom}}</b> <br>
+      <img src="{{ordi.img}}"><br>
+      <b>{{ordi.marque}} - {{ordi.nomProc}} - {{ordi.memoireV}} - {{ordi.capacite}}</b><br>
+      <b class="prix">{{ordi.prix}} €</b>
+    </div>
   </li>
 </ul>

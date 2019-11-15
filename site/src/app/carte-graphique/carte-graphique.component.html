@@ -1,8 +1,11 @@
 <div class="carteG"></div>
 <ul>
   <li *ngFor="let carte of carteGList">
-    <img src="{{carte.img}}"><br>
-    <b>NOM : {{carte.nom}}</b> <br>
-    <b>MARQUE : {{carte.marque}}</b><br>
+    <div class="card">
+      <b class="nom">{{carte.nom}}</b> <br>
+      <img src="{{carte.img}}"><br>
+      <b>{{carte.marque}} - {{carte.frequence}}</b><br>
+      <b class="prix">{{carte.prix}} €</b>
+    </div>
   </li>
 </ul>

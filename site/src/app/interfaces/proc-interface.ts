@@ -11,4 +11,5 @@ export interface ProcInterface {
   reduction:number;
   cote:number;
   dateCote:number;
+  prixReduc:number;
 }

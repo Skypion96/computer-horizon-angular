@@ -12,7 +12,7 @@ a{
   cursor: pointer;
   font-family: 'Yantramanav', sans-serif;
   font-size: 20px;
-  outline: none;
+  outline: 0;
   transition:0.2s;
 }
 

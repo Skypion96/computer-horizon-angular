@@ -1,9 +1,24 @@
-<div class="processeur"></div>
 <ul>
   <li *ngFor="let proc of procList">
-    <img src="{{proc.img}}"><br>
-    <b>NOM : {{proc.nom}}</b> <br>
-    <b>MARQUE : {{proc.marque}}</b><br>
+    <div class="card">
+      <img src="{{proc.img}}">
+      <table>
+        <tr>
+          <b class="nom">{{proc.nom}}</b>
+        </tr>
+        <tr>
+          <b class="description">{{proc.marque}} - {{proc.frequence}}</b><br>
+        </tr>
+        <tr>
+          <br><br>
+          <b class="prixI"  [classList]="checkReduc(proc)" id="prix">{{proc.prix}} €</b><b class="reduction" id="reduction"></b>
+        </tr>
+        <tr>
+          <b class="prixI" id="prixReduc"></b>
+        </tr>
+      </table>
+      <button class="btnShow">Afficher le produit</button>
+    </div>
   </li>
 </ul>
 

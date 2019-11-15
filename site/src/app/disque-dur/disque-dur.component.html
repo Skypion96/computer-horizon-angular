@@ -1,8 +1,11 @@
 <div class="disqued"></div>
 <ul>
   <li *ngFor="let disque of disqueDList">
-    <img src="{{disque.img}}"><br>
-    <b>NOM : {{disque.nom}}</b> <br>
-    <b>MARQUE : {{disque.marque}}</b><br>
+    <div class="card">
+      <b class="nom">{{disque.nom}}</b> <br>
+      <img src="{{disque.img}}"><br>
+      <b>{{disque.marque}} - {{disque.capacite}}</b><br>
+      <b class="prix">{{disque.prix}} €</b>
+    </div>
   </li>
 </ul>

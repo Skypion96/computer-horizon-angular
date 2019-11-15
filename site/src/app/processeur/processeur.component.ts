@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProcServiceService} from "../services/proc-service.service";
-import {ProcList} from "../interfaces/proc-interface";
+import {ProcInterface, ProcList} from '../interfaces/proc-interface';
 import {Subscription} from "rxjs";
+import {reduce} from 'rxjs/operators';
 
 @Component({
   selector: 'app-processeur',
@@ -29,4 +30,12 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
       .subscribe(procs => this.procList = procs);
   }
 
+  private checkReduc(proc: ProcInterface) {
+    console.log(this.procList);
+    if(proc.reduction != 0){
+      document.getElementById("prix").classList.add("prixIReduc");
+      document.getElementById("reduction").innerHTML = "(" + proc.reduction + "%)";
+      document.getElementById("prixReduc").innerHTML = proc.prixReduc + " €";
+    }
+  }
 }

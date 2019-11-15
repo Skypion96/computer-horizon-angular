@@ -8,3 +8,16 @@ img{
   margin-left: 8%;
   margin-right: 8%;
 }
+
+li{
+  text-decoration: none;
+}
+
+.nom{
+  font-size: 50px;
+}
+
+.prix{
+  color: red;
+  font-size: 50px;
+}
