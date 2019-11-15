@@ -31,7 +31,7 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
   }
 
   private checkReduc(proc: ProcInterface) {
-    console.log(this.procList);
+    console.log(this.procList.length);
     if(proc.reduction != 0){
       document.getElementById("prix").classList.add("prixIReduc");
       document.getElementById("reduction").innerHTML = "(" + proc.reduction + "%)";
