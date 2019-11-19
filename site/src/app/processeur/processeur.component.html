@@ -1,8 +1,8 @@
 <ul>
-  <li *ngFor="let proc of procList">
+  <li *ngFor="let proc of procList; index as i">
     <div class="card" >
       <img src="{{proc.img}}"/>
-        <div id="process">
+        <div [id]=i>
         <table>
           <tr>
             <b class="nom">{{proc.nom}}</b>
@@ -16,7 +16,7 @@
           </tr>
         </table>
       </div>
-    <button class="btnShow" (click)="AffichageProc(proc)">Afficher le produit</button>
+    <button class="btnShow" (click)="AffichageProc(proc,i)">Afficher le produit</button>
     </div>
   </li>
 </ul>

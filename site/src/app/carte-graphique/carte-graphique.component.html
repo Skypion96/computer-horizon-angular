@@ -1,11 +1,22 @@
-<div class="carteG"></div>
 <ul>
-  <li *ngFor="let carte of carteGList">
-    <div class="card">
-      <b class="nom">{{carte.nom}}</b> <br>
-      <img src="{{carte.img}}"><br>
-      <b>{{carte.marque}} - {{carte.frequence}}</b><br>
-      <b class="prix">{{carte.prix}} €</b>
+  <li *ngFor="let cg of carteGList; index as i">
+    <div class="card" >
+      <img src="{{cg.img}}"/>
+      <div [id]=i>
+        <table>
+          <tr>
+            <b class="nom">{{cg.nom}}</b>
+          </tr>
+          <tr>
+            <b class="description">{{cg.marque}} - {{cg.frequence}}</b><br>
+          </tr>
+          <br><br>
+          <tr>
+            <b class="prixI" id="prix">{{cg.prix}} €</b>
+          </tr>
+        </table>
+      </div>
+      <button class="btnShow" (click)="AffichageCarteG(cg,i)">Afficher le produit</button>
     </div>
   </li>
 </ul>

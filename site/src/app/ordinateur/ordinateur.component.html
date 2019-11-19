@@ -1,11 +1,22 @@
-<div class="ordinateur"></div>
 <ul>
-  <li *ngFor="let ordi of ordiList">
-    <div class="card">
-      <b class="nom">{{ordi.nom}}</b> <br>
-      <img src="{{ordi.img}}"><br>
-      <b>{{ordi.marque}} - {{ordi.nomProc}} - {{ordi.memoireV}} - {{ordi.capacite}}</b><br>
-      <b class="prix">{{ordi.prix}} €</b>
+  <li *ngFor="let ordi of ordiList; index as i">
+    <div class="card" >
+      <img src="{{ordi.img}}"/>
+      <div [id]=i>
+        <table>
+          <tr>
+            <b class="nom">{{ordi.nom}}</b>
+          </tr>
+          <tr>
+            <b class="description">{{ordi.marque}} - {{ordi.nomProc}} - {{ordi.memoireV}} - {{ordi.capacite}}</b><br>
+          </tr>
+          <br><br>
+          <tr>
+            <b class="prixI" id="prix">{{ordi.prix}} €</b>
+          </tr>
+        </table>
+      </div>
+      <button class="btnShow" (click)="AffichageOrdi(ordi,i)">Afficher le produit</button>
     </div>
   </li>
 </ul>

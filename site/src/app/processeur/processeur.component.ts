@@ -31,11 +31,11 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
   }
 
 
-  private AffichageProc(proc: ProcInterface) {
-    document.getElementById("process").innerHTML = null;
-    document.getElementById("process").innerHTML = "<table><tr><b class='nom'>" + proc.nom +"</b></tr><tr>"  +
+  private AffichageProc(proc: ProcInterface,i : number) {
+    document.getElementById(String(i)).innerHTML = null;
+    var Eelement ="<table><tr><b class='nom'>" + proc.nom +"</b></tr><tr>"  +
     "<b class='description'>"+proc.marque+ "-" +proc.frequence+"</b><br>"+
     "</tr><br><br><tr> <b class='prixI' id=prix>"+proc.prix+ "€</b> </tr> </table>";
-
+    document.getElementById(String(i)).innerHTML = Eelement;
   }
 }

@@ -1,11 +1,22 @@
-<div class="disqued"></div>
 <ul>
-  <li *ngFor="let disque of disqueDList">
-    <div class="card">
-      <b class="nom">{{disque.nom}}</b> <br>
-      <img src="{{disque.img}}"><br>
-      <b>{{disque.marque}} - {{disque.capacite}}</b><br>
-      <b class="prix">{{disque.prix}} €</b>
+  <li *ngFor="let dd of disqueDList; index as i">
+    <div class="card" >
+      <img src="{{dd.img}}"/>
+      <div [id]=i>
+        <table>
+          <tr>
+            <b class="nom">{{dd.nom}}</b>
+          </tr>
+          <tr>
+            <b class="description">{{dd.marque}} - {{dd.capacite}}</b><br>
+          </tr>
+          <br><br>
+          <tr>
+            <b class="prixI" id="prix">{{dd.prix}} €</b>
+          </tr>
+        </table>
+      </div>
+      <button class="btnShow" (click)="AffichageDisqueD(dd,i)">Afficher le produit</button>
     </div>
   </li>
 </ul>

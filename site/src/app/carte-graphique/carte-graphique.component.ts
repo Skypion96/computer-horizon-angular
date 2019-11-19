@@ -31,4 +31,11 @@ export class CarteGraphiqueComponent implements OnInit,OnDestroy {
       .subscribe(disqueDs => this.carteGList = disqueDs);
   }
 
+  AffichageCarteG(cg: CarteGInterface, i: number) {
+    document.getElementById(String(i)).innerHTML = null;
+    var Eelement ="<table><tr><b class='nom'>" + cg.nom +"</b></tr><tr>"  +
+      "<b class='description'>"+cg.marque+ "-" +cg.frequence+"</b><br>"+
+      "</tr><br><br><tr> <b class='prixI' id=prix>"+cg.prix+ "€</b> </tr> </table>";
+    document.getElementById(String(i)).innerHTML = Eelement;
+  }
 }

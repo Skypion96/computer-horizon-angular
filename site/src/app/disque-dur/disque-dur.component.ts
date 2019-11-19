@@ -30,4 +30,12 @@ export class DisqueDurComponent implements OnInit,OnDestroy {
       .queryBase()
       .subscribe(disqueDs => this.disqueDList = disqueDs);
   }
+
+  AffichageDisqueD(dd: DisqueDInterface, i: number) {
+    document.getElementById(String(i)).innerHTML = null;
+    var Eelement ="<table><tr><b class='nom'>" + dd.nom +"</b></tr><tr>"  +
+      "<b class='description'>"+dd.marque+ "-" +dd.capacite+"</b><br>"+
+      "</tr><br><br><tr> <b class='prixI' id=prix>"+dd.prix+ "€</b> </tr> </table>";
+    document.getElementById(String(i)).innerHTML = Eelement;
+  }
 }
