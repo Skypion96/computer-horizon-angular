@@ -55,6 +55,7 @@ export class InscriptionComponent implements OnInit {
       ville:this.form.get("ville").value,
       token:"zeisudfbqdyfpnvioqleug"
     };
+
   }
 
   private createdUser(user:User){
