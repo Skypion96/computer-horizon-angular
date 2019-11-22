@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   readonly PRODUCT: string = "produits";
   readonly ACCUEIL:string ="Accueil";
   readonly CONTACT:string ="Contact";
+  readonly INSCRIPTION:string="inscription";
 
   constructor() { }
 

@@ -8,6 +8,8 @@ import {ContactComponent} from '../contact/contact/contact.component';
 import {OrdinateurComponent} from '../ordinateur/ordinateur.component';
 import {DisqueDurComponent} from '../disque-dur/disque-dur.component';
 import {CarteGraphiqueComponent} from '../carte-graphique/carte-graphique.component';
+import {InscriptionComponent} from '../inscription/inscription.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes:Routes =[
   {
@@ -42,17 +44,22 @@ const routes:Routes =[
   {
     path:"carte-graphiques",
     component: CarteGraphiqueComponent
+  },
+  {
+    path:"inscription",
+    component: InscriptionComponent
   }
 ];
 
 @NgModule({
-  declarations: [AccueilComponent, ProcesseurComponent, ProductsComponent,ContactComponent,OrdinateurComponent,DisqueDurComponent,CarteGraphiqueComponent],
+  declarations: [AccueilComponent, ProcesseurComponent, ProductsComponent,ContactComponent,OrdinateurComponent,DisqueDurComponent,CarteGraphiqueComponent, InscriptionComponent],
   exports: [
     AccueilComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ]
 })
 export class RoutingModule { }

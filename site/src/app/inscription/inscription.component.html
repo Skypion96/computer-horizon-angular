@@ -1,0 +1,34 @@
+<form [formGroup]="form" (ngSubmit)="createUser($event)" class="form">
+  <label for="name">Nom :</label>
+  <input type="text"  formControlName="name" id="name">
+
+  <label for="firstName">Prénom :</label>
+  <input type="text" formControlName="firstName" id="firstName">
+
+  <label for="mail">E-mail :</label>
+  <input type="text" formControlName="mail" id="mail">
+
+  <label for="mdp">Mot de passe :</label>
+  <input type="text" formControlName="mdp" id="mdp">
+
+  <label for="mdpC">Confirmer mot de passe :</label>
+  <input type="text" formControlName="mdpC" id="mdpC">
+
+  <label for="tel">Télephone :</label>
+  <input type="text" formControlName="tel" id="tel">
+
+  <label for="rue">Rue :</label>
+  <input type="text" formControlName="rue"  id="rue">
+
+  <label for="num">Numéro :</label>
+  <input type="text" formControlName="num" id="num">
+
+  <label for="cp">Code postal :</label>
+  <input type="text" formControlName="cp" id="cp">
+
+  <label for="ville">Ville :</label>
+  <input type="text" formControlName="ville" id="ville">
+
+  <button [disabled]="!form.valid">Inscription</button>
+
+</form>
