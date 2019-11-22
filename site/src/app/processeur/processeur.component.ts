@@ -3,6 +3,7 @@ import {ProcServiceService} from "../services/proc-service.service";
 import {ProcInterface, ProcList} from '../interfaces/proc-interface';
 import {Subscription} from "rxjs";
 import {reduce} from 'rxjs/operators';
+import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
 
 @Component({
   selector: 'app-processeur',
@@ -11,8 +12,10 @@ import {reduce} from 'rxjs/operators';
 })
 export class ProcesseurComponent implements OnInit,OnDestroy {
 
-  private procList: ProcList=[];
+  private _procList: ProcList;
   private subQuery:Subscription;
+  private nameSearched: string;
+  private _processeurPipe: ProcesseurPipePipe = new ProcesseurPipePipe();
 
   constructor(public procService: ProcServiceService) { }
 
@@ -27,7 +30,7 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
   private loadProcList():void{
     this.subQuery =this.procService
       .queryBase()
-      .subscribe(procs => this.procList = procs);
+      .subscribe(procs => this._procList = procs);
   }
 
 
@@ -37,5 +40,15 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
     "<b class='description'>"+proc.marque+ "-" +proc.frequence+"</b><br>"+
     "</tr><br><br><tr> <b class='prixI' id=prix>"+proc.prix+ "€</b> </tr> </table>";
     document.getElementById(String(i)).innerHTML = Eelement;
+  }
+
+
+  get procList(): ProcList {
+    return this._procList;
+  }
+
+
+  get filteredProcList(): ProcList {
+    return this._processeurPipe.transform(this.procList,this.nameSearched);
   }
 }

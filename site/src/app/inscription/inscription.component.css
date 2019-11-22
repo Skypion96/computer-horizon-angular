@@ -1,3 +1,10 @@
 .form{
   margin-top: 200px;
 }
+
+.centerForm{
+  margin-left: 100px;
+  text-align: center;
+  font-size: 18px;
+}
+

@@ -8,6 +8,7 @@ import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {RoutingModule} from './routing/routing.module';
 import {TokenInterceptorService} from './services/token-interceptor.service';
+import { ProcesseurPipePipe } from './pipes/processeur-pipe.pipe';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {TokenInterceptorService} from './services/token-interceptor.service';
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    ProcesseurPipePipe,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import {TokenInterceptorService} from './services/token-interceptor.service';
     multi : true
   }],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    ProcesseurPipePipe
   ],
   bootstrap: [AppComponent]
 })

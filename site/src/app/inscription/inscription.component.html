@@ -1,35 +1,55 @@
 <form [formGroup]="form" (ngSubmit)="createUser($event)" class="form">
-
-  <label for="name">Nom :</label>
-  <input type="text"  formControlName="name" id="name">
-  <br>
-  <label for="firstName">Prénom :</label>
-  <input type="text" formControlName="firstName" id="firstName">
-  <br>
-  <label for="mail">E-mail :</label>
-  <input type="text" formControlName="mail" id="mail">
-  <br>
-  <label for="mdp">Mot de passe :</label>
-  <input type="text" formControlName="mdp" id="mdp">
-  <br>
-  <label for="mdpC">Confirmer mot de passe :</label>
-  <input type="text" formControlName="mdpC" id="mdpC">
-  <br>
-  <label for="tel">Télephone :</label>
-  <input type="text" formControlName="tel" id="tel">
-  <br>
-  <label for="rue">Rue :</label>
-  <input type="text" formControlName="rue"  id="rue">
-  <br>
-  <label for="num">Numéro :</label>
-  <input type="text" formControlName="num" id="num">
-  <br>
-  <label for="cp">Code postal :</label>
-  <input type="text" formControlName="cp" id="cp">
-  <br>
-  <label for="ville">Ville :</label>
-  <input type="text" formControlName="ville" id="ville">
-  <br>
-  <button [disabled]="!form.valid">Inscription</button>
-
+  <div class="centerForm">
+    <div>
+      <label for="name">Nom : </label>
+      <input type="text"  formControlName="name" id="name">
+    </div>
+    <br>
+    <div>
+      <label for="firstName">Prénom : </label>
+      <input type="text" formControlName="firstName" id="firstName">
+    </div>
+    <br>
+    <div>
+      <label for="mail">E-mail : </label>
+      <input type="text" formControlName="mail" id="mail">
+    </div>
+    <br>
+    <div>
+      <label for="mdp">Mot de passe : </label>
+      <input type="text" formControlName="mdp" id="mdp">
+    </div>
+    <br>
+    <div>
+      <label for="mdpC">Confirmer mot de passe : </label>
+      <input type="text" formControlName="mdpC" id="mdpC">
+    </div>
+    <br>
+    <div>
+      <label for="tel">Télephone : </label>
+      <input type="text" formControlName="tel" id="tel">
+    </div>
+    <br>
+    <div>
+      <label for="rue">Rue : </label>
+      <input type="text" formControlName="rue"  id="rue">
+    </div>
+    <br>
+    <div>
+      <label for="num">Numéro : </label>
+      <input type="text" formControlName="num" id="num">
+    </div>
+    <br>
+    <div>
+      <label for="cp">Code postal : </label>
+      <input type="text" formControlName="cp" id="cp">
+    </div>
+    <br>
+    <div>
+      <label for="ville">Ville : </label>
+      <input type="text" formControlName="ville" id="ville">
+    </div>
+    <br>
+    <button [disabled]="!form.valid">Inscription</button>
+  </div>
 </form>

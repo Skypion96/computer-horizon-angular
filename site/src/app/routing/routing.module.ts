@@ -9,7 +9,8 @@ import {OrdinateurComponent} from '../ordinateur/ordinateur.component';
 import {DisqueDurComponent} from '../disque-dur/disque-dur.component';
 import {CarteGraphiqueComponent} from '../carte-graphique/carte-graphique.component';
 import {InscriptionComponent} from '../inscription/inscription.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AppModule} from '../app.module';
 
 const routes:Routes =[
   {
@@ -59,7 +60,8 @@ const routes:Routes =[
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class RoutingModule { }
