@@ -1,6 +1,65 @@
 .acceuil{
   margin-top: 10%;
-  margin-left: 8%;
-  margin-right: 8%;
+  margin-left: 40%;
+  margin-right: 50%;
 }
 
+.welcome{
+  font-family: 'Titillium Web', sans-serif;
+  color: deepskyblue;
+}
+.card{
+  border-color: dimgray;
+  border-radius: 8px;
+  border-style: double;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+}
+
+
+.view{
+  display: inline-block;
+  margin-left: 100px;
+  text-align: center;
+}
+
+.view2 {
+  margin-left: 23%;
+  animation: fadein 2s;
+  -moz-animation: fadein 2s; /* Firefox */
+  -webkit-animation: fadein 2s; /* Safari et Chrome */
+  -o-animation: fadein 2s; /* Opera */
+}
+@keyframes fadein {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* sur Firefox */
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* sur Safari et Chrome */
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+@-o-keyframes fadein { /* sur Opera */
+  from {
+    opacity:0;
+  }
+  to {
+    opacity: 1;
+  }
+}
