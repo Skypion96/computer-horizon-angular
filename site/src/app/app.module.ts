@@ -9,6 +9,9 @@ import {RouterModule} from '@angular/router';
 import {RoutingModule} from './routing/routing.module';
 import {TokenInterceptorService} from './services/token-interceptor.service';
 import { ProcesseurPipePipe } from './pipes/processeur-pipe.pipe';
+import { CarteGPipe } from './pipes/carte-g.pipe';
+import { OrdinateurPipe } from './pipes/ordinateur.pipe';
+import { DisqueDPipe } from './pipes/disque-d.pipe';
 
 
 @NgModule({
@@ -17,6 +20,9 @@ import { ProcesseurPipePipe } from './pipes/processeur-pipe.pipe';
     HeaderComponent,
     FooterComponent,
     ProcesseurPipePipe,
+    CarteGPipe,
+    OrdinateurPipe,
+    DisqueDPipe,
   ],
   imports: [
     BrowserModule,
