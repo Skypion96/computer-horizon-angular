@@ -4,6 +4,7 @@ import {ProcInterface, ProcList} from '../interfaces/proc-interface';
 import {Subscription} from "rxjs";
 import {reduce} from 'rxjs/operators';
 import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
+import {ProcPrix} from '../enums/proc-prix.enum';
 
 @Component({
   selector: 'app-processeur',
@@ -16,6 +17,18 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
   private subQuery:Subscription;
   private nameSearched: string;
   private _processeurPipe: ProcesseurPipePipe = new ProcesseurPipePipe();
+
+  readonly TYPE_FILTER =[{
+    id: 'Inférieur à 400',
+    value: ProcPrix.SUP400
+  },{
+    id: 'Inférieur à 1000',
+    value: ProcPrix.SUP1000
+  },{
+    id: 'Supérieur à 1000',
+    value: ProcPrix.SUP1001
+  }];
+  filterSelected: ProcPrix = ProcPrix.SUP400;
 
   constructor(public procService: ProcServiceService) { }
 
@@ -49,6 +62,7 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
 
 
   get filteredProcList(): ProcList {
-    return this._processeurPipe.transform(this.procList,this.nameSearched);
+    return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelected);
   }
+
 }

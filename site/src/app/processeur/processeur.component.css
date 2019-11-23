@@ -69,5 +69,8 @@ table{
 
 ul{
   list-style: none;
+}
+
+.filter{
   margin-top: 10%;
 }

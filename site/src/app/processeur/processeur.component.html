@@ -1,7 +1,17 @@
 
+<div class="filter">
+  <label for="recherche">Rechercher un processeur particulier : </label>
+  <input type="text" [(ngModel)]="nameSearched" id="recherche">
+  <div *ngFor="let typeFilter of TYPE_FILTER">
+    <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+    <input type="radio" [id]="typeFilter.id" name="filter" [value]="typeFilter.value"
+           [(ngModel)]="filterSelected">
+  </div>
+</div>
+
 <ul>
-  <li *ngFor="let proc of filteredProcList; index as i">
-    <div class="card" >
+  <li *ngFor="let proc of filteredProcList ; index as i" >
+    <div class="card">
       <img src="{{proc.img}}"/>
         <div [id]=i>
         <table>
@@ -21,5 +31,3 @@
     </div>
   </li>
 </ul>
-<label for="recherche">Rechercher un processeur particulier : </label>
-<input type="text" [(ngModel)]="nameSearched" id="recherche">
