@@ -12,6 +12,8 @@ import { ProcesseurPipePipe } from './pipes/processeur-pipe.pipe';
 import { CarteGPipe } from './pipes/carte-g.pipe';
 import { OrdinateurPipe } from './pipes/ordinateur.pipe';
 import { DisqueDPipe } from './pipes/disque-d.pipe';
+import { LoginComponent } from './login/login.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -23,12 +25,14 @@ import { DisqueDPipe } from './pipes/disque-d.pipe';
     CarteGPipe,
     OrdinateurPipe,
     DisqueDPipe,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule,
-    RoutingModule
+    RoutingModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
