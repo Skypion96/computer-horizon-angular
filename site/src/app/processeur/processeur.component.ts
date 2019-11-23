@@ -5,6 +5,7 @@ import {Subscription} from "rxjs";
 import {reduce} from 'rxjs/operators';
 import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
 import {ProcPrix} from '../enums/proc-prix.enum';
+import {ProcMarque} from '../enums/proc-marque.enum';
 
 @Component({
   selector: 'app-processeur',
@@ -19,6 +20,9 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
   private _processeurPipe: ProcesseurPipePipe = new ProcesseurPipePipe();
 
   readonly TYPE_FILTER =[{
+    id: 'Tout',
+    value: ProcPrix.ALL
+  },{
     id: 'Inférieur à 400',
     value: ProcPrix.SUP400
   },{
@@ -28,7 +32,19 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
     id: 'Supérieur à 1000',
     value: ProcPrix.SUP1001
   }];
-  filterSelected: ProcPrix = ProcPrix.SUP400;
+  filterSelected: ProcPrix = ProcPrix.ALL;
+
+  readonly TYPE_FILTER_MARQUE =[{
+    id: 'Tout',
+    value: ProcMarque.ALL
+  },{
+    id: 'Intel',
+    value: ProcMarque.Intel
+  },{
+    id: 'AMD',
+    value: ProcMarque.AMD
+  }];
+  filterSelectedMarque: ProcMarque = ProcMarque.ALL;
 
   constructor(public procService: ProcServiceService) { }
 
@@ -62,7 +78,7 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
 
 
   get filteredProcList(): ProcList {
-    return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelected);
+    return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelected,this.filterSelectedMarque);
   }
 
 }

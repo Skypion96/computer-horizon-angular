@@ -1,11 +1,27 @@
 
 <div class="filter">
-  <label for="recherche">Rechercher un processeur particulier : </label>
-  <input type="text" [(ngModel)]="nameSearched" id="recherche">
-  <div *ngFor="let typeFilter of TYPE_FILTER">
-    <label [for]="typeFilter.id">{{typeFilter.id}}</label>
-    <input type="radio" [id]="typeFilter.id" name="filter" [value]="typeFilter.value"
-           [(ngModel)]="filterSelected">
+  <h3>FILTRES : </h3>
+  <div class="filterNom">
+    <label for="recherche">Rechercher un processeur particulier : </label>
+    <input type="text" [(ngModel)]="nameSearched" id="recherche">
+  </div>
+  <div class="filterPrix">
+    PRIX :
+    <div *ngFor="let typeFilter of TYPE_FILTER">
+
+      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+      <input type="radio" [id]="typeFilter.id" name="filter" [value]="typeFilter.value"
+             [(ngModel)]="filterSelected">
+
+    </div>
+  </div>
+  <div class="filterMarque">
+    MARQUES :
+    <div *ngFor="let typeFilterMarque of TYPE_FILTER_MARQUE">
+      <label [for]="typeFilterMarque.id">{{typeFilterMarque.id}}</label>
+      <input type="radio" [id]="typeFilterMarque.id" name="filterMarque" [value]="typeFilterMarque.value"
+             [(ngModel)]="filterSelectedMarque">
+    </div>
   </div>
 </div>
 
