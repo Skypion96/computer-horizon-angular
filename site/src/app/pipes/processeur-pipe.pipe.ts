@@ -15,13 +15,13 @@ export class ProcesseurPipePipe implements PipeTransform {
       return procList.filter(proc=>proc.prix <= 400.00);
     }
     else if(!filter && typePrix==ProcPrix.SUP1000 && typeMarque==ProcMarque.ALL){
-      return procList.filter(proc=>proc.prix <= 1000.00);
+      return procList.filter(proc=>proc.prix <= 1000.00 && proc.prix > 400.00);
     }
     else if(!filter && typePrix==ProcPrix.SUP1001 && typeMarque==ProcMarque.ALL){
       return procList.filter(proc=>proc.prix > 1000.00);
     }
     else if(!filter && typePrix==ProcPrix.ALL && typeMarque==ProcMarque.ALL){
-      return procList.filter(proc=>proc.prix > 0.00);
+      return procList;
     }
 
 
@@ -30,7 +30,7 @@ export class ProcesseurPipePipe implements PipeTransform {
       return procList.filter(proc=>proc.prix <= 400.00 && proc.marque.includes("Intel"));
     }
     else if(!filter && typePrix==ProcPrix.SUP1000 && typeMarque==ProcMarque.Intel){
-      return procList.filter(proc=>proc.prix <= 1000.00 && proc.marque.includes("Intel"));
+      return procList.filter(proc=>proc.prix <= 1000.00  && proc.prix > 400.00 && proc.marque.includes("Intel"));
     }
     else if(!filter && typePrix==ProcPrix.SUP1001 && typeMarque==ProcMarque.Intel){
       return procList.filter(proc=>proc.prix > 1000.00 && proc.marque.includes("Intel"));
@@ -44,7 +44,7 @@ export class ProcesseurPipePipe implements PipeTransform {
       return procList.filter(proc=>proc.prix <= 400.00 && proc.marque.includes("AMD"));
     }
     else if(!filter && typePrix==ProcPrix.SUP1000 && typeMarque==ProcMarque.AMD){
-      return procList.filter(proc=>proc.prix <= 1000.00 && proc.marque.includes("AMD"));
+      return procList.filter(proc=>proc.prix <= 1000.00  && proc.prix > 400.00 && proc.marque.includes("AMD"));
     }
     else if(!filter && typePrix==ProcPrix.SUP1001 && typeMarque==ProcMarque.AMD){
       return procList.filter(proc=>proc.prix > 1000.00 && proc.marque.includes("AMD"));
@@ -61,7 +61,7 @@ export class ProcesseurPipePipe implements PipeTransform {
          return procList.filter(proc=>proc.nom.includes(filter) && proc.prix <= 400.00);
        }
        else if(typePrix==ProcPrix.SUP1000 && typeMarque==ProcMarque.ALL){
-         return procList.filter(proc=>proc.nom.includes(filter) && proc.prix <= 1000.00);
+         return procList.filter(proc=>proc.nom.includes(filter) && proc.prix <= 1000.00 && proc.prix > 400.00 );
        }
        else if(typePrix==ProcPrix.SUP1001 && typeMarque==ProcMarque.ALL){
          return procList.filter(proc=>proc.nom.includes(filter) && proc.prix > 1000.00);
@@ -74,7 +74,7 @@ export class ProcesseurPipePipe implements PipeTransform {
          return procList.filter(proc=>proc.nom.includes(filter) && proc.prix <= 400.00 && proc.marque.includes("Intel"));
        }
        else if(typePrix==ProcPrix.SUP1000 && typeMarque==ProcMarque.Intel){
-         return procList.filter(proc=>proc.nom.includes(filter) && proc.prix <= 1000.00 && proc.marque.includes("Intel"));
+         return procList.filter(proc=>proc.nom.includes(filter) && proc.prix <= 1000.00  && proc.prix > 400.00 && proc.marque.includes("Intel"));
        }
        else if(typePrix==ProcPrix.SUP1001 && typeMarque==ProcMarque.Intel){
          return procList.filter(proc=>proc.nom.includes(filter) && proc.prix > 1000.00 && proc.marque.includes("Intel"));
@@ -87,7 +87,7 @@ export class ProcesseurPipePipe implements PipeTransform {
          return procList.filter(proc=>proc.nom.includes(filter) && proc.prix <= 400.00 && proc.marque.includes("AMD"));
        }
        else if(typePrix==ProcPrix.SUP1000 && typeMarque==ProcMarque.AMD){
-         return procList.filter(proc=>proc.nom.includes(filter) && proc.prix <= 1000.00 && proc.marque.includes("AMD"));
+         return procList.filter(proc=>proc.nom.includes(filter) && proc.prix <= 1000.00  && proc.prix > 400.00 && proc.marque.includes("AMD"));
        }
        else if(typePrix==ProcPrix.SUP1001 && typeMarque==ProcMarque.AMD){
          return procList.filter(proc=>proc.nom.includes(filter) && proc.prix > 1000.00 && proc.marque.includes("AMD"));

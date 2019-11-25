@@ -52,8 +52,7 @@ export class InscriptionComponent implements OnInit {
       rue:this.form.get("rue").value,
       numRue:this.form.get("num").value,
       cp:this.form.get("cp").value,
-      ville:this.form.get("ville").value,
-      token:"zeisudfbqdyfpnvioqleug"
+      ville:this.form.get("ville").value
     };
   }
 

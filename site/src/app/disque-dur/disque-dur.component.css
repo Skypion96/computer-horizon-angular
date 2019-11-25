@@ -68,7 +68,30 @@ table{
   margin-left: 4%;
 }
 
-ul{
-  list-style: none;
+.filter{
   margin-top: 10%;
+  text-align: center;
+}
+
+.filterSSD{
+  float: left;
+  border-color: black;
+  border-radius: 8px;
+  border-style: solid;
+  display: inline-block;
+  margin-left: 40%;
+}
+.filterMarque{
+  float: left;
+  border-color: black;
+  border-radius: 8px;
+  border-style: solid;
+  display: inline-block;
+  margin-left: 1%;
+}
+
+ul{
+  margin-top: 10%;
+  list-style: none;
+
 }

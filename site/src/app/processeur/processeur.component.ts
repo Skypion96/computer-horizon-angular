@@ -26,7 +26,7 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
     id: 'Inférieur à 400',
     value: ProcPrix.SUP400
   },{
-    id: 'Inférieur à 1000',
+    id: 'Entre 400 et 1000',
     value: ProcPrix.SUP1000
   },{
     id: 'Supérieur à 1000',

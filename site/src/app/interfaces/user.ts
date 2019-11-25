@@ -11,5 +11,4 @@ export interface User {
   numRue:string;
   cp:number;
   ville:string;
-  token:string
 }

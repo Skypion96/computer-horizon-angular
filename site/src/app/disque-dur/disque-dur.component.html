@@ -1,3 +1,25 @@
+<div class="filter">
+  <h3>FILTRES : </h3>
+  <div class="filterSSD">
+    SSD :
+    <div *ngFor="let typeFilter of TYPE_FILTER_SSD">
+
+      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+      <input type="radio" [id]="typeFilter.id" name="filterSSD" [value]="typeFilter.value"
+             [(ngModel)]="filterSelectedSSD">
+    </div>
+  </div>
+  <div class="filterMarque">
+    Marques :
+    <div *ngFor="let typeFilter of TYPE_FILTER_MARQUE">
+
+      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+      <input type="radio" [id]="typeFilter.id" name="filterMarque" [value]="typeFilter.value"
+             [(ngModel)]="filterSelectedMarque">
+    </div>
+  </div>
+</div>
+
 <ul>
   <li *ngFor="let dd of filteredDisqueD; index as i">
     <div class="card" >
@@ -20,21 +42,3 @@
     </div>
   </li>
 </ul>
-<div class="filterSSD">
-  SSD :
-  <div *ngFor="let typeFilter of TYPE_FILTER_SSD">
-
-    <label [for]="typeFilter.id">{{typeFilter.id}}</label>
-    <input type="radio" [id]="typeFilter.id" name="filterSSD" [value]="typeFilter.value"
-           [(ngModel)]="filterSelectedSSD">
-  </div>
-</div>
-<div class="filterSSD">
-  Marques :
-  <div *ngFor="let typeFilter of TYPE_FILTER_MARQUE">
-
-    <label [for]="typeFilter.id">{{typeFilter.id}}</label>
-    <input type="radio" [id]="typeFilter.id" name="filterMarque" [value]="typeFilter.value"
-           [(ngModel)]="filterSelectedMarque">
-  </div>
-</div>
