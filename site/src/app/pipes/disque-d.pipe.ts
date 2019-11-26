@@ -3,7 +3,6 @@ import {ProcList} from '../interfaces/proc-interface';
 import {DisqueDList} from '../interfaces/disque-dinterface';
 import {DisqueDSsd} from '../enums/disque-d-ssd.enum';
 import {DisqueDMarque} from '../enums/disque-d-marque.enum';
-import {DisqueDPrix} from '../enums/disque-d-prix.enum';
 import {Prix} from '../enums/prix.enum';
 
 @Pipe({

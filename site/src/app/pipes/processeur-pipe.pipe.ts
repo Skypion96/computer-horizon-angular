@@ -1,6 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {ProcList} from '../interfaces/proc-interface';
-import {ProcPrix} from '../enums/proc-prix.enum';
 import {ProcMarque} from '../enums/proc-marque.enum';
 import {Prix} from '../enums/prix.enum';
 

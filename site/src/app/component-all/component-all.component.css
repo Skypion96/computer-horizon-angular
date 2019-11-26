@@ -46,20 +46,20 @@ img{
   font-size: 25px;
 }
 
-.prixI{
+.prixICG{
   color: red;
-  font-size: 25px;
+  font-size: 35px;
 }
 
 .prixIReduc{
   color: black;
-  font-size: 0px;
+  font-size: 20px;
   text-decoration: line-through;
 }
 
 .reduction{
   color: black;
-  font-size: 0px;
+  font-size: 15px;
 }
 
 table{
@@ -72,22 +72,47 @@ ul{
   margin-top: 10%;
 }
 
-.filter{
+
+.prixIDD{
+  color: red;
+  font-size: 25px;
+}
+
+.reduction{
+  color: black;
+  font-size: 0px;
+}
+
+table{
+  float: left;
+  margin-left: 4%;
+}
+
+.filterDD{
   margin-top: 1%;
   margin-left: 2%;
   width: 200px;
   float: left;
 }
-.filterNom{
+
+.filterSSDDD{
   margin-top: 1%;
   border-color: black;
   border-radius: 8px;
   border-style: solid;
   width: 200px;
   height: auto;
-
 }
-.filterPrix{
+.filterMarqueDD{
+  margin-top: 1%;
+  border-color: black;
+  border-radius: 8px;
+  border-style: solid;
+  width: 200px;
+  height: auto;
+}
+
+.filterPrixDD{
   margin-top: 1%;
   border-color: black;
   border-radius: 8px;
@@ -95,9 +120,39 @@ ul{
   width: 200px;
   height: auto;
   float: bottom;
+}
+
+.disqueD{
+  margin-top: 15%;
+  margin-left: 15%;
+  width: 800px;
+}
+
+.filterProc{
+  margin-top: 1%;
+  margin-left: 2%;
+  width: 200px;
+  float: left;
+}
+.filterNomProc{
+  margin-top: 1%;
+  border-color: black;
+  border-radius: 8px;
+  border-style: solid;
+  width: 200px;
+  height: auto;
 
 }
-.filterMarqueP{
+.filterPrixProc{
+  margin-top: 1%;
+  border-color: black;
+  border-radius: 8px;
+  border-style: solid;
+  width: 200px;
+  height: auto;
+
+}
+.filterMarqueProc{
   margin-top: 1%;
   border-color: black;
   border-radius: 8px;
@@ -108,7 +163,7 @@ ul{
 }
 
 .processeur{
-  margin-top: 15%;
+  margin-top: 2%;
   margin-left: 15%;
   width: 800px;
 }

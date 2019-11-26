@@ -4,13 +4,9 @@ import {Subscription} from 'rxjs';
 import {ProcServiceService} from '../services/proc-service.service';
 import {DisqueDServiceService} from '../services/disque-dservice.service';
 import {DisqueDInterface, DisqueDList} from '../interfaces/disque-dinterface';
-import {ProcPrix} from '../enums/proc-prix.enum';
 import {DisqueDSsd} from '../enums/disque-d-ssd.enum';
-import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
 import {DisqueDPipe} from '../pipes/disque-d.pipe';
 import {DisqueDMarque} from '../enums/disque-d-marque.enum';
-import {ProcMarque} from '../enums/proc-marque.enum';
-import {DisqueDPrix} from '../enums/disque-d-prix.enum';
 import {Prix} from '../enums/prix.enum';
 
 @Component({

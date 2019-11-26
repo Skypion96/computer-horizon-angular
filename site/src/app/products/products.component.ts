@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
   readonly PROCESSEUR: string = "processeurs";
   readonly ORDINATEUR: string = "ordinateurs";
   readonly CARTEG: string = "carte-graphiques";
-  readonly DISQUED: string = "disque-durs";
+  readonly DISQUED: string = "Tout";
 
   constructor() { }
 

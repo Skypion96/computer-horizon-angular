@@ -4,9 +4,7 @@ import {ProcInterface, ProcList} from '../interfaces/proc-interface';
 import {Subscription} from "rxjs";
 import {reduce} from 'rxjs/operators';
 import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
-import {ProcPrix} from '../enums/proc-prix.enum';
 import {ProcMarque} from '../enums/proc-marque.enum';
-import {DisqueDPrix} from '../enums/disque-d-prix.enum';
 import {Prix} from '../enums/prix.enum';
 
 @Component({

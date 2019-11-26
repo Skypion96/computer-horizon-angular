@@ -1,0 +1,152 @@
+<!-- *********************************************** CARTES GRAPHIQUES *********************************************** -->
+<ul>
+  <li *ngFor="let cg of carteGList; index as i">
+    <div class="card" >
+      <img src="{{cg.img}}"/>
+      <div [id]=i>
+        <table>
+          <tr>
+            <b class="nom">{{cg.nom}}</b>
+          </tr>
+          <tr>
+            <b class="description">{{cg.marque}} - {{cg.frequence}}</b><br>
+          </tr>
+          <br><br>
+          <tr>
+            <b class="prixICG" id="prixCG">{{cg.prix}} €</b>
+          </tr>
+        </table>
+      </div>
+      <button class="btnShow" (click)="AffichageCarteG(cg,i)">Afficher le produit</button>
+    </div>
+  </li>
+</ul>
+<!-- *********************************************** DISQUE DUR *********************************************** -->
+<div class="filterDD">
+  <h3>FILTRES DISQUES DUR : </h3>
+  <div class="filterSSDDD">
+    SSD :
+    <div *ngFor="let typeFilter of TYPE_FILTER_SSD">
+
+      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+      <input type="radio" [id]="typeFilter.id" name="filterSSDDD" [value]="typeFilter.value"
+             [(ngModel)]="filterSelectedSSD">
+    </div>
+  </div>
+  <div class="filterMarque">
+    Marques :
+    <div *ngFor="let typeFilter of TYPE_FILTER_MARQUE_DISQUED">
+
+      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+      <input type="radio" [id]="typeFilter.id" name="filterMarquesDD" [value]="typeFilter.value"
+             [(ngModel)]="filterSelectedMarqueDD">
+    </div>
+  </div>
+  <div class="filterPrix">
+    Prix :
+    <div *ngFor="let typeFilter of TYPE_FILTER_PRIX">
+
+      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+      <input type="radio" [id]="typeFilter.id" name="filterPrix" [value]="typeFilter.value"
+             [(ngModel)]="filterSelectedPrix">
+    </div>
+  </div>
+</div>
+<div class="disqueD">
+  <ul>
+    <li *ngFor="let dd of filteredDisqueD; index as i">
+      <div class="card" >
+        <img src="{{dd.img}}"/>
+        <div [id]=i>
+          <table>
+            <tr>
+              <b class="nom">{{dd.nom}}</b>
+            </tr>
+            <tr>
+              <b class="description">{{dd.marque}} - {{dd.capacite}}</b><br>
+            </tr>
+            <br><br>
+            <tr>
+              <b class="prixI" id="prixDD">{{dd.prix}} €</b>
+            </tr>
+          </table>
+        </div>
+        <button class="btnShow" (click)="AffichageDisqueD(dd,i)">Afficher le produit</button>
+      </div>
+    </li>
+  </ul>
+</div>
+<!-- ************************************* ORDINATEUR ***********************************************-->
+<ul>
+  <li *ngFor="let ordi of ordiList; index as i">
+    <div class="card" >
+      <img src="{{ordi.img}}"/>
+      <div [id]=i>
+        <table>
+          <tr>
+            <b class="nom">{{ordi.nom}}</b>
+          </tr>
+          <tr>
+            <b class="description">{{ordi.marque}} - {{ordi.nomProc}} - {{ordi.memoireV}} - {{ordi.capacite}}</b><br>
+          </tr>
+          <br><br>
+          <tr>
+            <b class="prixI" id="prix">{{ordi.prix}} €</b>
+          </tr>
+        </table>
+      </div>
+      <button class="btnShow" (click)="AffichageOrdi(ordi,i)">Afficher le produit</button>
+    </div>
+  </li>
+</ul>
+<!-- *********************************************** PROCESSEUR *********************************************** -->
+
+<div class="filterProc">
+  <h3>FILTRES PROCESSEURS : </h3>
+  <div class="filterNomProc">
+    <label for="recherche">Rechercher un processeur particulier : </label>
+    <input type="text" [(ngModel)]="nameSearched" id="recherche">
+  </div>
+  <div class="filterPrixProc">
+    PRIX :
+    <div *ngFor="let typeFilter of TYPE_FILTER_PRIX_PROC">
+
+      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+      <input type="radio" [id]="typeFilter.id" name="filterProc" [value]="typeFilter.value"
+             [(ngModel)]="filterSelectedProcPrix">
+
+    </div>
+  </div>
+  <div class="filterMarqueProc">
+    MARQUES :
+    <div *ngFor="let typeFilterMarque of TYPE_FILTER_MARQUE_PROC">
+      <label [for]="typeFilterMarque.id">{{typeFilterMarque.id}}</label>
+      <input type="radio" [id]="typeFilterMarque.id" name="filterMarqueProc" [value]="typeFilterMarque.value"
+             [(ngModel)]="filterSelectedMarqueProc">
+    </div>
+  </div>
+</div>
+<div class="processeur">
+  <ul>
+    <li *ngFor="let proc of filteredProcList ; index as i" >
+      <div class="card">
+        <img src="{{proc.img}}"/>
+        <div [id]=i>
+          <table>
+            <tr>
+              <b class="nom">{{proc.nom}}</b>
+            </tr>
+            <tr>
+              <b class="description">{{proc.marque}} - {{proc.frequence}}</b><br>
+            </tr>
+            <br><br>
+            <tr>
+              <b class="prixI" id="prixProc">{{proc.prix}} €</b>
+            </tr>
+          </table>
+        </div>
+        <button class="btnShow" (click)="AffichageProc(proc,i)">Afficher le produit</button>
+      </div>
+    </li>
+  </ul>
+</div>
