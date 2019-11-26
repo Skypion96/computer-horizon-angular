@@ -7,6 +7,7 @@ import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
 import {ProcPrix} from '../enums/proc-prix.enum';
 import {ProcMarque} from '../enums/proc-marque.enum';
 import {DisqueDPrix} from '../enums/disque-d-prix.enum';
+import {Prix} from '../enums/prix.enum';
 
 @Component({
   selector: 'app-processeur',
@@ -22,18 +23,18 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
 
   readonly TYPE_FILTER =[{
     id: 'Tout',
-    value: ProcPrix.ALL
+    value: Prix.ALL
   },{
     id: 'Inférieur à 400',
-    value: ProcPrix.SUP400
+    value: Prix.INF400
   },{
     id: 'Entre 400 et 1000',
-    value: ProcPrix.SUP1000
+    value: Prix.INF1000
   },{
     id: 'Supérieur à 1000',
-    value: ProcPrix.SUP1001
+    value: Prix.SUP1000
   }];
-  filterSelected: ProcPrix = ProcPrix.ALL;
+  filterSelected: Prix = Prix.ALL;
 
   readonly TYPE_FILTER_MARQUE =[{
     id: 'Tout',

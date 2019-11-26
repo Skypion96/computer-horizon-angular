@@ -11,6 +11,7 @@ import {DisqueDPipe} from '../pipes/disque-d.pipe';
 import {DisqueDMarque} from '../enums/disque-d-marque.enum';
 import {ProcMarque} from '../enums/proc-marque.enum';
 import {DisqueDPrix} from '../enums/disque-d-prix.enum';
+import {Prix} from '../enums/prix.enum';
 
 @Component({
   selector: 'app-disque-dur',
@@ -54,18 +55,18 @@ export class DisqueDurComponent implements OnInit,OnDestroy {
 
   readonly TYPE_FILTER_PRIX =[{
     id: 'Tout',
-    value: DisqueDPrix.ALL
+    value: Prix.ALL
   },{
     id: 'Inférieur à 400',
-    value: DisqueDPrix.INF400
+    value: Prix.INF400
   },{
     id: 'Entre 400 et 1000',
-    value: DisqueDPrix.INF1000
+    value: Prix.INF1000
   },{
     id: 'Supérieur à 1000',
-    value: DisqueDPrix.SUP1000
+    value: Prix.SUP1000
   }];
-  filterSelectedPrix: DisqueDPrix = DisqueDPrix.ALL;
+  filterSelectedPrix: Prix = Prix.ALL;
 
   constructor(public disqueDService: DisqueDServiceService) { }
 
