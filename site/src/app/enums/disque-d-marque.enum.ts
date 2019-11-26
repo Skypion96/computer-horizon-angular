@@ -1,3 +1,3 @@
 export enum DisqueDMarque {
-  ALL,LACIE,INTENSO,SEAGATE
+  ALL,LACIE,TOSHIBA,SEAGATE
 }

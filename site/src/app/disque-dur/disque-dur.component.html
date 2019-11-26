@@ -14,31 +14,41 @@
     <div *ngFor="let typeFilter of TYPE_FILTER_MARQUE">
 
       <label [for]="typeFilter.id">{{typeFilter.id}}</label>
-      <input type="radio" [id]="typeFilter.id" name="filterMarque" [value]="typeFilter.value"
+      <input type="radio" [id]="typeFilter.id" name="filterMarques" [value]="typeFilter.value"
              [(ngModel)]="filterSelectedMarque">
     </div>
   </div>
-</div>
+  <div class="filterPrix">
+    Prix :
+    <div *ngFor="let typeFilter of TYPE_FILTER_PRIX">
 
-<ul>
-  <li *ngFor="let dd of filteredDisqueD; index as i">
-    <div class="card" >
-      <img src="{{dd.img}}"/>
-      <div [id]=i>
-        <table>
-          <tr>
-            <b class="nom">{{dd.nom}}</b>
-          </tr>
-          <tr>
-            <b class="description">{{dd.marque}} - {{dd.capacite}}</b><br>
-          </tr>
-          <br><br>
-          <tr>
-            <b class="prixI" id="prix">{{dd.prix}} €</b>
-          </tr>
-        </table>
-      </div>
-      <button class="btnShow" (click)="AffichageDisqueD(dd,i)">Afficher le produit</button>
+      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+      <input type="radio" [id]="typeFilter.id" name="filterPrix" [value]="typeFilter.value"
+             [(ngModel)]="filterSelectedPrix">
     </div>
-  </li>
-</ul>
+  </div>
+</div>
+<div class="disqueD">
+  <ul>
+    <li *ngFor="let dd of filteredDisqueD; index as i">
+      <div class="card" >
+        <img src="{{dd.img}}"/>
+        <div [id]=i>
+          <table>
+            <tr>
+              <b class="nom">{{dd.nom}}</b>
+            </tr>
+            <tr>
+              <b class="description">{{dd.marque}} - {{dd.capacite}}</b><br>
+            </tr>
+            <br><br>
+            <tr>
+              <b class="prixI" id="prix">{{dd.prix}} €</b>
+            </tr>
+          </table>
+        </div>
+        <button class="btnShow" (click)="AffichageDisqueD(dd,i)">Afficher le produit</button>
+      </div>
+    </li>
+  </ul>
+</div>

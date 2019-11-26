@@ -9,6 +9,8 @@ import {DisqueDSsd} from '../enums/disque-d-ssd.enum';
 import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
 import {DisqueDPipe} from '../pipes/disque-d.pipe';
 import {DisqueDMarque} from '../enums/disque-d-marque.enum';
+import {ProcMarque} from '../enums/proc-marque.enum';
+import {DisqueDPrix} from '../enums/disque-d-prix.enum';
 
 @Component({
   selector: 'app-disque-dur',
@@ -42,15 +44,28 @@ export class DisqueDurComponent implements OnInit,OnDestroy {
     id: 'Lacie',
     value: DisqueDMarque.LACIE
   },{
-    id: 'Intenso',
-    value: DisqueDMarque.INTENSO
+    id: 'Toshiba',
+    value: DisqueDMarque.TOSHIBA
   },{
     id: 'Seagate',
     value: DisqueDMarque.SEAGATE
   }];
   filterSelectedMarque: DisqueDMarque = DisqueDMarque.ALL;
 
-
+  readonly TYPE_FILTER_PRIX =[{
+    id: 'Tout',
+    value: DisqueDPrix.ALL
+  },{
+    id: 'Inférieur à 400',
+    value: DisqueDPrix.INF400
+  },{
+    id: 'Entre 400 et 1000',
+    value: DisqueDPrix.INF1000
+  },{
+    id: 'Supérieur à 1000',
+    value: DisqueDPrix.SUP1000
+  }];
+  filterSelectedPrix: DisqueDPrix = DisqueDPrix.ALL;
 
   constructor(public disqueDService: DisqueDServiceService) { }
 
@@ -77,6 +92,6 @@ export class DisqueDurComponent implements OnInit,OnDestroy {
   }
 
   get filteredDisqueD(): DisqueDList {
-    return this._disqueDPipe.transform(this.disqueDList,this.filterSelectedSSD,this.filterSelectedMarque);
+    return this._disqueDPipe.transform(this.disqueDList,this.filterSelectedSSD,this.filterSelectedMarque,this.filterSelectedPrix);
   }
 }

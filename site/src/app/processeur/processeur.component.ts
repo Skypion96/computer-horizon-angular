@@ -6,6 +6,7 @@ import {reduce} from 'rxjs/operators';
 import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
 import {ProcPrix} from '../enums/proc-prix.enum';
 import {ProcMarque} from '../enums/proc-marque.enum';
+import {DisqueDPrix} from '../enums/disque-d-prix.enum';
 
 @Component({
   selector: 'app-processeur',
@@ -45,6 +46,8 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
     value: ProcMarque.AMD
   }];
   filterSelectedMarque: ProcMarque = ProcMarque.ALL;
+
+
 
   constructor(public procService: ProcServiceService) { }
 
