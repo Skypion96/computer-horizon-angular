@@ -27,20 +27,6 @@ export class ComponentAllComponent implements OnInit {
   private nameSearched: string;
   private _processeurPipe: ProcesseurPipePipe = new ProcesseurPipePipe();
 
-  readonly TYPE_FILTER_PRIX_PROC =[{
-    id: 'Tout',
-    value: Prix.ALL
-  },{
-    id: 'Inférieur à 400',
-    value: Prix.INF400
-  },{
-    id: 'Entre 400 et 1000',
-    value: Prix.INF1000
-  },{
-    id: 'Supérieur à 1000',
-    value: Prix.SUP1000
-  }];
-  filterSelectedProcPrix: Prix = Prix.ALL;
 
   readonly TYPE_FILTER_MARQUE_PROC =[{
     id: 'Tout',
@@ -92,7 +78,7 @@ export class ComponentAllComponent implements OnInit {
 
 
   get filteredProcList(): ProcList {
-    return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelectedProcPrix,this.filterSelectedMarqueProc);
+    return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelectedPrix,this.filterSelectedMarqueProc);
   }
 //********************************************************************************************************************************
 //DISQUE DUR

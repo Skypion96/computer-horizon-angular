@@ -22,83 +22,88 @@
   </li>
 </ul>
 <!-- *********************************************** DISQUE DUR *********************************************** -->
-<div class="filterDD">
-  <h3>FILTRES DISQUES DUR : </h3>
-  <div class="filterSSDDD">
-    SSD :
-    <div *ngFor="let typeFilter of TYPE_FILTER_SSD">
+<div class="disque" >
+  <div class="filterDD">
+    <h3>FILTRES DISQUES DUR : </h3>
+    <div class="filterSSDDD">
+      SSD :
+      <div *ngFor="let typeFilter of TYPE_FILTER_SSD">
 
-      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
-      <input type="radio" [id]="typeFilter.id" name="filterSSDDD" [value]="typeFilter.value"
-             [(ngModel)]="filterSelectedSSD">
+        <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+        <input type="radio" [id]="typeFilter.id" name="filterSSDDD" [value]="typeFilter.value"
+               [(ngModel)]="filterSelectedSSD">
+      </div>
+    </div>
+    <div class="filterMarque">
+      Marques :
+      <div *ngFor="let typeFilter of TYPE_FILTER_MARQUE_DISQUED">
+
+        <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+        <input type="radio" [id]="typeFilter.id" name="filterMarquesDD" [value]="typeFilter.value"
+               [(ngModel)]="filterSelectedMarqueDD">
+      </div>
+    </div>
+    <div class="filterPrix">
+      Prix :
+      <div *ngFor="let typeFilter of TYPE_FILTER_PRIX">
+
+        <label [for]="typeFilter.id">{{typeFilter.id}}</label>
+        <input type="radio" [id]="typeFilter.id" name="filterPrix" [value]="typeFilter.value"
+               [(ngModel)]="filterSelectedPrix">
+      </div>
     </div>
   </div>
-  <div class="filterMarque">
-    Marques :
-    <div *ngFor="let typeFilter of TYPE_FILTER_MARQUE_DISQUED">
-
-      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
-      <input type="radio" [id]="typeFilter.id" name="filterMarquesDD" [value]="typeFilter.value"
-             [(ngModel)]="filterSelectedMarqueDD">
-    </div>
-  </div>
-  <div class="filterPrix">
-    Prix :
-    <div *ngFor="let typeFilter of TYPE_FILTER_PRIX">
-
-      <label [for]="typeFilter.id">{{typeFilter.id}}</label>
-      <input type="radio" [id]="typeFilter.id" name="filterPrix" [value]="typeFilter.value"
-             [(ngModel)]="filterSelectedPrix">
-    </div>
+  <div class="disqueD">
+    <ul>
+      <li class="dd" *ngFor="let dd of filteredDisqueD; index as i">
+        <div class="card" >
+          <img src="{{dd.img}}"/>
+          <div [id]=i>
+            <table>
+              <tr>
+                <b class="nom">{{dd.nom}}</b>
+              </tr>
+              <tr>
+                <b class="description">{{dd.marque}} - {{dd.capacite}}</b><br>
+              </tr>
+              <br><br>
+              <tr>
+                <b class="prixI" id="prixDD">{{dd.prix}} €</b>
+              </tr>
+            </table>
+          </div>
+          <button class="btnShow" (click)="AffichageDisqueD(dd,i)">Afficher le produit</button>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
-<div class="disqueD">
+<br>
+<!-- ************************************* ORDINATEUR ***********************************************-->
+<div class="ordinateur">
   <ul>
-    <li *ngFor="let dd of filteredDisqueD; index as i">
+    <li *ngFor="let ordi of ordiList; index as i">
       <div class="card" >
-        <img src="{{dd.img}}"/>
+        <img src="{{ordi.img}}"/>
         <div [id]=i>
           <table>
             <tr>
-              <b class="nom">{{dd.nom}}</b>
+              <b class="nom">{{ordi.nom}}</b>
             </tr>
             <tr>
-              <b class="description">{{dd.marque}} - {{dd.capacite}}</b><br>
+              <b class="description">{{ordi.marque}} - {{ordi.nomProc}} - {{ordi.memoireV}} - {{ordi.capacite}}</b><br>
             </tr>
             <br><br>
             <tr>
-              <b class="prixI" id="prixDD">{{dd.prix}} €</b>
+              <b class="prixI" id="prix">{{ordi.prix}} €</b>
             </tr>
           </table>
         </div>
-        <button class="btnShow" (click)="AffichageDisqueD(dd,i)">Afficher le produit</button>
+        <button class="btnShow" (click)="AffichageOrdi(ordi,i)">Afficher le produit</button>
       </div>
     </li>
   </ul>
 </div>
-<!-- ************************************* ORDINATEUR ***********************************************-->
-<ul>
-  <li *ngFor="let ordi of ordiList; index as i">
-    <div class="card" >
-      <img src="{{ordi.img}}"/>
-      <div [id]=i>
-        <table>
-          <tr>
-            <b class="nom">{{ordi.nom}}</b>
-          </tr>
-          <tr>
-            <b class="description">{{ordi.marque}} - {{ordi.nomProc}} - {{ordi.memoireV}} - {{ordi.capacite}}</b><br>
-          </tr>
-          <br><br>
-          <tr>
-            <b class="prixI" id="prix">{{ordi.prix}} €</b>
-          </tr>
-        </table>
-      </div>
-      <button class="btnShow" (click)="AffichageOrdi(ordi,i)">Afficher le produit</button>
-    </div>
-  </li>
-</ul>
 <!-- *********************************************** PROCESSEUR *********************************************** -->
 
 <div class="filterProc">
@@ -109,11 +114,11 @@
   </div>
   <div class="filterPrixProc">
     PRIX :
-    <div *ngFor="let typeFilter of TYPE_FILTER_PRIX_PROC">
+    <div *ngFor="let typeFilter of TYPE_FILTER_PRIX">
 
       <label [for]="typeFilter.id">{{typeFilter.id}}</label>
       <input type="radio" [id]="typeFilter.id" name="filterProc" [value]="typeFilter.value"
-             [(ngModel)]="filterSelectedProcPrix">
+             [(ngModel)]="filterSelectedPrix">
 
     </div>
   </div>
