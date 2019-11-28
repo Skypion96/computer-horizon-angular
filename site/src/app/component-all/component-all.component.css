@@ -88,7 +88,7 @@ table{
   margin-left: 4%;
 }
 
-.filterDD{
+.filter{
   margin-top: 1%;
   margin-left: 2%;
   width: 200px;
@@ -112,6 +112,15 @@ table{
   height: auto;
 }
 
+.filterMarqueOrdi{
+  margin-top: 1%;
+  border-color: black;
+  border-radius: 8px;
+  border-style: solid;
+  width: 200px;
+  height: auto;
+}
+
 .filterPrix{
   margin-top: 1%;
   border-color: black;
@@ -127,17 +136,13 @@ table{
   margin-left: 15%;
   width: 1000px;
   float: bottom;
+
 }
 .dd{
   float: left;
   margin-left: 2%;
 }
-.filterProc{
-  margin-top: 1%;
-  margin-left: 2%;
-  width: 200px;
-  float: left;
-}
+
 .filterNomProc{
   margin-top: 1%;
   border-color: black;
@@ -166,12 +171,44 @@ table{
 
 }
 
+.filterPrixOrdi{
+  margin-top: 1%;
+  border-color: black;
+  border-radius: 8px;
+  border-style: solid;
+  width: 200px;
+  height: auto;
+}
+
 .processeur{
-  margin-top: 2%;
+  margin-top: 10%;
   margin-left: 15%;
-  width: 800px;
+  width: 1000px;
+  float: bottom;
+}
+
+.proc{
+  float: left;
+  margin-left: 2%;
+}
+
+.disque{
+  float: bottom;
 }
 
 .ordinateur{
-  margin-top: 60%;
+  margin-left: 15%;
+  width: 1000px;
+}
+.ordi{
+  float: left;
+  margin-left: 2%;
+}
+.nomPC{
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 10px;
+}
+.descriptionPC{
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 10px;
 }

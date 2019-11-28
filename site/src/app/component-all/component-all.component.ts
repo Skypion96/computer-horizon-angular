@@ -14,6 +14,8 @@ import {OrdiInterface, OrdiList} from '../interfaces/ordi-interface';
 import {OrdiServiceService} from '../services/ordi-service.service';
 import {CarteGInterface, CarteGList} from '../interfaces/carte-ginterface';
 import {CarteGServiceService} from '../services/carte-gservice.service';
+import {OrdinateurPipe} from '../pipes/ordinateur.pipe';
+import {OrdiMarque} from '../enums/ordi-marque.enum';
 
 @Component({
   selector: 'app-component-all',
@@ -152,10 +154,26 @@ export class ComponentAllComponent implements OnInit {
 //********************************************************************************************************************************
 //ORDINATEURS
   private ordiList: OrdiList=[];
+  private _ordiPipe: OrdinateurPipe = new OrdinateurPipe();
 
 
-
-
+  readonly TYPE_FILTER_MARQUE_ORDI =[{
+    id: 'Tout',
+    value: OrdiMarque.ALL
+  },{
+    id: 'ACER',
+    value: OrdiMarque.ACER
+  },{
+    id: 'ASUS',
+    value: OrdiMarque.ASUS
+  },{
+    id: 'HP',
+    value: OrdiMarque.HP
+  },{
+    id: 'MSI',
+    value: OrdiMarque.MSI
+  }];
+  filterSelectedMarqueOrdi: OrdiMarque = OrdiMarque.ALL;
 
 
   private loadOrdiList():void{
@@ -171,6 +189,10 @@ export class ComponentAllComponent implements OnInit {
       "</tr><br><br><tr> <b class='prixI' id=prix>"+ordi.prix+ "€</b> </tr> </table>";
     document.getElementById(String(i)).innerHTML = Eelement;
 
+  }
+
+  get filteredOrdinateur(): OrdiList {
+    return this._ordiPipe.transform(this.ordiList,this.filterSelectedPrix,this.filterSelectedMarqueOrdi);
   }
 
 //********************************************************************************************************************************
@@ -192,4 +214,5 @@ export class ComponentAllComponent implements OnInit {
       "</tr><br><br><tr> <b class='prixI' id=prix>"+cg.prix+ "€</b> </tr> </table>";
     document.getElementById(String(i)).innerHTML = Eelement;
   }
+
 }
