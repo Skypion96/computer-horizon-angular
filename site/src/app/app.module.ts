@@ -7,13 +7,13 @@ import { FooterComponent } from './footer/footer.component';
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {RoutingModule} from './routing/routing.module';
-import {TokenInterceptorService} from './services/token-interceptor.service';
 import { ProcesseurPipePipe } from './pipes/processeur-pipe.pipe';
 import { CarteGPipe } from './pipes/carte-g.pipe';
 import { OrdinateurPipe } from './pipes/ordinateur.pipe';
 import { DisqueDPipe } from './pipes/disque-d.pipe';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -26,6 +26,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     OrdinateurPipe,
     DisqueDPipe,
     LoginComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,11 +36,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass : TokenInterceptorService,
-    multi : true
-  }],
   exports: [
     HeaderComponent,
     ProcesseurPipePipe
