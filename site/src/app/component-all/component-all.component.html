@@ -66,9 +66,6 @@
           <tr>
             <b class="nom">{{cg.nom}}</b>
           </tr>
-          <tr>
-            <b class="description">{{cg.marque}} - {{cg.frequence}}</b><br>
-          </tr>
           <br><br>
           <tr>
             <b class="prixICG" id="prixCG">{{cg.prix}} €</b>
@@ -90,9 +87,6 @@
             <table>
               <tr>
                 <b class="nom">{{dd.nom}}</b>
-              </tr>
-              <tr>
-                <b class="description">{{dd.marque}} - {{dd.capacite}}</b><br>
               </tr>
               <br><br>
               <tr>
@@ -120,9 +114,6 @@
               <tr>
                 <b class="nomPC">{{ordi.nom}}</b>
               </tr>
-              <tr>
-                <b class="descriptionPC">{{ordi.marque}} - {{ordi.nomProc}} - {{ordi.memoireV}} - {{ordi.capacite}}</b><br>
-              </tr>
               <br><br>
               <tr>
                 <b class="prixI" id="prix">{{ordi.prix}} €</b>
@@ -137,7 +128,6 @@
 </div>
 <!-- *********************************************** PROCESSEUR *********************************************** -->
 <div>
-
   <div class="processeur">
     <ul>
       <li class="proc" *ngFor="let proc of filteredProcList ; index as i" >
@@ -148,16 +138,13 @@
               <tr>
                 <b class="nom">{{proc.nom}}</b>
               </tr>
-              <tr>
-                <b class="description">{{proc.marque}} - {{proc.frequence}}</b><br>
-              </tr>
               <br><br>
               <tr>
                 <b class="prixI" id="prixProc">{{proc.prix}} €</b>
               </tr>
             </table>
           </div>
-          <button class="btnShow" (click)="AffichageProc(proc,i)">Afficher le produit</button>
+          <button class="btnShow" (click)="loadProcElement(proc)">Afficher le produit</button>
         </div>
       </li>
     </ul>

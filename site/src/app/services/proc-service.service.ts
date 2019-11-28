@@ -17,8 +17,8 @@ export class ProcServiceService {
     return this.http.get<ProcList>(ProcServiceService.URAL_API);
   }
 
-  query(nom):Observable<ProcInterface>{
-    return this.http.get<ProcInterface>(ProcServiceService.URAL_API +"/"+ nom);
+  query(nom:string):Observable<ProcInterface>{
+    return this.http.get<ProcInterface>(ProcServiceService.URAL_API +"/"+"Processeur?nom="+ nom);
   }
   post(proc: ProcInterface): Observable<ProcInterface> {
     return this.http.post<ProcInterface>(ProcServiceService.URAL_API, proc);

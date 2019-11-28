@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-products',
@@ -14,11 +14,12 @@ export class ProductsComponent implements OnInit {
   readonly PROCESSEUR: string = "processeurs";
   readonly ORDINATEUR: string = "ordinateurs";
   readonly CARTEG: string = "carte-graphiques";
-  readonly DISQUED: string = "Tout";
+  readonly ALL: string = "Tout";
 
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }

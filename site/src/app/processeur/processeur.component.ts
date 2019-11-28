@@ -18,6 +18,8 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
   private subQuery:Subscription;
   private nameSearched: string;
   private _processeurPipe: ProcesseurPipePipe = new ProcesseurPipePipe();
+  private _name:string = "";
+
 
   readonly TYPE_FILTER =[{
     id: 'Tout',
@@ -83,4 +85,12 @@ export class ProcesseurComponent implements OnInit,OnDestroy {
     return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelected,this.filterSelectedMarque);
   }
 
+
+  get name(): string {
+    return this._name;
+  }
+
+  set name(value: string) {
+    this._name = value;
+  }
 }
