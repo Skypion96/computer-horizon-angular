@@ -60,7 +60,8 @@ const routes:Routes =[
 @NgModule({
   declarations: [AccueilComponent, ProcesseurComponent, ProductsComponent,ContactComponent,OrdinateurComponent,DisqueDurComponent,CarteGraphiqueComponent, InscriptionComponent,ComponentAllComponent],
   exports: [
-    AccueilComponent
+    AccueilComponent,
+    ComponentAllComponent
   ],
   imports: [
     CommonModule,

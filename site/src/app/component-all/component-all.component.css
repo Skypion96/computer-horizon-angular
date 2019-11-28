@@ -46,10 +46,6 @@ img{
   font-size: 15px;
 }
 
-.prixICG{
-  color: red;
-  font-size: 35px;
-}
 
 .prixIReduc{
   color: black;
@@ -72,11 +68,6 @@ ul{
   margin-top: 10%;
 }
 
-
-.prixIDD{
-  color: red;
-  font-size: 25px;
-}
 
 .reduction{
   color: black;
@@ -142,7 +133,10 @@ table{
   float: left;
   margin-left: 2%;
 }
-
+.cg{
+  float: left;
+  margin-left: 2%;
+}
 .filterNomProc{
   margin-top: 1%;
   border-color: black;
@@ -194,6 +188,11 @@ table{
 
 .disque{
   float: bottom;
+}
+
+.carteGg{
+  margin-left: 15%;
+  width: 1000px;
 }
 
 .ordinateur{

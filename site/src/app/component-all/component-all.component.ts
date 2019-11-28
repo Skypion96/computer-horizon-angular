@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProcInterface, ProcList} from '../interfaces/proc-interface';
 import {Subscription} from 'rxjs';
 import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
@@ -16,6 +16,7 @@ import {CarteGInterface, CarteGList} from '../interfaces/carte-ginterface';
 import {CarteGServiceService} from '../services/carte-gservice.service';
 import {OrdinateurPipe} from '../pipes/ordinateur.pipe';
 import {OrdiMarque} from '../enums/ordi-marque.enum';
+import {CarteGPipe} from '../pipes/carte-g.pipe';
 
 @Component({
   selector: 'app-component-all',
@@ -29,7 +30,6 @@ export class ComponentAllComponent implements OnInit {
   private nameSearched: string;
   private _processeurPipe: ProcesseurPipePipe = new ProcesseurPipePipe();
 
-
   readonly TYPE_FILTER_MARQUE_PROC =[{
     id: 'Tout',
     value: ProcMarque.ALL
@@ -42,7 +42,8 @@ export class ComponentAllComponent implements OnInit {
   }];
   filterSelectedMarqueProc: ProcMarque = ProcMarque.ALL;
 
-
+  @Output()
+  procCharged:EventEmitter<ProcInterface> = new EventEmitter<ProcInterface>();
 
   constructor(public procService: ProcServiceService,public disqueDService: DisqueDServiceService,public ordiService: OrdiServiceService,
   public carteGService: CarteGServiceService) { }
@@ -73,11 +74,6 @@ export class ComponentAllComponent implements OnInit {
     return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelectedPrix,this.filterSelectedMarqueProc);
   }
 
-  loadProcElement(proc:ProcInterface) {
-    this.subQuery = this.procService
-      .query(proc.nom)
-      .subscribe(procs => procs.nom);
-  }
 
 //********************************************************************************************************************************
 //DISQUE DUR
@@ -136,14 +132,6 @@ export class ComponentAllComponent implements OnInit {
       .subscribe(disqueDs => this.disqueDList = disqueDs);
   }
 
-  AffichageDisqueD(dd: DisqueDInterface, i: number) {
-    document.getElementById(String(i)).innerHTML = null;
-    var Eelement ="<table><tr><b class='nom'>" + dd.nom +"</b></tr><tr>"  +
-      "<b class='description'>"+dd.marque+ "-" +dd.capacite+"</b><br>"+
-      "</tr><br><br><tr> <b class='prixI' id=prix>"+dd.prix+ "€</b> </tr> </table>";
-    document.getElementById(String(i)).innerHTML = Eelement;
-  }
-
   get filteredDisqueD(): DisqueDList {
     return this._disqueDPipe.transform(this.disqueDList,this.filterSelectedSSD,this.filterSelectedMarqueDD,this.filterSelectedPrix);
   }
@@ -179,15 +167,6 @@ export class ComponentAllComponent implements OnInit {
       .subscribe(ordis => this.ordiList = ordis);
   }
 
-  AffichageOrdi(ordi: OrdiInterface, i: number) {
-    document.getElementById(String(i)).innerHTML = null;
-    var Eelement ="<table><tr><b class='nom'>" + ordi.nom +"</b></tr><tr>"  +
-      "<b class='description'>"+ordi.marque+ "-" +ordi.nomProc+ "-" +ordi.memoireV+ "-" +ordi.capacite+"</b><br>"+
-      "</tr><br><br><tr> <b class='prixI' id=prix>"+ordi.prix+ "€</b> </tr> </table>";
-    document.getElementById(String(i)).innerHTML = Eelement;
-
-  }
-
   get filteredOrdinateur(): OrdiList {
     return this._ordiPipe.transform(this.ordiList,this.filterSelectedPrix,this.filterSelectedMarqueOrdi);
   }
@@ -195,22 +174,18 @@ export class ComponentAllComponent implements OnInit {
 //********************************************************************************************************************************
 //CARTE GRAPHIQUE
   private carteGList: CarteGList=[];
+  private _carteGPipe: CarteGPipe = new CarteGPipe();
 
 
 
   private loadCGList():void{
     this.subQuery =this.carteGService
       .queryBase()
-      .subscribe(disqueDs => this.carteGList = disqueDs);
+      .subscribe(carteG => this.carteGList = carteG);
   }
 
-  AffichageCarteG(cg: CarteGInterface, i: number) {
-    document.getElementById(String(i)).innerHTML = null;
-    var Eelement ="<table><tr><b class='nom'>" + cg.nom +"</b></tr><tr>"  +
-      "<b class='description'>"+cg.marque+ "-" +cg.frequence+"</b><br>"+
-      "</tr><br><br><tr> <b class='prixI' id=prix>"+cg.prix+ "€</b> </tr> </table>";
-    document.getElementById(String(i)).innerHTML = Eelement;
+  get filteredCarteG(): CarteGList {
+    return this._carteGPipe.transform(this.carteGList,this.filterSelectedPrix);
   }
-
 
 }

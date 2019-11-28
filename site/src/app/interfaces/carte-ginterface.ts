@@ -8,4 +8,5 @@ export interface CarteGInterface {
   memoireVideo:string;
   qte:number;
   img:string;
+  prixReduc:number;
 }

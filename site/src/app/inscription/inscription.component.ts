@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CreateUserService} from '../services/create-user.service';
 import {User, UserList} from '../interfaces/user';
 import {Subscription} from 'rxjs';
-import {UtilisateurService} from '../services/utilisateur.service';
 import {log} from 'util';
 
 @Component({
@@ -27,7 +26,7 @@ export class InscriptionComponent implements OnInit {
     ville : this.fb.control('', Validators.required)
   });
 
-  constructor(public fb: FormBuilder, public streamUserCreated: CreateUserService, public userService:UtilisateurService) { }
+  constructor(public fb: FormBuilder, public streamUserCreated: CreateUserService) { }
 
   ngOnInit() {
     this.listenStreamUserCreated();
@@ -57,7 +56,7 @@ export class InscriptionComponent implements OnInit {
   }
 
   private createdUser(user:User){
-    const sub = this.userService.post(user).subscribe(user => console.log());
+  //  const sub = this.userService.post(user).subscribe(user => console.log());
   }
 
 }

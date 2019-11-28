@@ -57,25 +57,26 @@
   </div>
 </div>
 <!-- *********************************************** CARTES GRAPHIQUES *********************************************** -->
-<ul>
-  <li *ngFor="let cg of carteGList; index as i">
-    <div class="card" >
-      <img src="{{cg.img}}"/>
-      <div [id]=i>
-        <table>
-          <tr>
-            <b class="nom">{{cg.nom}}</b>
-          </tr>
-          <br><br>
-          <tr>
-            <b class="prixICG" id="prixCG">{{cg.prix}} €</b>
-          </tr>
-        </table>
+<div class="carteGg">
+  <ul>
+    <li class="cg" *ngFor="let cg of filteredCarteG; index as i">
+      <div class="card" >
+        <img src="{{cg.img}}"/>
+        <div [id]=i>
+          <table>
+            <tr>
+              <b class="nomPC">{{cg.nom}}</b>
+            </tr>
+            <br><br>
+            <tr>
+              <b class="prixICG" id="prixCG">{{cg.prix}} €</b>
+            </tr>
+          </table>
+        </div>
       </div>
-      <button class="btnShow" (click)="AffichageCarteG(cg,i)">Afficher le produit</button>
-    </div>
-  </li>
-</ul>
+    </li>
+  </ul>
+</div>
 <!-- *********************************************** DISQUE DUR *********************************************** -->
 <div class="disque">
   <div class="disqueD">
@@ -94,7 +95,6 @@
               </tr>
             </table>
           </div>
-          <button class="btnShow" (click)="AffichageDisqueD(dd,i)">Afficher le produit</button>
         </div>
       </li>
     </ul>
@@ -103,7 +103,6 @@
 <br><br>
 <!-- ************************************* ORDINATEUR ***********************************************-->
 <div class="ordinateurAll">
-
   <div class="ordinateur">
     <ul>
       <li class="ordi" *ngFor="let ordi of filteredOrdinateur; index as i">
@@ -120,7 +119,6 @@
               </tr>
             </table>
           </div>
-          <button class="btnShow" (click)="AffichageOrdi(ordi,i)">Afficher le produit</button>
         </div>
       </li>
     </ul>
@@ -144,7 +142,6 @@
               </tr>
             </table>
           </div>
-          <button class="btnShow" (click)="loadProcElement(proc)">Afficher le produit</button>
         </div>
       </li>
     </ul>
