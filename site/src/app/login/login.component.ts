@@ -4,6 +4,7 @@ import {first} from 'rxjs/operators';
 import {AuthenticationService} from '../services/authentification.service';
 import {AlertService} from '../services/alert.service';
 import {RoutingModule} from '../routing/routing.module';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: RoutingModule,
+    private route: ActivatedRoute,
     private router: RoutingModule,
     private authenticationService: AuthenticationService,
     private alertService: AlertService

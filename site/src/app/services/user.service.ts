@@ -32,4 +32,7 @@ export class UserService {
     return this.http.post(`${UserService.URAL_API}/users/register`, user);
   }
 
+  static getURAL_API():string {
+    return UserService.URAL_API;
+  }
 }
