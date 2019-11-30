@@ -123,6 +123,12 @@
                 <tr>
                   <b class="prixI">{{dd.marque}} </b>
                 </tr>
+                <tr>
+                  <b class="prixI">{{dd.interne}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">{{dd.capacite}} </b>
+                </tr>
               </table>
               <button (click)="changeretroDD(i)">Afficher moins</button>
             </ng-template>
@@ -162,10 +168,25 @@
                 <b class="prixI">{{ordi.prix}} €</b>
               </tr>
               <tr>
+                <b class="prixI">{{ordi.marque}} </b>
+              </tr>
+              <tr>
                 <b class="prixI">{{ordi.description}} </b>
               </tr>
               <tr>
                 <b class="prixI">{{ordi.capacite}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">{{ordi.nomCg}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">{{ordi.nomProc}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">{{ordi.ssd}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">{{ordi.capaciteSsd}} </b>
               </tr>
             </table>
             <button (click)="changeretroIOrdi(i)">Afficher moins</button>
@@ -209,6 +230,9 @@
               </tr>
               <tr>
                 <b class="prixI">{{proc.frequence}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">{{proc.nbCoeurs}} </b>
               </tr>
             </table>
             <button (click)="changeretroProc(i)">Afficher moins</button>
