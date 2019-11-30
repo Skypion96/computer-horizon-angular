@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../interfaces/user';
+import {UserService} from '../services/user.service';
+import {AuthenticationService} from '../services/authentification.service';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-accueil',
@@ -11,9 +15,31 @@ export class AccueilComponent implements OnInit {
   laptop:any = "assets/home-featured-cat-pc.png";
   processor:any = "assets/pc-ordinateur-processeur.jpg";
   newHorizon:any = "assets/id template.jpg";
-  constructor() { }
+
+  currentUser: User;
+  users = [];
+
+  constructor(
+    private authenticationService: AuthenticationService,
+    private userService: UserService
+  ) {
+    this.currentUser = this.authenticationService.currentUserValue;
+  }
 
   ngOnInit() {
+    this.loadAllUsers();
+  }
+
+  deleteUser(mail: string) {
+    this.userService.delete(mail)
+      .pipe(first())
+      .subscribe(() => this.loadAllUsers());
+  }
+
+  private loadAllUsers() {
+    this.userService.queryBase()
+      .pipe(first())
+      .subscribe(users => this.users = users);
   }
 
 }
