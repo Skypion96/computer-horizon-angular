@@ -12,10 +12,10 @@ export class AlertComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   message: any;
 
-  constructor(//private alertService: AlertService) { }
+  constructor(/*private alertService: AlertService*/) { }
 
   ngOnInit() {
-    this.subscription = this.alertService.getAlert()
+    /* this.subscription =this.alertService.getAlert()
       .subscribe(message => {
         switch (message && message.type) {
           case 'success':
@@ -27,7 +27,7 @@ export class AlertComponent implements OnInit, OnDestroy {
         }
 
         this.message = message;
-      });
+      });*/
   }
 
 ngOnDestroy() {

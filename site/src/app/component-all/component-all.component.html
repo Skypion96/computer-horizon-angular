@@ -62,17 +62,40 @@
     <li class="cg" *ngFor="let cg of filteredCarteG; index as i">
       <div class="card" >
         <img src="{{cg.img}}"/>
-        <div [id]=i>
+        <div *ngIf="i==icg; then thenBlock else elseBlock"></div>
+          <ng-template #thenBlock>
           <table>
             <tr>
               <b class="nomPC">{{cg.nom}}</b>
             </tr>
             <br><br>
             <tr>
-              <b class="prixICG" id="prixCG">{{cg.prix}} €</b>
+              <b class="prixICG" >{{cg.prix}} €</b>
+            </tr>
+            <tr>
+              <b class="freq" >{{cg.frequence}} </b>
+            </tr>
+            <tr>
+              <b class="freq" >{{cg.marque}} </b>
+            </tr>
+            <tr>
+              <b class="freq" >{{cg.memoireVideo}} </b>
             </tr>
           </table>
-        </div>
+            <button (click)="changeretroICG(i)">Afficher moins</button>
+          </ng-template>
+          <ng-template #elseBlock>
+            <table>
+              <tr>
+                <b class="nomPC">{{cg.nom}}</b>
+              </tr>
+              <tr>
+                <b class="prixICG" >{{cg.prix}} €</b>
+              </tr>
+              <br><br>
+            </table>
+            <button (click)="changeICG(i)">Afficher plus</button>
+          </ng-template>
       </div>
     </li>
   </ul>
@@ -84,17 +107,37 @@
       <li class="dd" *ngFor="let dd of filteredDisqueD; index as i">
         <div class="card" >
           <img src="{{dd.img}}"/>
-          <div [id]=i>
+          <div *ngIf="i==iDD; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+              <table>
+                <tr>
+                  <b class="nom">{{dd.nom}}</b>
+                </tr>
+                <br><br>
+                <tr>
+                  <b class="prixI" >{{dd.prix}} €</b>
+                </tr>
+                <tr>
+                  <b class="prixI">{{dd.ssd}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">{{dd.marque}} </b>
+                </tr>
+              </table>
+              <button (click)="changeretroDD(i)">Afficher moins</button>
+            </ng-template>
+          <ng-template #elseBlock>
             <table>
               <tr>
                 <b class="nom">{{dd.nom}}</b>
               </tr>
               <br><br>
               <tr>
-                <b class="prixI" id="prixDD">{{dd.prix}} €</b>
+                <b class="prixI">{{dd.prix}} €</b>
               </tr>
             </table>
-          </div>
+            <button (click)="changeDD(i)">Afficher plus</button>
+          </ng-template>
         </div>
       </li>
     </ul>
@@ -108,17 +151,37 @@
       <li class="ordi" *ngFor="let ordi of filteredOrdinateur; index as i">
         <div class="card" >
           <img src="{{ordi.img}}"/>
-          <div [id]=i>
+          <div *ngIf="i==iOrdi; then thenBlock else elseBlock"></div>
+          <ng-template #thenBlock>
             <table>
               <tr>
-                <b class="nomPC">{{ordi.nom}}</b>
+                <b class="nom">{{ordi.nom}}</b>
               </tr>
               <br><br>
               <tr>
-                <b class="prixI" id="prix">{{ordi.prix}} €</b>
+                <b class="prixI">{{ordi.prix}} €</b>
+              </tr>
+              <tr>
+                <b class="prixI">{{ordi.description}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">{{ordi.capacite}} </b>
               </tr>
             </table>
-          </div>
+            <button (click)="changeretroIOrdi(i)">Afficher moins</button>
+          </ng-template>
+          <ng-template #elseBlock>
+            <table>
+              <tr>
+                <b class="nom">{{ordi.nom}}</b>
+              </tr>
+              <br><br>
+              <tr>
+                <b class="prixI">{{ordi.prix}} €</b>
+              </tr>
+            </table>
+            <button (click)="changeIOrdi(i)">Afficher plus</button>
+          </ng-template>
         </div>
       </li>
     </ul>
@@ -131,17 +194,37 @@
       <li class="proc" *ngFor="let proc of filteredProcList ; index as i" >
         <div class="card">
           <img src="{{proc.img}}"/>
-          <div [id]=i>
+          <div *ngIf="i==iProc; then thenBlock else elseBlock"></div>
+          <ng-template #thenBlock>
             <table>
               <tr>
                 <b class="nom">{{proc.nom}}</b>
               </tr>
               <br><br>
               <tr>
-                <b class="prixI" id="prixProc">{{proc.prix}} €</b>
+                <b class="prixI">{{proc.prix}} €</b>
+              </tr>
+              <tr>
+                <b class="prixI">{{proc.marque}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">{{proc.frequence}} </b>
               </tr>
             </table>
-          </div>
+            <button (click)="changeretroProc(i)">Afficher moins</button>
+          </ng-template>
+          <ng-template #elseBlock>
+            <table>
+              <tr>
+                <b class="nom">{{proc.nom}}</b>
+              </tr>
+              <br><br>
+              <tr>
+                <b class="prixI">{{proc.prix}} €</b>
+              </tr>
+            </table>
+            <button (click)="changeProc(i)">Afficher plus</button>
+          </ng-template>
         </div>
       </li>
     </ul>

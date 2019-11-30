@@ -29,6 +29,7 @@ export class ComponentAllComponent implements OnInit {
   private subQuery:Subscription;
   private nameSearched: string;
   private _processeurPipe: ProcesseurPipePipe = new ProcesseurPipePipe();
+  private _iProc:number;
 
   readonly TYPE_FILTER_MARQUE_PROC =[{
     id: 'Tout',
@@ -74,12 +75,27 @@ export class ComponentAllComponent implements OnInit {
     return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelectedPrix,this.filterSelectedMarqueProc);
   }
 
+  get iProc(): number {
+    return this._iProc;
+  }
+
+  set iProc(value: number) {
+    this._iProc = value;
+  }
+
+  changeProc(num:number) {
+    this.iProc = num;
+  }
+  changeretroProc(num:number) {
+    this.iProc =-1;
+  }
 
 //********************************************************************************************************************************
 //DISQUE DUR
 
   private disqueDList: DisqueDList=[];
   private _disqueDPipe: DisqueDPipe = new DisqueDPipe();
+  private _iDD:number;
 
 
   readonly TYPE_FILTER_SSD =[{
@@ -136,10 +152,26 @@ export class ComponentAllComponent implements OnInit {
     return this._disqueDPipe.transform(this.disqueDList,this.filterSelectedSSD,this.filterSelectedMarqueDD,this.filterSelectedPrix);
   }
 
+  get iDD(): number {
+    return this._iDD;
+  }
+
+  set iDD(value: number) {
+    this._iDD = value;
+  }
+
+  changeDD(num:number) {
+    this.iDD = num;
+  }
+  changeretroDD(num:number) {
+    this.iDD =-1;
+  }
+
 //********************************************************************************************************************************
 //ORDINATEURS
   private ordiList: OrdiList=[];
   private _ordiPipe: OrdinateurPipe = new OrdinateurPipe();
+  private _iOrdi:number =-1;
 
 
   readonly TYPE_FILTER_MARQUE_ORDI =[{
@@ -161,6 +193,21 @@ export class ComponentAllComponent implements OnInit {
   filterSelectedMarqueOrdi: OrdiMarque = OrdiMarque.ALL;
 
 
+  get iOrdi(): number {
+    return this._iOrdi;
+  }
+
+  set iOrdi(value: number) {
+    this._iOrdi = value;
+  }
+
+  changeIOrdi(num:number) {
+    this.iOrdi = num;
+  }
+  changeretroIOrdi(num:number) {
+    this.iOrdi =-1;
+  }
+
   private loadOrdiList():void{
     this.subQuery =this.ordiService
       .queryBase()
@@ -175,7 +222,7 @@ export class ComponentAllComponent implements OnInit {
 //CARTE GRAPHIQUE
   private carteGList: CarteGList=[];
   private _carteGPipe: CarteGPipe = new CarteGPipe();
-
+  private _icg:number =-1;
 
 
   private loadCGList():void{
@@ -188,4 +235,19 @@ export class ComponentAllComponent implements OnInit {
     return this._carteGPipe.transform(this.carteGList,this.filterSelectedPrix);
   }
 
+
+  get icg(): number {
+    return this._icg;
+  }
+
+  set icg(value: number) {
+    this._icg = value;
+  }
+
+  changeICG(num:number) {
+    this.icg = num;
+  }
+  changeretroICG(num:number) {
+    this.icg =-1;
+  }
 }
