@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {CarteGList} from '../interfaces/carte-ginterface';
+import {CarteGList} from '../interfaces/carte-gDTO';
 import {Prix} from '../enums/prix.enum';
 
 @Pipe({

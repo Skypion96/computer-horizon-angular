@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {ProcList} from '../interfaces/proc-interface';
-import {DisqueDList} from '../interfaces/disque-dinterface';
+import {ProcList} from '../interfaces/procDTO';
+import {DisqueDList} from '../interfaces/disque-dDTO';
 import {DisqueDSsd} from '../enums/disque-d-ssd.enum';
 import {DisqueDMarque} from '../enums/disque-d-marque.enum';
 import {Prix} from '../enums/prix.enum';

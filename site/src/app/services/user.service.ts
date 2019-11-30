@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User, UserList} from '../interfaces/user';
-import {ProcInterface} from '../interfaces/proc-interface';
+import {ProcDTO} from '../interfaces/procDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,8 @@ export class UserService {
     return this.http.get<UserList>(UserService.URAL_API);
   }
 
-  post(user: User): Observable<ProcInterface> {
-    return this.http.post<ProcInterface>(UserService.URAL_API, user);
+  post(user: User): Observable<ProcDTO> {
+    return this.http.post<ProcDTO>(UserService.URAL_API, user);
   }
 
   update(user:User): Observable<any>{

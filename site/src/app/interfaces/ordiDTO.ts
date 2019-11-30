@@ -1,6 +1,6 @@
-export declare type OrdiList = OrdiInterface[];
+export declare type OrdiList = OrdiDTO[];
 
-export interface OrdiInterface {
+export interface OrdiDTO {
   nom:string;
   marque:string;
   prix:number;

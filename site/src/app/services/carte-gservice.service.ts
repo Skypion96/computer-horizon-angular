@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ProcInterface, ProcList} from "../interfaces/proc-interface";
-import {CarteGInterface, CarteGList} from '../interfaces/carte-ginterface';
+import {ProcDTO, ProcList} from "../interfaces/procDTO";
+import {CarteGDTO, CarteGList} from '../interfaces/carte-gDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +17,11 @@ export class CarteGServiceService {
     return this.http.get<CarteGList>(CarteGServiceService.URAL_API);
   }
 
-  post(carteG: CarteGInterface): Observable<CarteGInterface> {
-    return this.http.post<CarteGInterface>(CarteGServiceService.URAL_API, carteG);
+  post(carteG: CarteGDTO): Observable<CarteGDTO> {
+    return this.http.post<CarteGDTO>(CarteGServiceService.URAL_API, carteG);
   }
 
-  update(carteG:CarteGInterface): Observable<any>{
+  update(carteG:CarteGDTO): Observable<any>{
     return this.http.put(CarteGServiceService.URAL_API,carteG);
   }
 

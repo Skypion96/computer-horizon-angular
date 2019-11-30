@@ -1,6 +1,6 @@
-export declare type ProcList = ProcInterface[];
+export declare type ProcList = ProcDTO[];
 
-export interface ProcInterface {
+export interface ProcDTO {
   nom:string;
   marque:string;
   nbCoeurs:number;

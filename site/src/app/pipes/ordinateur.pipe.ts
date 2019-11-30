@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {Prix} from '../enums/prix.enum';
-import {OrdiList} from '../interfaces/ordi-interface';
+import {OrdiList} from '../interfaces/ordiDTO';
 import {OrdiMarque} from '../enums/ordi-marque.enum';
 
 @Pipe({

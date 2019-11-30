@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {ProcInterface, ProcList} from "../interfaces/proc-interface";
+import {ProcDTO, ProcList} from "../interfaces/procDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +17,14 @@ export class ProcServiceService {
     return this.http.get<ProcList>(ProcServiceService.URAL_API);
   }
 
-  query(nom:string):Observable<ProcInterface>{
-    return this.http.get<ProcInterface>(ProcServiceService.URAL_API +"/"+"Processeur?nom="+ nom);
+  query(nom:string):Observable<ProcDTO>{
+    return this.http.get<ProcDTO>(ProcServiceService.URAL_API +"/"+"Processeur?nom="+ nom);
   }
-  post(proc: ProcInterface): Observable<ProcInterface> {
-    return this.http.post<ProcInterface>(ProcServiceService.URAL_API, proc);
+  post(proc: ProcDTO): Observable<ProcDTO> {
+    return this.http.post<ProcDTO>(ProcServiceService.URAL_API, proc);
   }
 
-  update(proc:ProcInterface): Observable<any>{
+  update(proc:ProcDTO): Observable<any>{
     return this.http.put(ProcServiceService.URAL_API,proc);
   }
 

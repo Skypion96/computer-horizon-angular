@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {DisqueDInterface, DisqueDList} from "../interfaces/disque-dinterface";
-import {OrdiInterface, OrdiList} from "../interfaces/ordi-interface";
+import {DisqueDDTO, DisqueDList} from "../interfaces/disque-dDTO";
+import {OrdiDTO, OrdiList} from "../interfaces/ordiDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +17,11 @@ export class OrdiServiceService {
     return this.http.get<OrdiList>(OrdiServiceService.URAL_API);
   }
 
-  post(ordi: OrdiInterface): Observable<OrdiInterface> {
-    return this.http.post<OrdiInterface>(OrdiServiceService.URAL_API, ordi);
+  post(ordi: OrdiDTO): Observable<OrdiDTO> {
+    return this.http.post<OrdiDTO>(OrdiServiceService.URAL_API, ordi);
   }
 
-  update(ordi:OrdiInterface): Observable<any>{
+  update(ordi:OrdiDTO): Observable<any>{
     return this.http.put(OrdiServiceService.URAL_API,ordi);
   }
 

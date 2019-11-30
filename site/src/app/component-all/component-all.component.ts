@@ -1,18 +1,18 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {ProcInterface, ProcList} from '../interfaces/proc-interface';
+import {ProcDTO, ProcList} from '../interfaces/procDTO';
 import {Subscription} from 'rxjs';
 import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
 import {Prix} from '../enums/prix.enum';
 import {ProcMarque} from '../enums/proc-marque.enum';
 import {ProcServiceService} from '../services/proc-service.service';
-import {DisqueDInterface, DisqueDList} from '../interfaces/disque-dinterface';
+import {DisqueDDTO, DisqueDList} from '../interfaces/disque-dDTO';
 import {DisqueDPipe} from '../pipes/disque-d.pipe';
 import {DisqueDSsd} from '../enums/disque-d-ssd.enum';
 import {DisqueDMarque} from '../enums/disque-d-marque.enum';
 import {DisqueDServiceService} from '../services/disque-dservice.service';
-import {OrdiInterface, OrdiList} from '../interfaces/ordi-interface';
+import {OrdiDTO, OrdiList} from '../interfaces/ordiDTO';
 import {OrdiServiceService} from '../services/ordi-service.service';
-import {CarteGInterface, CarteGList} from '../interfaces/carte-ginterface';
+import {CarteGDTO, CarteGList} from '../interfaces/carte-gDTO';
 import {CarteGServiceService} from '../services/carte-gservice.service';
 import {OrdinateurPipe} from '../pipes/ordinateur.pipe';
 import {OrdiMarque} from '../enums/ordi-marque.enum';
@@ -44,7 +44,7 @@ export class ComponentAllComponent implements OnInit {
   filterSelectedMarqueProc: ProcMarque = ProcMarque.ALL;
 
   @Output()
-  procCharged:EventEmitter<ProcInterface> = new EventEmitter<ProcInterface>();
+  procCharged:EventEmitter<ProcDTO> = new EventEmitter<ProcDTO>();
 
   constructor(public procService: ProcServiceService,public disqueDService: DisqueDServiceService,public ordiService: OrdiServiceService,
   public carteGService: CarteGServiceService) { }

@@ -1,6 +1,6 @@
-export declare type DisqueDList = DisqueDInterface[];
+export declare type DisqueDList = DisqueDDTO[];
 
-export interface DisqueDInterface {
+export interface DisqueDDTO {
   nom:string;
   marque:string;
   capacite:string;

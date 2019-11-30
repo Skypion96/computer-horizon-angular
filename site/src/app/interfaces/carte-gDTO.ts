@@ -1,6 +1,6 @@
-export declare type CarteGList = CarteGInterface[];
+export declare type CarteGList = CarteGDTO[];
 
-export interface CarteGInterface {
+export interface CarteGDTO {
   nom:string;
   marque:string;
   prix:number;
