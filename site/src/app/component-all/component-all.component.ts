@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {ProcDTO, ProcList} from '../interfaces/procDTO';
 import {Subscription} from 'rxjs';
 import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
@@ -31,7 +31,7 @@ import {PanierOrdinateurService} from '../services/panier-ordinateur.service';
   templateUrl: './component-all.component.html',
   styleUrls: ['./component-all.component.css']
 })
-export class ComponentAllComponent implements OnInit {
+export class ComponentAllComponent implements OnInit,OnDestroy {
 
   private _procList: ProcList;
   private subQuery:Subscription;
