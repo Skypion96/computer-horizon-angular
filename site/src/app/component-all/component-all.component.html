@@ -66,20 +66,20 @@
           <ng-template #thenBlock>
           <table>
             <tr>
-              <b class="nomPC">{{cg.nom}}</b>
+              <b class="nom">Nom : {{cg.nom}}</b>
             </tr>
             <br><br>
             <tr>
-              <b class="prixICG" >{{cg.prix}} €</b>
+              <b class="prixICG" >Prix : {{cg.prix}} €</b>
             </tr>
             <tr>
-              <b class="freq" >{{cg.frequence}} </b>
+              <b class="freq" >Marque : {{cg.marque}} </b>
             </tr>
             <tr>
-              <b class="freq" >{{cg.marque}} </b>
+              <b class="freq" >Frequence : {{cg.frequence}} </b>
             </tr>
             <tr>
-              <b class="freq" >{{cg.memoireVideo}} </b>
+              <b class="freq" >Mémoire vidéo : {{cg.memoireVideo}} </b>
             </tr>
           </table>
             <button (click)="changeretroICG(i)">Afficher moins</button>
@@ -87,10 +87,10 @@
           <ng-template #elseBlock>
             <table>
               <tr>
-                <b class="nomPC">{{cg.nom}}</b>
+                <b class="nom">Nom : {{cg.nom}}</b>
               </tr>
               <tr>
-                <b class="prixICG" >{{cg.prix}} €</b>
+                <b class="prixICG" >Prix : {{cg.prix}} €</b>
               </tr>
               <br><br>
             </table>
@@ -111,23 +111,23 @@
             <ng-template #thenBlock>
               <table>
                 <tr>
-                  <b class="nom">{{dd.nom}}</b>
+                  <b class="nom">Nom : {{dd.nom}}</b>
                 </tr>
                 <br><br>
                 <tr>
-                  <b class="prixI" >{{dd.prix}} €</b>
+                  <b class="prixI" >Prix : {{dd.prix}} €</b>
                 </tr>
                 <tr>
-                  <b class="prixI">{{dd.ssd}} </b>
+                  <b class="prixI">Marque : {{dd.marque}} </b>
                 </tr>
                 <tr>
-                  <b class="prixI">{{dd.marque}} </b>
+                  <b class="prixI">SSD : {{dd.ssd}} </b>
                 </tr>
                 <tr>
-                  <b class="prixI">{{dd.interne}} </b>
+                  <b class="prixI">Interne : {{dd.interne}} </b>
                 </tr>
                 <tr>
-                  <b class="prixI">{{dd.capacite}} </b>
+                  <b class="prixI">Capacite : {{dd.capacite}} </b>
                 </tr>
               </table>
               <button (click)="changeretroDD(i)">Afficher moins</button>
@@ -135,11 +135,11 @@
           <ng-template #elseBlock>
             <table>
               <tr>
-                <b class="nom">{{dd.nom}}</b>
+                <b class="nom">Nom : {{dd.nom}}</b>
               </tr>
               <br><br>
               <tr>
-                <b class="prixI">{{dd.prix}} €</b>
+                <b class="prixI">Prix : {{dd.prix}} €</b>
               </tr>
             </table>
             <button (click)="changeDD(i)">Afficher plus</button>
@@ -161,32 +161,32 @@
           <ng-template #thenBlock>
             <table>
               <tr>
-                <b class="nom">{{ordi.nom}}</b>
+                <b class="nom">Nom : {{ordi.nom}}</b>
               </tr>
               <br><br>
               <tr>
-                <b class="prixI">{{ordi.prix}} €</b>
+                <b class="prixI">Prix : {{ordi.prix}} €</b>
               </tr>
               <tr>
-                <b class="prixI">{{ordi.marque}} </b>
+                <b class="prixI">Marque : {{ordi.marque}} </b>
               </tr>
               <tr>
-                <b class="prixI">{{ordi.description}} </b>
+                <b class="prixI">Description : {{ordi.description}} </b>
               </tr>
               <tr>
-                <b class="prixI">{{ordi.capacite}} </b>
+                <b class="prixI">Capacite : {{ordi.capacite}} </b>
               </tr>
               <tr>
-                <b class="prixI">{{ordi.nomCg}} </b>
+                <b class="prixI">Nom carte graphique : {{ordi.nomCg}} </b>
               </tr>
               <tr>
-                <b class="prixI">{{ordi.nomProc}} </b>
+                <b class="prixI">Nom processeur : {{ordi.nomProc}} </b>
               </tr>
               <tr>
-                <b class="prixI">{{ordi.ssd}} </b>
+                <b class="prixI">SSD : {{ordi.ssd}} </b>
               </tr>
               <tr>
-                <b class="prixI">{{ordi.capaciteSsd}} </b>
+                <b class="prixI">Capacite SSD : {{ordi.capaciteSsd}} </b>
               </tr>
             </table>
             <button (click)="changeretroIOrdi(i)">Afficher moins</button>
@@ -194,11 +194,11 @@
           <ng-template #elseBlock>
             <table>
               <tr>
-                <b class="nom">{{ordi.nom}}</b>
+                <b class="nom">Nom : {{ordi.nom}}</b>
               </tr>
               <br><br>
               <tr>
-                <b class="prixI">{{ordi.prix}} €</b>
+                <b class="prixI">Prix : {{ordi.prix}} €</b>
               </tr>
             </table>
             <button (click)="changeIOrdi(i)">Afficher plus</button>
@@ -219,35 +219,38 @@
           <ng-template #thenBlock>
             <table>
               <tr>
-                <b class="nom">{{proc.nom}}</b>
+                <b class="nom">Nom : {{proc.nom}}</b>
               </tr>
               <br><br>
               <tr>
-                <b class="prixI">{{proc.prix}} €</b>
+                <b class="prixI">Prix : {{proc.prix}} €</b>
               </tr>
               <tr>
-                <b class="prixI">{{proc.marque}} </b>
+                <b class="prixI">Marque : {{proc.marque}} </b>
               </tr>
               <tr>
-                <b class="prixI">{{proc.frequence}} </b>
+                <b class="prixI">Frequence : {{proc.frequence}} </b>
               </tr>
               <tr>
-                <b class="prixI">{{proc.nbCoeurs}} </b>
+                <b class="prixI">Nombre de coeurs : {{proc.nbCoeurs}} </b>
               </tr>
             </table>
             <button (click)="changeretroProc(i)">Afficher moins</button>
+            <button (click)="createdTodo(proc)">Ajouter au Panier</button>
+
           </ng-template>
           <ng-template #elseBlock>
             <table>
               <tr>
-                <b class="nom">{{proc.nom}}</b>
+                <b class="nom">Nom : {{proc.nom}}</b>
               </tr>
               <br><br>
               <tr>
-                <b class="prixI">{{proc.prix}} €</b>
+                <b class="prixI">Prix : {{proc.prix}} €</b>
               </tr>
             </table>
             <button (click)="changeProc(i)">Afficher plus</button>
+            <button (click)="createdTodo(proc.nom)">Ajouter au Panier</button>
           </ng-template>
         </div>
       </li>

@@ -17,6 +17,8 @@ import {CarteGServiceService} from '../services/carte-gservice.service';
 import {OrdinateurPipe} from '../pipes/ordinateur.pipe';
 import {OrdiMarque} from '../enums/ordi-marque.enum';
 import {CarteGPipe} from '../pipes/carte-g.pipe';
+import {PanierProcService} from '../services/panier-proc.service';
+import {PanierProcDTO} from '../interfaces/panier-proc-dto';
 
 @Component({
   selector: 'app-component-all',
@@ -30,6 +32,24 @@ export class ComponentAllComponent implements OnInit {
   private nameSearched: string;
   private _processeurPipe: ProcesseurPipePipe = new ProcesseurPipePipe();
   private _iProc:number;
+
+
+
+  //AJOUT DANS PANIER
+  private _panierp:PanierProcDTO=new class implements PanierProcDTO {
+    id: 2;
+    nom: "test";
+  };
+  get panierp(): PanierProcDTO {
+    return this._panierp;
+  }
+  set panierp(value: PanierProcDTO) {
+    this._panierp = value;
+  }
+
+
+
+
 
   readonly TYPE_FILTER_MARQUE_PROC =[{
     id: 'Tout',
@@ -47,7 +67,7 @@ export class ComponentAllComponent implements OnInit {
   procCharged:EventEmitter<ProcDTO> = new EventEmitter<ProcDTO>();
 
   constructor(public procService: ProcServiceService,public disqueDService: DisqueDServiceService,public ordiService: OrdiServiceService,
-  public carteGService: CarteGServiceService) { }
+  public carteGService: CarteGServiceService,public panierpService:PanierProcService) { }
 
   ngOnInit() {
     this.loadProcList();
@@ -88,6 +108,16 @@ export class ComponentAllComponent implements OnInit {
   }
   changeretroProc(num:number) {
     this.iProc =-1;
+  }
+
+  //AJOUT DANS PANIER
+  private createdTodo(nom:string){
+    this.panierp.nom=nom;
+    this.panierp.id = 1;
+
+    const sub = this.panierpService
+      .post(this.panierp)
+      .subscribe(thePP => console.log(thePP));
   }
 
 //********************************************************************************************************************************
@@ -232,7 +262,7 @@ export class ComponentAllComponent implements OnInit {
   }
 
   get filteredCarteG(): CarteGList {
-    return this._carteGPipe.transform(this.carteGList,this.filterSelectedPrix);
+    return this._carteGPipe.transform(this.carteGList,this.filterSelectedPrix,this.nameSearched);
   }
 
 

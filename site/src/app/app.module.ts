@@ -13,7 +13,7 @@ import { OrdinateurPipe } from './pipes/ordinateur.pipe';
 import { DisqueDPipe } from './pipes/disque-d.pipe';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-//import { AlertComponent } from './alert/alert.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     OrdinateurPipe,
     DisqueDPipe,
     LoginComponent,
-   // AlertComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

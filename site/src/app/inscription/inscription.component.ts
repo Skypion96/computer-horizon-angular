@@ -31,7 +31,7 @@ export class InscriptionComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
+      //this.router.navigate(['/']);
     }
   }
 
@@ -69,7 +69,7 @@ export class InscriptionComponent implements OnInit {
       .subscribe(
         data => {
           this.alertService.success('Registration successful', true);
-          this.router.navigate(['/login']);
+          //this.router.navigate(['/login']);
         },
         error => {
           this.alertService.error(error);
