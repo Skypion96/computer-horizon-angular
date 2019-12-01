@@ -22,6 +22,9 @@ import {PanierProcDTO} from '../interfaces/panier-proc-dto';
 import {PanierDisqueDurDto} from '../interfaces/panier-disque-dur-dto';
 import {PanierCarteGraphiqueDto} from '../interfaces/panier-carte-graphique-dto';
 import {PanierOrdinateurDto} from '../interfaces/panier-ordinateur-dto';
+import {PanierCarteGraphiqueService} from '../services/panier-carte-graphique.service';
+import {PanierDisqueDurService} from '../services/panier-disque-dur.service';
+import {PanierOrdinateurService} from '../services/panier-ordinateur.service';
 
 @Component({
   selector: 'app-component-all',
@@ -50,41 +53,6 @@ export class ComponentAllComponent implements OnInit {
     this._panierp = value;
   }
 
-  //AJOUT DANS PANIER
-  private _panierdd:PanierDisqueDurDto=new class implements PanierDisqueDurDto {
-    id: 2;
-    nom: "test";
-  };
-  get panierdd(): PanierDisqueDurDto {
-    return this._panierdd;
-  }
-  set panierdd(value: PanierDisqueDurDto) {
-    this._panierdd = value;
-  }
-
-  //AJOUT DANS PANIER
-  private _paniercg:PanierCarteGraphiqueDto=new class implements PanierCarteGraphiqueDto {
-    id: 2;
-    nom: "test";
-  };
-  get paniercg(): PanierCarteGraphiqueDto {
-    return this._paniercg;
-  }
-  set paniercg(value: PanierCarteGraphiqueDto) {
-    this._paniercg = value;
-  }
-
-  //AJOUT DANS PANIER
-  private _paniero:PanierOrdinateurDto=new class implements PanierOrdinateurDto {
-    id: 2;
-    nom: "test";
-  };
-  get paniero(): PanierOrdinateurDto {
-    return this._paniero;
-  }
-  set paniero(value: PanierOrdinateurDto) {
-    this._paniero = value;
-  }
 
 
   readonly TYPE_FILTER_MARQUE_PROC =[{
@@ -103,7 +71,8 @@ export class ComponentAllComponent implements OnInit {
   procCharged:EventEmitter<ProcDTO> = new EventEmitter<ProcDTO>();
 
   constructor(public procService: ProcServiceService,public disqueDService: DisqueDServiceService,public ordiService: OrdiServiceService,
-  public carteGService: CarteGServiceService,public panierpService:PanierProcService) { }
+  public carteGService: CarteGServiceService,public panierpService:PanierProcService,public panieCGService:PanierCarteGraphiqueService,
+              public panierDDService:PanierDisqueDurService,public panierOrdinateurService:PanierOrdinateurService ) { }
 
   ngOnInit() {
     this.loadProcList();
@@ -147,7 +116,7 @@ export class ComponentAllComponent implements OnInit {
   }
 
   //AJOUT DANS PANIER
-  private createdTodo(nom:string){
+  private createdProc(nom:string){
     this.panierp.nom=nom;
     this.panierp.id = 1;
 
@@ -162,7 +131,17 @@ export class ComponentAllComponent implements OnInit {
   private disqueDList: DisqueDList=[];
   private _disqueDPipe: DisqueDPipe = new DisqueDPipe();
   private _iDD:number;
-
+  //AJOUT DANS PANIER
+  private _panierdd:PanierDisqueDurDto=new class implements PanierDisqueDurDto {
+    id: 2;
+    nom: "test";
+  };
+  get panierdd(): PanierDisqueDurDto {
+    return this._panierdd;
+  }
+  set panierdd(value: PanierDisqueDurDto) {
+    this._panierdd = value;
+  }
 
   readonly TYPE_FILTER_SSD =[{
     id: 'Tout',
@@ -233,11 +212,32 @@ export class ComponentAllComponent implements OnInit {
     this.iDD =-1;
   }
 
+  //AJOUT DANS PANIER
+  private createdDD(nom:string){
+    this.panierdd.nom=nom;
+    this.panierdd.id = 1;
+
+    const sub = this.panierDDService
+      .post(this.panierdd)
+      .subscribe(thePP => console.log(thePP));
+  }
+
 //********************************************************************************************************************************
 //ORDINATEURS
   private ordiList: OrdiList=[];
   private _ordiPipe: OrdinateurPipe = new OrdinateurPipe();
   private _iOrdi:number =-1;
+  //AJOUT DANS PANIER
+  private _paniero:PanierOrdinateurDto=new class implements PanierOrdinateurDto {
+    id: 2;
+    nom: "test";
+  };
+  get paniero(): PanierOrdinateurDto {
+    return this._paniero;
+  }
+  set paniero(value: PanierOrdinateurDto) {
+    this._paniero = value;
+  }
 
 
   readonly TYPE_FILTER_MARQUE_ORDI =[{
@@ -284,12 +284,31 @@ export class ComponentAllComponent implements OnInit {
     return this._ordiPipe.transform(this.ordiList,this.filterSelectedPrix,this.filterSelectedMarqueOrdi);
   }
 
+  //AJOUT DANS PANIER
+  private createdOrdi(nom:string){
+    this.paniero.nom=nom;
+    this.paniero.id = 1;
+
+    const sub = this.panierOrdinateurService
+      .post(this.paniero)
+      .subscribe(thePP => console.log(thePP));
+  }
 //********************************************************************************************************************************
 //CARTE GRAPHIQUE
   private carteGList: CarteGList=[];
   private _carteGPipe: CarteGPipe = new CarteGPipe();
   private _icg:number =-1;
-
+  //AJOUT DANS PANIER
+  private _paniercg:PanierCarteGraphiqueDto=new class implements PanierCarteGraphiqueDto {
+    id: 2;
+    nom: "test";
+  };
+  get paniercg(): PanierCarteGraphiqueDto {
+    return this._paniercg;
+  }
+  set paniercg(value: PanierCarteGraphiqueDto) {
+    this._paniercg = value;
+  }
 
   private loadCGList():void{
     this.subQuery =this.carteGService
@@ -315,5 +334,15 @@ export class ComponentAllComponent implements OnInit {
   }
   changeretroICG(num:number) {
     this.icg =-1;
+  }
+
+  //AJOUT DANS PANIER
+  private createdCG(nom:string){
+    this.paniercg.nom=nom;
+    this.paniercg.id = 1;
+
+    const sub = this.panieCGService
+      .post(this.paniercg)
+      .subscribe(thePP => console.log(thePP));
   }
 }

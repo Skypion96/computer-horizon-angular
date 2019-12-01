@@ -83,6 +83,7 @@
             </tr>
           </table>
             <button (click)="changeretroICG(i)">Afficher moins</button>
+            <button (click)="createdCG(cg.nom)">Ajouter au Panier</button>
           </ng-template>
           <ng-template #elseBlock>
             <table>
@@ -95,6 +96,7 @@
               <br><br>
             </table>
             <button (click)="changeICG(i)">Afficher plus</button>
+            <button (click)="createdCG(cg.nom)">Ajouter au Panier</button>
           </ng-template>
       </div>
     </li>
@@ -131,6 +133,7 @@
                 </tr>
               </table>
               <button (click)="changeretroDD(i)">Afficher moins</button>
+              <button (click)="createdDD(dd.nom)">Ajouter au Panier</button>
             </ng-template>
           <ng-template #elseBlock>
             <table>
@@ -143,6 +146,7 @@
               </tr>
             </table>
             <button (click)="changeDD(i)">Afficher plus</button>
+            <button (click)="createdDD(dd.nom)">Ajouter au Panier</button>
           </ng-template>
         </div>
       </li>
@@ -190,6 +194,7 @@
               </tr>
             </table>
             <button (click)="changeretroIOrdi(i)">Afficher moins</button>
+            <button (click)="createdOrdi(ordi.nom)">Ajouter au Panier</button>
           </ng-template>
           <ng-template #elseBlock>
             <table>
@@ -202,6 +207,7 @@
               </tr>
             </table>
             <button (click)="changeIOrdi(i)">Afficher plus</button>
+            <button (click)="createdOrdi(ordi.nom)">Ajouter au Panier</button>
           </ng-template>
         </div>
       </li>
@@ -236,7 +242,7 @@
               </tr>
             </table>
             <button (click)="changeretroProc(i)">Afficher moins</button>
-            <button (click)="createdTodo(proc)">Ajouter au Panier</button>
+            <button (click)="createdProc(proc.nom)">Ajouter au Panier</button>
 
           </ng-template>
           <ng-template #elseBlock>
@@ -250,7 +256,7 @@
               </tr>
             </table>
             <button (click)="changeProc(i)">Afficher plus</button>
-            <button (click)="createdTodo(proc.nom)">Ajouter au Panier</button>
+            <button (click)="createdProc(proc.nom)">Ajouter au Panier</button>
           </ng-template>
         </div>
       </li>
