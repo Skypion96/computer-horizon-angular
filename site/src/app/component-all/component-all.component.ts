@@ -19,6 +19,9 @@ import {OrdiMarque} from '../enums/ordi-marque.enum';
 import {CarteGPipe} from '../pipes/carte-g.pipe';
 import {PanierProcService} from '../services/panier-proc.service';
 import {PanierProcDTO} from '../interfaces/panier-proc-dto';
+import {PanierDisqueDurDto} from '../interfaces/panier-disque-dur-dto';
+import {PanierCarteGraphiqueDto} from '../interfaces/panier-carte-graphique-dto';
+import {PanierOrdinateurDto} from '../interfaces/panier-ordinateur-dto';
 
 @Component({
   selector: 'app-component-all',
@@ -47,8 +50,41 @@ export class ComponentAllComponent implements OnInit {
     this._panierp = value;
   }
 
+  //AJOUT DANS PANIER
+  private _panierdd:PanierDisqueDurDto=new class implements PanierDisqueDurDto {
+    id: 2;
+    nom: "test";
+  };
+  get panierdd(): PanierDisqueDurDto {
+    return this._panierdd;
+  }
+  set panierdd(value: PanierDisqueDurDto) {
+    this._panierdd = value;
+  }
 
+  //AJOUT DANS PANIER
+  private _paniercg:PanierCarteGraphiqueDto=new class implements PanierCarteGraphiqueDto {
+    id: 2;
+    nom: "test";
+  };
+  get paniercg(): PanierCarteGraphiqueDto {
+    return this._paniercg;
+  }
+  set paniercg(value: PanierCarteGraphiqueDto) {
+    this._paniercg = value;
+  }
 
+  //AJOUT DANS PANIER
+  private _paniero:PanierOrdinateurDto=new class implements PanierOrdinateurDto {
+    id: 2;
+    nom: "test";
+  };
+  get paniero(): PanierOrdinateurDto {
+    return this._paniero;
+  }
+  set paniero(value: PanierOrdinateurDto) {
+    this._paniero = value;
+  }
 
 
   readonly TYPE_FILTER_MARQUE_PROC =[{
