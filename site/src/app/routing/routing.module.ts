@@ -37,7 +37,7 @@ const routes:Routes =[
   }
 ];
 
-@NgModule({
+/*@NgModule({
   declarations: [AccueilComponent, ProductsComponent,ContactComponent, InscriptionComponent,ComponentAllComponent],
   exports: [
     AccueilComponent,
@@ -49,5 +49,5 @@ const routes:Routes =[
     ReactiveFormsModule,
     FormsModule,
   ]
-})
-export class RoutingModule { }
+})*/
+export const RoutingModule = RouterModule.forRoot(routes)
