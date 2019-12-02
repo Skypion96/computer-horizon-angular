@@ -3,19 +3,16 @@ import {ProcDTO, ProcList} from '../interfaces/procDTO';
 import {Subscription} from 'rxjs';
 import {ProcesseurPipePipe} from '../pipes/processeur-pipe.pipe';
 import {Prix} from '../enums/prix.enum';
-import {ProcMarque} from '../enums/proc-marque.enum';
 import {ProcServiceService} from '../services/proc-service.service';
-import {DisqueDDTO, DisqueDList} from '../interfaces/disque-dDTO';
+import {DisqueDList} from '../interfaces/disque-dDTO';
 import {DisqueDPipe} from '../pipes/disque-d.pipe';
 import {DisqueDSsd} from '../enums/disque-d-ssd.enum';
-import {DisqueDMarque} from '../enums/disque-d-marque.enum';
 import {DisqueDServiceService} from '../services/disque-dservice.service';
-import {OrdiDTO, OrdiList} from '../interfaces/ordiDTO';
+import {OrdiList} from '../interfaces/ordiDTO';
 import {OrdiServiceService} from '../services/ordi-service.service';
-import {CarteGDTO, CarteGList} from '../interfaces/carte-gDTO';
+import {CarteGList} from '../interfaces/carte-gDTO';
 import {CarteGServiceService} from '../services/carte-gservice.service';
 import {OrdinateurPipe} from '../pipes/ordinateur.pipe';
-import {OrdiMarque} from '../enums/ordi-marque.enum';
 import {CarteGPipe} from '../pipes/carte-g.pipe';
 import {PanierProcService} from '../services/panier-proc.service';
 import {PanierProcDTO} from '../interfaces/panier-proc-dto';
@@ -25,6 +22,7 @@ import {PanierOrdinateurDto} from '../interfaces/panier-ordinateur-dto';
 import {PanierCarteGraphiqueService} from '../services/panier-carte-graphique.service';
 import {PanierDisqueDurService} from '../services/panier-disque-dur.service';
 import {PanierOrdinateurService} from '../services/panier-ordinateur.service';
+import {Marques} from '../enums/marques.enum';
 
 @Component({
   selector: 'app-component-all',
@@ -39,6 +37,42 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   private _processeurPipe: ProcesseurPipePipe = new ProcesseurPipePipe();
   private _iProc:number;
 
+  readonly TYPE_FILTER_MARQUE =[{
+    id: 'Tout',
+    value: Marques.ALL
+  },{
+    id: 'Lacie',
+    value: Marques.LACIE
+  },{
+    id: 'Toshiba',
+    value: Marques.TOSHIBA
+  },{
+    id: 'Seagate',
+    value: Marques.SEAGATE
+  },{
+    id: 'ACER',
+    value: Marques.ACER
+  },{
+    id: 'ASUS',
+    value: Marques.ASUS
+  },{
+    id: 'HP',
+    value: Marques.HP
+  },{
+    id: 'MSI',
+    value: Marques.MSI
+  },{
+    id: 'Intel',
+    value: Marques.Intel
+  },{
+    id: 'AMD',
+    value: Marques.AMD
+  },{
+    id: 'Gigabyte',
+    value: Marques.Gigabyte
+  }];
+  filterSelectedMarque: Marques = Marques.ALL;
+
 
 
   //AJOUT DANS PANIER
@@ -52,20 +86,6 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   set panierp(value: PanierProcDTO) {
     this._panierp = value;
   }
-
-
-
-  readonly TYPE_FILTER_MARQUE_PROC =[{
-    id: 'Tout',
-    value: ProcMarque.ALL
-  },{
-    id: 'Intel',
-    value: ProcMarque.Intel
-  },{
-    id: 'AMD',
-    value: ProcMarque.AMD
-  }];
-  filterSelectedMarqueProc: ProcMarque = ProcMarque.ALL;
 
   @Output()
   procCharged:EventEmitter<ProcDTO> = new EventEmitter<ProcDTO>();
@@ -97,7 +117,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
 
 
   get filteredProcList(): ProcList {
-    return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelectedPrix,this.filterSelectedMarqueProc);
+    return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelectedPrix,this.filterSelectedMarque);
   }
 
   get iProc(): number {
@@ -155,22 +175,6 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   }];
   filterSelectedSSD: DisqueDSsd = DisqueDSsd.ALL;
 
-
-  readonly TYPE_FILTER_MARQUE_DISQUED =[{
-    id: 'Tout',
-    value: DisqueDMarque.ALL
-  },{
-    id: 'Lacie',
-    value: DisqueDMarque.LACIE
-  },{
-    id: 'Toshiba',
-    value: DisqueDMarque.TOSHIBA
-  },{
-    id: 'Seagate',
-    value: DisqueDMarque.SEAGATE
-  }];
-  filterSelectedMarqueDD: DisqueDMarque = DisqueDMarque.ALL;
-
   readonly TYPE_FILTER_PRIX =[{
     id: 'Tout',
     value: Prix.ALL
@@ -194,7 +198,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   }
 
   get filteredDisqueD(): DisqueDList {
-    return this._disqueDPipe.transform(this.disqueDList,this.filterSelectedSSD,this.filterSelectedMarqueDD,this.filterSelectedPrix);
+    return this._disqueDPipe.transform(this.disqueDList,this.nameSearched,this.filterSelectedSSD,this.filterSelectedMarque,this.filterSelectedPrix);
   }
 
   get iDD(): number {
@@ -240,24 +244,6 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   }
 
 
-  readonly TYPE_FILTER_MARQUE_ORDI =[{
-    id: 'Tout',
-    value: OrdiMarque.ALL
-  },{
-    id: 'ACER',
-    value: OrdiMarque.ACER
-  },{
-    id: 'ASUS',
-    value: OrdiMarque.ASUS
-  },{
-    id: 'HP',
-    value: OrdiMarque.HP
-  },{
-    id: 'MSI',
-    value: OrdiMarque.MSI
-  }];
-  filterSelectedMarqueOrdi: OrdiMarque = OrdiMarque.ALL;
-
 
   get iOrdi(): number {
     return this._iOrdi;
@@ -281,7 +267,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   }
 
   get filteredOrdinateur(): OrdiList {
-    return this._ordiPipe.transform(this.ordiList,this.filterSelectedPrix,this.filterSelectedMarqueOrdi);
+    return this._ordiPipe.transform(this.ordiList,this.nameSearched,this.filterSelectedPrix,this.filterSelectedMarque);
   }
 
   //AJOUT DANS PANIER
@@ -303,6 +289,8 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
     id: 2;
     nom: "test";
   };
+
+
   get paniercg(): PanierCarteGraphiqueDto {
     return this._paniercg;
   }
@@ -317,7 +305,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   }
 
   get filteredCarteG(): CarteGList {
-    return this._carteGPipe.transform(this.carteGList,this.filterSelectedPrix,this.nameSearched);
+    return this._carteGPipe.transform(this.carteGList,this.filterSelectedPrix,this.nameSearched,this.filterSelectedMarque);
   }
 
 

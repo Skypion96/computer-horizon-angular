@@ -1,59 +1,35 @@
 <div class="filter">
-  <h3>FILTRE EN FONCTION DU PRIX : </h3>
+  <h3>FILTRES : </h3>
   <div class="filterPrixProc">
-    PRIX :
+    <b>PRIX :</b>
     <div *ngFor="let typeFilter of TYPE_FILTER_PRIX">
       <label [for]="typeFilter.id">{{typeFilter.id}}</label>
       <input type="radio" [id]="typeFilter.id" name="filterProc" [value]="typeFilter.value"
              [(ngModel)]="filterSelectedPrix">
     </div>
   </div>
+  <div class="filterNomProc">
+    <b><label for="recherche">Rechercher : </label></b>
+    <input type="text" [(ngModel)]="nameSearched" id="recherche">
+  </div>
+  <div class="filterMarqueProc">
+    <b>MARQUES :</b>
+    <div *ngFor="let typeFilterMarque of TYPE_FILTER_MARQUE">
+      <label [for]="typeFilterMarque.id">{{typeFilterMarque.id}}</label>
+      <input type="radio" [id]="typeFilterMarque.id" name="filterMarqueProc" [value]="typeFilterMarque.value"
+             [(ngModel)]="filterSelectedMarque">
+    </div>
+  </div>
   <h3>FILTRES DISQUES DUR : </h3>
   <div class="filterSSDDD">
-    SSD :
+    <b>SSD :</b>
     <div *ngFor="let typeFilterSSD of TYPE_FILTER_SSD">
-
       <label [for]="typeFilterSSD.id">{{typeFilterSSD.id}}</label>
       <input type="radio" [id]="typeFilterSSD.id" name="filterSSDDD" [value]="typeFilterSSD.value"
              [(ngModel)]="filterSelectedSSD">
     </div>
   </div>
-  <div class="filterMarque">
-    Marques :
-    <div *ngFor="let typeFilterMDD of TYPE_FILTER_MARQUE_DISQUED">
-
-      <label [for]="typeFilterMDD.id">{{typeFilterMDD.id}}</label>
-      <input type="radio" [id]="typeFilterMDD.id" name="filterMarquesDD" [value]="typeFilterMDD.value"
-             [(ngModel)]="filterSelectedMarqueDD">
-    </div>
-  </div>
   <div class="filter">
-    <h3>FILTRES ORDINATEUR : </h3>
-    <div class="filterMarqueOrdi">
-      Marques :
-      <div *ngFor="let typeFilterMOrdi of TYPE_FILTER_MARQUE_ORDI">
-
-        <label [for]="typeFilterMOrdi.id">{{typeFilterMOrdi.id}}</label>
-        <input type="radio" [id]="typeFilterMOrdi.id" name="filterMarquesOrdi" [value]="typeFilterMOrdi.value"
-               [(ngModel)]="filterSelectedMarqueOrdi">
-      </div>
-    </div>
-  </div>
-  <div class="filter">
-    <h3>FILTRES PROCESSEURS : </h3>
-    <div class="filterNomProc">
-      <label for="recherche">Rechercher un processeur particulier : </label>
-      <input type="text" [(ngModel)]="nameSearched" id="recherche">
-    </div>
-
-    <div class="filterMarqueProc">
-      MARQUES :
-      <div *ngFor="let typeFilterMarque of TYPE_FILTER_MARQUE_PROC">
-        <label [for]="typeFilterMarque.id">{{typeFilterMarque.id}}</label>
-        <input type="radio" [id]="typeFilterMarque.id" name="filterMarqueProc" [value]="typeFilterMarque.value"
-               [(ngModel)]="filterSelectedMarqueProc">
-      </div>
-    </div>
   </div>
 </div>
 <!-- *********************************************** CARTES GRAPHIQUES *********************************************** -->
