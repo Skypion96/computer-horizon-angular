@@ -14,6 +14,9 @@ import { DisqueDPipe } from './pipes/disque-d.pipe';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
+import {JwtInterceptor} from './routing/JwtInterceptor';
+import {ErrorInterceptor} from './routing/ErrorInterceptor';
+import {fakeBackendProvider} from './routing/FakeBackendInterceptor';
 
 
 @NgModule({
@@ -25,7 +28,6 @@ import { AlertComponent } from './alert/alert.component';
     CarteGPipe,
     OrdinateurPipe,
     DisqueDPipe,
-    LoginComponent,
     AlertComponent,
   ],
   imports: [
@@ -35,6 +37,13 @@ import { AlertComponent } from './alert/alert.component';
     RoutingModule,
     ReactiveFormsModule,
     FormsModule
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
   ],
   exports: [
     HeaderComponent,

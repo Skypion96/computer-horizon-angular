@@ -8,6 +8,7 @@ import {InscriptionComponent} from '../inscription/inscription.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppModule} from '../app.module';
 import {ComponentAllComponent} from '../component-all/component-all.component';
+import {LoginComponent} from '../login/login.component';
 
 const routes:Routes =[
   {
@@ -34,11 +35,15 @@ const routes:Routes =[
   {
     path:"Tout",
     component: ComponentAllComponent
+  },
+  {
+    path:"Login",
+    component: LoginComponent
   }
 ];
 
-/*@NgModule({
-  declarations: [AccueilComponent, ProductsComponent,ContactComponent, InscriptionComponent,ComponentAllComponent],
+@NgModule({
+  declarations: [AccueilComponent, ProductsComponent,ContactComponent, InscriptionComponent,ComponentAllComponent, LoginComponent],
   exports: [
     AccueilComponent,
     ComponentAllComponent
@@ -49,5 +54,5 @@ const routes:Routes =[
     ReactiveFormsModule,
     FormsModule,
   ]
-})*/
-export const RoutingModule = RouterModule.forRoot(routes)
+})
+export class RoutingModule {} //= RouterModule.forRoot(routes)

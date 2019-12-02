@@ -21,10 +21,11 @@ export class InscriptionComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  readonly ACCUEIL:string ="Accueil";
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: RoutingModule,
+    //private router: RoutingModule,
     private authenticationService: AuthenticationService,
     private userService: UserService,
     private alertService: AlertService

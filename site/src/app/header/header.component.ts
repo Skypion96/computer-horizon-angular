@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   readonly ACCUEIL:string ="Accueil";
   readonly CONTACT:string ="Contact";
   readonly INSCRIPTION:string="inscription";
+  readonly LOGIN:string ="Login";
 
   constructor() { }
 
