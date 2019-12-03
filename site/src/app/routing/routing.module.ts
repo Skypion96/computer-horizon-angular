@@ -8,6 +8,8 @@ import {InscriptionComponent} from '../inscription/inscription.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppModule} from '../app.module';
 import {ComponentAllComponent} from '../component-all/component-all.component';
+import {AdminComponent} from '../admin/admin.component';
+import {AjoutComponentComponent} from '../admin/Ajout/ajout-component/ajout-component.component';
 
 const routes:Routes =[
   {
@@ -34,11 +36,19 @@ const routes:Routes =[
   {
     path:"Tout",
     component: ComponentAllComponent
+  },
+  {
+    path:"Admin",
+    component: AdminComponent
+  },
+  {
+    path:"AjoutProc",
+    component: AjoutComponentComponent
   }
 ];
 
 @NgModule({
-  declarations: [AccueilComponent, ProductsComponent,ContactComponent, InscriptionComponent,ComponentAllComponent],
+  declarations: [AccueilComponent, ProductsComponent,ContactComponent, InscriptionComponent,ComponentAllComponent,AdminComponent,AjoutComponentComponent],
   exports: [
     AccueilComponent,
     ComponentAllComponent

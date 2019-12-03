@@ -13,4 +13,5 @@ export interface OrdiDTO {
   qte:number;
   capaciteSsd:string;
   img:string;
+  prixReduc:number;
 }

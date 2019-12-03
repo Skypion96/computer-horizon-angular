@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit,OnDestroy {
   private ordiList: OrdiList=[];
   private subQuery:Subscription;
   private _iElement:number=0;
-
+  readonly AJOUTPROC="AjoutProc";
 
 
   constructor(public procService: ProcServiceService,public disqueDService: DisqueDServiceService,public ordiService: OrdiServiceService,

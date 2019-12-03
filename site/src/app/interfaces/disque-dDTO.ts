@@ -4,9 +4,10 @@ export interface DisqueDDTO {
   nom:string;
   marque:string;
   capacite:string;
-  ssd:number;
+  ssd:boolean;
   prix:number;
-  interne:number;
+  interne:boolean;
   qte:number;
   img:string;
+  prixReduc:number;
 }

@@ -1,3 +1,4 @@
+<div style="margin-top: 15%">PROCESSEUR</div>
 <form [formGroup]="form" (ngSubmit)="createProc($event)">
   <div>
     <label for="nom">Nom : </label>
@@ -28,4 +29,74 @@
     <input type="text" formControlName="img" id="img">
   </div>
   <button [disabled]="!form.valid">create</button>
+</form>
+
+<div style="margin-top: 15%">CARTES GRAPHIQUE</div>
+<form [formGroup]="formCG" (ngSubmit)="createCG($event)">
+  <div>
+    <label for="nomCG">Nom : </label>
+    <input type="text" formControlName="nomCG" id="nomCG">
+  </div>
+  <div>
+    <label for="marqueCG">Marque : </label>
+    <input type="text" formControlName="marqueCG" id="marqueCG">
+  </div>
+  <div>
+    <label for="prixCG">Prix : </label>
+    <input type="text" formControlName="prixCG" id="prixCG">
+  </div>
+  <div>
+    <label for="frequenceCG">Frequence : </label>
+    <input type="text" formControlName="frequenceCG" id="frequenceCG">
+  </div>
+  <div>
+    <label for="memoireVideoCG">mMémoire Video : </label>
+    <input type="text" formControlName="memoireVideoCG" id="memoireVideoCG">
+  </div>
+  <div>
+    <label for="qteCG">Quantite : </label>
+    <input type="text" formControlName="qteCG" id="qteCG">
+  </div>
+  <div>
+    <label for="imgCG">Img : </label>
+    <input type="text" formControlName="imgCG" id="imgCG">
+  </div>
+  <button [disabled]="!formCG.valid">create</button>
+</form>
+
+<div style="margin-top: 15%">DISQUE DUR</div>
+<form [formGroup]="formDD" (ngSubmit)="createDD($event)">
+  <div>
+    <label for="nomDD">Nom : </label>
+    <input type="text" formControlName="nomDD" id="nomDD">
+  </div>
+  <div>
+    <label for="marqueDD">Marque : </label>
+    <input type="text" formControlName="marqueDD" id="marqueDD">
+  </div>
+  <div>
+    <label for="capaciteDD">Capacite : </label>
+    <input type="text" formControlName="capaciteDD" id="capaciteDD">
+  </div>
+  <div>
+    <label for="ssdDD">SSD : </label>
+    <input type="checkbox" formControlName="ssdDD" id="ssdDD">
+  </div>
+  <div>
+    <label for="prixDD">Prix : </label>
+    <input type="text" formControlName="prixDD" id="prixDD">
+  </div>
+  <div>
+    <label for="interneDD">Interne : </label>
+    <input type="checkbox"  formControlName="interneDD" id="interneDD">
+  </div>
+  <div>
+    <label for="qteDD">Quantite : </label>
+    <input type="text" formControlName="qteDD" id="qteDD">
+  </div>
+  <div>
+    <label for="imgDD">Img : </label>
+    <input type="text" formControlName="imgDD" id="imgDD">
+  </div>
+  <button [disabled]="!formDD.valid">create</button>
 </form>

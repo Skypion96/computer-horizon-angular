@@ -5,6 +5,15 @@ import {Subscription} from 'rxjs';
 import {ProcDTO} from '../../../interfaces/procDTO';
 import {CreateProcService} from '../../../services/create-proc.service';
 import {ProcServiceService} from '../../../services/proc-service.service';
+import {CreateCarteGService} from '../../../services/create-carte-g.service';
+import {CarteGServiceService} from '../../../services/carte-gservice.service';
+import {CarteGDTO} from '../../../interfaces/carte-gDTO';
+import {CreateDisqueDService} from '../../../services/create-disque-d.service';
+import {DisqueDServiceService} from '../../../services/disque-dservice.service';
+import {DisqueDDTO} from '../../../interfaces/disque-dDTO';
+import {CreateOrdiService} from '../../../services/create-ordi.service';
+import {OrdiServiceService} from '../../../services/ordi-service.service';
+import {OrdiDTO} from '../../../interfaces/ordiDTO';
 
 @Component({
   selector: 'app-ajout-component',
@@ -13,7 +22,7 @@ import {ProcServiceService} from '../../../services/proc-service.service';
 })
 export class AjoutComponentComponent implements OnInit {
 
-  private procService:ProcServiceService;
+
 
   form: FormGroup = this.fb.group({
     nom : this.fb.control('', Validators.required),
@@ -25,10 +34,17 @@ export class AjoutComponentComponent implements OnInit {
     img : this.fb.control('', Validators.required),
   });
 
-  constructor(public fb: FormBuilder, public streamUserCreated: CreateProcService) { }
+  constructor(public fb: FormBuilder,public fbCG: FormBuilder, public streamUserCreated: CreateProcService,
+              public procService:ProcServiceService, public streamCGCreated: CreateCarteGService,
+              public carteGService:CarteGServiceService,public fbDD: FormBuilder,
+              public streamDDCreated: CreateDisqueDService,public disqueDService:DisqueDServiceService,
+              public fbOrdi: FormBuilder, public streamOrdiCreated: CreateOrdiService,public ordiService:OrdiServiceService) { }
 
   ngOnInit() {
     this.listenStreamProcCreated();
+    this.listenStreamCGCreated();
+    this.listenStreamDDCreated();
+    this.listenStreamOrdiCreated();
   }
 
   createProc($event: any) {
@@ -37,7 +53,7 @@ export class AjoutComponentComponent implements OnInit {
   }
 
   private listenStreamProcCreated():void{
-    const sub : Subscription = this.streamUserCreated.$procCreated.subscribe(users=>this.createdUser(users));
+    const sub : Subscription = this.streamUserCreated.$procCreated.subscribe(users=>this.createdProc(users));
   }
 
   private buildUser():ProcDTO {
@@ -51,12 +67,181 @@ export class AjoutComponentComponent implements OnInit {
       img:this.form.get("img").value,
       reduction:0,
       cote:0,
-      dateCote:" ",
-      prixReduc:0.0,
+      dateCote:"00/00/00",
+      prixReduc:0.00,
     };
   }
 
-  private createdUser(proc:ProcDTO){
+  private createdProc(proc:ProcDTO){
       const sub = this.procService.post(proc).subscribe(proc => console.log());
   }
+
+
+  /////////////////////////////////////////////////////////
+
+
+
+  formCG: FormGroup = this.fbCG.group({
+    nomCG : this.fbCG.control('', Validators.required),
+    marqueCG : this.fbCG.control('', Validators.required),
+    prixCG : this.fbCG.control('', Validators.required),
+    frequenceCG : this.fbCG.control('', Validators.required),
+    memoireVideoCG : this.fbCG.control('', Validators.required),
+    qteCG : this.fbCG.control('', Validators.required),
+    imgCG : this.fbCG.control('', Validators.required),
+  });
+
+
+
+  createCG($event: any) {
+    this.streamCGCreated.notify(this.buildCG());
+    this.formCG.reset();
+  }
+
+  private listenStreamCGCreated():void{
+    const sub : Subscription = this.streamCGCreated.$carteGCreated.subscribe(users=>this.createdCG(users));
+  }
+
+  private buildCG():CarteGDTO {
+    return {
+      nom:this.formCG.get("nomCG").value,
+      marque:this.formCG.get("marqueCG").value,
+      prix:this.formCG.get("prixCG").value,
+      frequence:this.formCG.get("frequenceCG").value,
+      memoireVideo:this.formCG.get("memoireVideoCG").value,
+      qte:this.formCG.get("qteCG").value,
+      img:this.formCG.get("imgCG").value,
+      prixReduc:0.00,
+    };
+  }
+
+  private createdCG(cg:CarteGDTO){
+    const sub = this.carteGService.post(cg).subscribe(proc => console.log());
+  }
+
+  //////////////////////////////////////////////////////
+
+  formDD: FormGroup = this.fbDD.group({
+    nomDD : this.fbDD.control('', Validators.required),
+    marqueDD : this.fbDD.control('', Validators.required),
+    capaciteDD : this.fbDD.control('', Validators.required),
+    ssdDD : this.fbDD.control(''),
+    prixDD : this.fbDD.control('', Validators.required),
+    interneDD : this.fbDD.control(''),
+    qteDD : this.fbDD.control('', Validators.required),
+    imgDD : this.fbDD.control('', Validators.required),
+  });
+
+  createDD($event: any) {
+    console.log(this.formDD.get("ssdDD").value);
+    this.streamDDCreated.notify(this.buildDD());
+    this.formDD.reset();
+  }
+
+  private listenStreamDDCreated():void{
+    const sub : Subscription = this.streamDDCreated.$disqueDCreated.subscribe(users=>this.createdDD(users));
+  }
+
+  private buildDD():DisqueDDTO {
+    if(this.formDD.get("interneDD").value==true && this.formDD.get("ssdDD").value==true){
+      return {
+        nom:this.formDD.get("nomDD").value,
+        marque:this.formDD.get("marqueDD").value,
+        capacite:this.formDD.get("capaciteDD").value,
+        ssd:true,
+        prix:this.formDD.get("prixDD").value,
+        interne:true,
+        qte:this.formDD.get("qteDD").value,
+        img:this.formDD.get("imgDD").value,
+        prixReduc:0.00,
+      };
+    }
+    else if (this.formDD.get("interneDD").value==false && this.formDD.get("ssdDD").value==true){
+      return {
+        nom:this.formDD.get("nomDD").value,
+        marque:this.formDD.get("marqueDD").value,
+        capacite:this.formDD.get("capaciteDD").value,
+        ssd:false,
+        prix:this.formDD.get("prixDD").value,
+        interne:true,
+        qte:this.formDD.get("qteDD").value,
+        img:this.formDD.get("imgDD").value,
+        prixReduc:0.00,
+      };
+    }
+    else if (this.formDD.get("interneDD").value==true && this.formDD.get("ssdDD").value==false){
+      return {
+        nom:this.formDD.get("nomDD").value,
+        marque:this.formDD.get("marqueDD").value,
+        capacite:this.formDD.get("capaciteDD").value,
+        ssd:true,
+        prix:this.formDD.get("prixDD").value,
+        interne:false,
+        qte:this.formDD.get("qteDD").value,
+        img:this.formDD.get("imgDD").value,
+        prixReduc:0.00,
+      };
+    }
+    else{
+      return {
+        nom:this.formDD.get("nomDD").value,
+        marque:this.formDD.get("marqueDD").value,
+        capacite:this.formDD.get("capaciteDD").value,
+        ssd:false,
+        prix:this.formDD.get("prixDD").value,
+        interne:false,
+        qte:this.formDD.get("qteDD").value,
+        img:this.formDD.get("imgDD").value,
+        prixReduc:0.00,
+      };
+    }
+  }
+
+  private createdDD(dd:DisqueDDTO){
+    const sub = this.disqueDService.post(dd).subscribe(proc => console.log());
+  }
+
+  /////////////////////////////////////////////////////////////////////////////
+
+  formOrdi: FormGroup = this.fbOrdi.group({
+    nomOrdi : this.fbOrdi.control('', Validators.required),
+    marqueOrdi : this.fbOrdi.control('', Validators.required),
+    prixOrdi : this.fbOrdi.control('', Validators.required),
+    nomProc : this.fbOrdi.control('', Validators.required),
+    nomCg : this.fbOrdi.control('', Validators.required),
+    qte : this.fbOrdi.control('', Validators.required),
+    img : this.fbOrdi.control('', Validators.required),
+  });
+
+  createOrdi($event: any) {
+    this.streamOrdiCreated.notify(this.buildOrdi());
+    this.formOrdi.reset();
+  }
+
+  private listenStreamOrdiCreated():void{
+    const sub : Subscription = this.streamOrdiCreated.$ordiCreated.subscribe(users=>this.createdOrdi(users));
+  }
+
+  private buildOrdi():OrdiDTO {
+    return {
+      nom:this.formOrdi.get("nomOrdi").value,
+      marque:this.formOrdi.get("marqueOrdi").value,
+      prix:this.formOrdi.get("prixOrdi").value,
+      nomProc:this.formOrdi.get("prix").value,
+      nomCg:this.formOrdi.get("prix").value,
+      capacite:this.formOrdi.get("prix").value,
+      memoireV:this.formOrdi.get("prix").value,
+      ssd:this.formOrdi.get("frequence").value,
+      description:this.formOrdi.get("prix").value,
+      qte:this.formOrdi.get("qte").value,
+      capaciteSsd:this.formOrdi.get("prix").value,
+      img:this.formOrdi.get("imgOrdi").value,
+      prixReduc:0.00,
+    };
+  }
+
+  private createdOrdi(ordi:OrdiDTO){
+    const sub = this.ordiService.post(ordi).subscribe(proc => console.log());
+  }
+
 }

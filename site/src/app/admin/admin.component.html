@@ -3,6 +3,7 @@
   <button (click)="iElement=2">Afficher les disques durs</button>
   <button (click)="iElement=3">Afficher les ordinateurs</button>
   <button (click)="iElement=4">Afficher les processeurs</button>
+  <button [routerLink]="'/'+AJOUTPROC">Ajout processeur</button>
 </div>
 
 <!-- *********************************************** CARTES GRAPHIQUES *********************************************** -->
@@ -159,4 +160,3 @@
 
 
 
-<app-ajout-component></app-ajout-component>
