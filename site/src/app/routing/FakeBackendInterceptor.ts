@@ -11,6 +11,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const { url, method, headers, body } = request;
 
+
     // wrap in delayed observable to simulate server api call
     return of(null)
       .pipe(mergeMap(handleRoute))
@@ -37,14 +38,19 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     // route functions
 
     function authenticate() {
-      const { username, password } = body;
-      const user = users.find(x => x.username === username && x.password === password);
-      if (!user) return error('Username or password is incorrect');
+      const { mail, mdp } = body;
+      const user = users.find(x => x.mail === mail && x.mdp === mdp);
+      if (!user) return error('Mail or password is incorrect');
       return ok({
-        id: user.id,
-        username: user.username,
-        firstName: user.firstName,
-        lastName: user.lastName,
+        nomUtilisateur: user.nomUtilisateur,
+        prenomUtilisateur: user.prenomUtilisateur,
+        mail: user.mail,
+        mdp: user.mdp,
+        tel: user.tel,
+        rue: user.rue,
+        numRue: user.numRue,
+        cp: user.cp,
+        ville: user.ville,
         token: 'fake-jwt-token'
       })
     }
@@ -52,11 +58,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     function register() {
       const user = body
 
-      if (users.find(x => x.username === user.username)) {
-        return error('Username "' + user.username + '" is already taken')
+      if (users.find(x => x.mail === user.mail)) {
+        return error('Username "' + user.mail + '" is already taken')
       }
-
-      user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
       users.push(user);
       localStorage.setItem('users', JSON.stringify(users));
 
@@ -71,7 +75,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     function deleteUser() {
       if (!isLoggedIn()) return unauthorized();
 
-      users = users.filter(x => x.id !== idFromUrl());
+      users = users.filter(x => x.mail !== idFromUrl());
       localStorage.setItem('users', JSON.stringify(users));
       return ok();
     }

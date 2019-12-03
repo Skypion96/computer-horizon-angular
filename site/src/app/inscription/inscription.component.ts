@@ -9,6 +9,7 @@ import {AuthenticationService} from '../services/authentification.service';
 import {UserService} from '../services/user.service';
 import {AlertService} from '../services/alert.service';
 import {RoutingModule} from '../routing/routing.module';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -22,10 +23,11 @@ export class InscriptionComponent implements OnInit {
   loading = false;
   submitted = false;
   readonly ACCUEIL:string ="Accueil";
+  readonly LOGIN:string ="Login";
 
-  constructor(
+ /* constructor(
     private formBuilder: FormBuilder,
-    //private router: RoutingModule,
+    private router: RouterModule,
     private authenticationService: AuthenticationService,
     private userService: UserService,
     private alertService: AlertService
@@ -70,20 +72,20 @@ export class InscriptionComponent implements OnInit {
       .subscribe(
         data => {
           this.alertService.success('Registration successful', true);
-          //this.router.navigate(['/login']);
+          //this.router.navigate(['/'+this.LOGIN]);
         },
         error => {
           this.alertService.error(error);
           this.loading = false;
         });
-  }
+  }*/
 
 
 
 
 
 
-  /*private nomUtilisateur:string;
+  private nomUtilisateur:string;
 
   form: FormGroup = this.fb.group({
     name : this.fb.control('', Validators.required),
@@ -123,13 +125,15 @@ export class InscriptionComponent implements OnInit {
       rue:this.form.get("rue").value,
       numRue:this.form.get("num").value,
       cp:this.form.get("cp").value,
-      ville:this.form.get("ville").value
+      ville:this.form.get("ville").value,
+      //Modifier !!!!!!!!!!!!!!!!!!!!!!!!
+      token: null
     };
   }
 
   private createdUser(user:UserDto){
   //  const sub = this.userService.post(user).subscribe(user => console.log());
-  }*/
+  }
 
 }
 

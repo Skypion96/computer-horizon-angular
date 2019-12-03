@@ -4,6 +4,7 @@ import {AuthenticationService} from '../services/authentification.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
+  readonly LOGIN:string ="Login";
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
@@ -16,7 +17,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+    this.router.navigate(['/'+this.LOGIN], { queryParams: { returnUrl: state.url }});
     return false;
   }
 }
