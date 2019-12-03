@@ -1,0 +1,31 @@
+<form [formGroup]="form" (ngSubmit)="createProc($event)">
+  <div>
+    <label for="nom">Nom : </label>
+    <input type="text" formControlName="nom" id="nom">
+  </div>
+  <div>
+    <label for="marque">Marque : </label>
+    <input type="text" formControlName="marque" id="marque">
+  </div>
+  <div>
+    <label for="nbCoeurs">nbCoeurs : </label>
+    <input type="text" formControlName="nbCoeurs" id="nbCoeurs">
+  </div>
+  <div>
+    <label for="frequence">Frequence : </label>
+    <input type="text" formControlName="frequence" id="frequence">
+  </div>
+  <div>
+    <label for="prix">Prix : </label>
+    <input type="text" formControlName="prix" id="prix">
+  </div>
+  <div>
+    <label for="qte">Quantite : </label>
+    <input type="text" formControlName="qte" id="qte">
+  </div>
+  <div>
+    <label for="img">Img : </label>
+    <input type="text" formControlName="img" id="img">
+  </div>
+  <button [disabled]="!form.valid">create</button>
+</form>
