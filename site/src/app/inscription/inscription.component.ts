@@ -25,67 +25,8 @@ export class InscriptionComponent implements OnInit {
   readonly ACCUEIL:string ="Accueil";
   readonly LOGIN:string ="Login";
 
- /* constructor(
-    private formBuilder: FormBuilder,
-    private router: RouterModule,
-    private authenticationService: AuthenticationService,
-    private userService: UserService,
-    private alertService: AlertService
-  ) {
-    // redirect to home if already logged in
-    if (this.authenticationService.currentUserValue) {
-      //this.router.navigate(['/']);
-    }
-  }
-
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      nomUtilisateur: ['', Validators.required],
-      prenomUtilisateur: ['', Validators.required],
-      mail: ['', Validators.required],
-      mdp: ['', Validators.required],
-      tel: ['', Validators.required],
-      rue: ['', Validators.required],
-      numRue: ['', Validators.required],
-      cp: ['', Validators.required],
-      ville: ['', Validators.required],
-    });
-  }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
-
-  onSubmit() {
-    this.submitted = true;
-
-    // reset alerts on submit
-    this.alertService.clear();
-
-    // stop here if form is invalid
-    if (this.registerForm.invalid) {
-      return;
-    }
-
-    this.loading = true;
-    this.userService.register(this.registerForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.alertService.success('Registration successful', true);
-          //this.router.navigate(['/'+this.LOGIN]);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
-  }*/
-
-
-
-
-
-
   private nomUtilisateur:string;
+  private userService: UserService;
 
   form: FormGroup = this.fb.group({
     name : this.fb.control('', Validators.required),
@@ -99,6 +40,7 @@ export class InscriptionComponent implements OnInit {
     cp : this.fb.control('', Validators.required),
     ville : this.fb.control('', Validators.required)
   });
+
 
   constructor(public fb: FormBuilder, public streamUserCreated: CreateUserService) { }
 
@@ -130,7 +72,7 @@ export class InscriptionComponent implements OnInit {
   }
 
   private createdUser(user:UserDto){
-  //  const sub = this.userService.post(user).subscribe(user => console.log());
+    const sub = this.userService.post(user).subscribe(user => console.log());
   }
 
 }
