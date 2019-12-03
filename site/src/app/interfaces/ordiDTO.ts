@@ -8,7 +8,7 @@ export interface OrdiDTO {
   nomCg:string;
   capacite:string;
   memoireV:number;
-  ssd:number;
+  ssd:boolean;
   description:string;
   qte:number;
   capaciteSsd:string;

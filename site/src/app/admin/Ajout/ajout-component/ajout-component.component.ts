@@ -207,10 +207,15 @@ export class AjoutComponentComponent implements OnInit {
     nomOrdi : this.fbOrdi.control('', Validators.required),
     marqueOrdi : this.fbOrdi.control('', Validators.required),
     prixOrdi : this.fbOrdi.control('', Validators.required),
-    nomProc : this.fbOrdi.control('', Validators.required),
-    nomCg : this.fbOrdi.control('', Validators.required),
-    qte : this.fbOrdi.control('', Validators.required),
-    img : this.fbOrdi.control('', Validators.required),
+    nomProcOrdi : this.fbOrdi.control('', Validators.required),
+    nomCgOrdi : this.fbOrdi.control('', Validators.required),
+    capaciteOrdi : this.fbOrdi.control('', Validators.required),
+    memoireVOrdi : this.fbOrdi.control('', Validators.required),
+    ssdOrdi : this.fbOrdi.control('', Validators.required),
+    descriptionOrdi : this.fbOrdi.control('', Validators.required),
+    qteOrdi : this.fbOrdi.control('', Validators.required),
+    capaciteSsdOrdi : this.fbOrdi.control('', Validators.required),
+    imgOrdi : this.fbOrdi.control('', Validators.required),
   });
 
   createOrdi($event: any) {
@@ -223,21 +228,41 @@ export class AjoutComponentComponent implements OnInit {
   }
 
   private buildOrdi():OrdiDTO {
-    return {
-      nom:this.formOrdi.get("nomOrdi").value,
-      marque:this.formOrdi.get("marqueOrdi").value,
-      prix:this.formOrdi.get("prixOrdi").value,
-      nomProc:this.formOrdi.get("prix").value,
-      nomCg:this.formOrdi.get("prix").value,
-      capacite:this.formOrdi.get("prix").value,
-      memoireV:this.formOrdi.get("prix").value,
-      ssd:this.formOrdi.get("frequence").value,
-      description:this.formOrdi.get("prix").value,
-      qte:this.formOrdi.get("qte").value,
-      capaciteSsd:this.formOrdi.get("prix").value,
-      img:this.formOrdi.get("imgOrdi").value,
-      prixReduc:0.00,
-    };
+    if(this.formOrdi.get("ssdOrdi").value==true){
+      return {
+        nom:this.formOrdi.get("nomOrdi").value,
+        marque:this.formOrdi.get("marqueOrdi").value,
+        prix:this.formOrdi.get("prixOrdi").value,
+        nomProc:this.formOrdi.get("nomProcOrdi").value,
+        nomCg:this.formOrdi.get("nomCgOrdi").value,
+        capacite:this.formOrdi.get("capaciteOrdi").value,
+        memoireV:this.formOrdi.get("memoireVOrdi").value,
+        ssd:true,
+        description:this.formOrdi.get("descriptionOrdi").value,
+        qte:this.formOrdi.get("qteOrdi").value,
+        capaciteSsd:this.formOrdi.get("capaciteSsdOrdi").value,
+        img:this.formOrdi.get("imgOrdi").value,
+        prixReduc:0.00,
+      };
+    }
+    else{
+      return {
+        nom:this.formOrdi.get("nomOrdi").value,
+        marque:this.formOrdi.get("marqueOrdi").value,
+        prix:this.formOrdi.get("prixOrdi").value,
+        nomProc:this.formOrdi.get("nomProcOrdi").value,
+        nomCg:this.formOrdi.get("nomCgOrdi").value,
+        capacite:this.formOrdi.get("capaciteOrdi").value,
+        memoireV:this.formOrdi.get("memoireVOrdi").value,
+        ssd:false,
+        description:this.formOrdi.get("descriptionOrdi").value,
+        qte:this.formOrdi.get("qteOrdi").value,
+        capaciteSsd:this.formOrdi.get("capaciteSsdOrdi").value,
+        img:this.formOrdi.get("imgOrdi").value,
+        prixReduc:0.00,
+      };
+    }
+
   }
 
   private createdOrdi(ordi:OrdiDTO){

@@ -1,102 +1,164 @@
-<div style="margin-top: 15%">PROCESSEUR</div>
-<form [formGroup]="form" (ngSubmit)="createProc($event)">
-  <div>
-    <label for="nom">Nom : </label>
-    <input type="text" formControlName="nom" id="nom">
-  </div>
-  <div>
-    <label for="marque">Marque : </label>
-    <input type="text" formControlName="marque" id="marque">
-  </div>
-  <div>
-    <label for="nbCoeurs">nbCoeurs : </label>
-    <input type="text" formControlName="nbCoeurs" id="nbCoeurs">
-  </div>
-  <div>
-    <label for="frequence">Frequence : </label>
-    <input type="text" formControlName="frequence" id="frequence">
-  </div>
-  <div>
-    <label for="prix">Prix : </label>
-    <input type="text" formControlName="prix" id="prix">
-  </div>
-  <div>
-    <label for="qte">Quantite : </label>
-    <input type="text" formControlName="qte" id="qte">
-  </div>
-  <div>
-    <label for="img">Img : </label>
-    <input type="text" formControlName="img" id="img">
-  </div>
-  <button [disabled]="!form.valid">create</button>
-</form>
+<div class="processeur">
+  <h3>AJOUT PROCESSEUR</h3>
+  <form [formGroup]="form" (ngSubmit)="createProc($event)">
+    <div>
+      <label for="nom">Nom : </label>
+      <input type="text" formControlName="nom" id="nom">
+    </div>
+    <div>
+      <label for="marque">Marque : </label>
+      <input type="text" formControlName="marque" id="marque">
+    </div>
+    <div>
+      <label for="nbCoeurs">nbCoeurs : </label>
+      <input type="text" formControlName="nbCoeurs" id="nbCoeurs">
+    </div>
+    <div>
+      <label for="frequence">Frequence : </label>
+      <input type="text" formControlName="frequence" id="frequence">
+    </div>
+    <div>
+      <label for="prix">Prix : </label>
+      <input type="text" formControlName="prix" id="prix">
+    </div>
+    <div>
+      <label for="qte">Quantite : </label>
+      <input type="text" formControlName="qte" id="qte">
+    </div>
+    <div>
+      <label for="img">Img : </label>
+      <input type="text" formControlName="img" id="img">
+    </div>
+    <button [disabled]="!form.valid">create</button>
+  </form>
+</div>
 
-<div style="margin-top: 15%">CARTES GRAPHIQUE</div>
-<form [formGroup]="formCG" (ngSubmit)="createCG($event)">
-  <div>
-    <label for="nomCG">Nom : </label>
-    <input type="text" formControlName="nomCG" id="nomCG">
-  </div>
-  <div>
-    <label for="marqueCG">Marque : </label>
-    <input type="text" formControlName="marqueCG" id="marqueCG">
-  </div>
-  <div>
-    <label for="prixCG">Prix : </label>
-    <input type="text" formControlName="prixCG" id="prixCG">
-  </div>
-  <div>
-    <label for="frequenceCG">Frequence : </label>
-    <input type="text" formControlName="frequenceCG" id="frequenceCG">
-  </div>
-  <div>
-    <label for="memoireVideoCG">mMémoire Video : </label>
-    <input type="text" formControlName="memoireVideoCG" id="memoireVideoCG">
-  </div>
-  <div>
-    <label for="qteCG">Quantite : </label>
-    <input type="text" formControlName="qteCG" id="qteCG">
-  </div>
-  <div>
-    <label for="imgCG">Img : </label>
-    <input type="text" formControlName="imgCG" id="imgCG">
-  </div>
-  <button [disabled]="!formCG.valid">create</button>
-</form>
+<div class="carteG">
+  <h3>AJOUT CARTE GRAPHIQUE</h3>
+  <form [formGroup]="formCG" (ngSubmit)="createCG($event)">
+    <div>
+      <label for="nomCG">Nom : </label>
+      <input type="text" formControlName="nomCG" id="nomCG">
+    </div>
+    <div>
+      <label for="marqueCG">Marque : </label>
+      <input type="text" formControlName="marqueCG" id="marqueCG">
+    </div>
+    <div>
+      <label for="prixCG">Prix : </label>
+      <input type="text" formControlName="prixCG" id="prixCG">
+    </div>
+    <div>
+      <label for="frequenceCG">Frequence : </label>
+      <input type="text" formControlName="frequenceCG" id="frequenceCG">
+    </div>
+    <div>
+      <label for="memoireVideoCG">mMémoire Video : </label>
+      <input type="text" formControlName="memoireVideoCG" id="memoireVideoCG">
+    </div>
+    <div>
+      <label for="qteCG">Quantite : </label>
+      <input type="text" formControlName="qteCG" id="qteCG">
+    </div>
+    <div>
+      <label for="imgCG">Img : </label>
+      <input type="text" formControlName="imgCG" id="imgCG">
+    </div>
+    <button [disabled]="!formCG.valid">create</button>
+  </form>
+</div>
 
-<div style="margin-top: 15%">DISQUE DUR</div>
-<form [formGroup]="formDD" (ngSubmit)="createDD($event)">
-  <div>
-    <label for="nomDD">Nom : </label>
-    <input type="text" formControlName="nomDD" id="nomDD">
-  </div>
-  <div>
-    <label for="marqueDD">Marque : </label>
-    <input type="text" formControlName="marqueDD" id="marqueDD">
-  </div>
-  <div>
-    <label for="capaciteDD">Capacite : </label>
-    <input type="text" formControlName="capaciteDD" id="capaciteDD">
-  </div>
-  <div>
-    <label for="ssdDD">SSD : </label>
-    <input type="checkbox" formControlName="ssdDD" id="ssdDD">
-  </div>
-  <div>
-    <label for="prixDD">Prix : </label>
-    <input type="text" formControlName="prixDD" id="prixDD">
-  </div>
-  <div>
-    <label for="interneDD">Interne : </label>
-    <input type="checkbox"  formControlName="interneDD" id="interneDD">
-  </div>
-  <div>
-    <label for="qteDD">Quantite : </label>
-    <input type="text" formControlName="qteDD" id="qteDD">
-  </div>
-  <div>
-    <label for="imgDD">Img : </label>
-    <input type="text" formControlName="imgDD" id="imgDD">
-  </div>
-  <button [disabled]="!formDD.valid">create</button>
-</form>
+
+<div class="disqueD">
+  <h3>AJOUT DISQUE DUR</h3>
+  <form [formGroup]="formDD" (ngSubmit)="createDD($event)">
+    <div>
+      <label for="nomDD">Nom : </label>
+      <input type="text" formControlName="nomDD" id="nomDD">
+    </div>
+    <div>
+      <label for="marqueDD">Marque : </label>
+      <input type="text" formControlName="marqueDD" id="marqueDD">
+    </div>
+    <div>
+      <label for="capaciteDD">Capacite : </label>
+      <input type="text" formControlName="capaciteDD" id="capaciteDD">
+    </div>
+    <div>
+      <label for="ssdDD">SSD : </label>
+      <input type="checkbox" formControlName="ssdDD" id="ssdDD">
+    </div>
+    <div>
+      <label for="prixDD">Prix : </label>
+      <input type="text" formControlName="prixDD" id="prixDD">
+    </div>
+    <div>
+      <label for="interneDD">Interne : </label>
+      <input type="checkbox"  formControlName="interneDD" id="interneDD">
+    </div>
+    <div>
+      <label for="qteDD">Quantite : </label>
+      <input type="text" formControlName="qteDD" id="qteDD">
+    </div>
+    <div>
+      <label for="imgDD">Img : </label>
+      <input type="text" formControlName="imgDD" id="imgDD">
+    </div>
+    <button [disabled]="!formDD.valid">create</button>
+  </form>
+</div>
+
+<div class="ordinateur">
+  <h3>AJOUT ORDINATEUR</h3>
+  <form [formGroup]="formOrdi" (ngSubmit)="createOrdi($event)">
+    <div>
+      <label for="nomOrdi">Nom : </label>
+      <input type="text" formControlName="nomOrdi" id="nomOrdi">
+    </div>
+    <div>
+      <label for="marqueOrdi">Marque : </label>
+      <input type="text" formControlName="marqueOrdi" id="marqueOrdi">
+    </div>
+    <div>
+      <label for="prixOrdi">Prix : </label>
+      <input type="text" formControlName="prixOrdi" id="prixOrdi">
+    </div>
+    <div>
+      <label for="nomProcOrdi">Nom processeur : </label>
+      <input type="text" formControlName="nomProcOrdi" id="nomProcOrdi">
+    </div>
+    <div>
+      <label for="nomCgOrdi">Nom carte graphique : </label>
+      <input type="text" formControlName="nomCgOrdi" id="nomCgOrdi">
+    </div>
+    <div>
+      <label for="capaciteOrdi">Capacite : </label>
+      <input type="text" formControlName="capaciteOrdi" id="capaciteOrdi">
+    </div>
+    <div>
+      <label for="memoireVOrdi">Memoire V : </label>
+      <input type="text" formControlName="memoireVOrdi" id="memoireVOrdi">
+    </div>
+    <div>
+      <label for="ssdOrdi">SSD : </label>
+      <input type="checkbox" formControlName="ssdOrdi" id="ssdOrdi">
+    </div>
+    <div>
+      <label for="descriptionOrdi">Description : </label>
+      <input type="text" formControlName="descriptionOrdi" id="descriptionOrdi">
+    </div>
+    <div>
+      <label for="qteOrdi">Quantite : </label>
+      <input type="text" formControlName="qteOrdi" id="qteOrdi">
+    </div>
+    <div>
+      <label for="capaciteSsdOrdi">Capacite SSD : </label>
+      <input type="text"  formControlName="capaciteSsdOrdi" id="capaciteSsdOrdi">
+    </div>
+    <div>
+      <label for="imgOrdi">Img : </label>
+      <input type="text" formControlName="imgOrdi" id="imgOrdi">
+    </div>
+    <button [disabled]="!formOrdi.valid">create</button>
+  </form>
+</div>
