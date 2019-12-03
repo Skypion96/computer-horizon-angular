@@ -1,7 +1,7 @@
-export declare type UserList = User[];
+export declare type UserList = UserDto[];
 
 
-export interface User {
+export interface UserDto {
   nomUtilisateur: string,
   prenomUtilisateur: string,
   mail: string;

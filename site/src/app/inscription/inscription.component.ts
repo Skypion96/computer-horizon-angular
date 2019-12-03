@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CreateUserService} from '../services/create-user.service';
-import {User, UserList} from '../interfaces/user';
+import {UserDto, UserList} from '../interfaces/user-dto';
 import {Subscription} from 'rxjs';
 import {log} from 'util';
 import {first} from 'rxjs/operators';
@@ -112,7 +112,7 @@ export class InscriptionComponent implements OnInit {
     const sub : Subscription = this.streamUserCreated.$userCreated.subscribe(users=>this.createdUser(users));
   }
 
-  private buildUser():User {
+  private buildUser():UserDto {
     return {
       nomUtilisateur: this.form.get("name").value,
       prenomUtilisateur: this.form.get("firstName").value,
@@ -126,7 +126,7 @@ export class InscriptionComponent implements OnInit {
     };
   }
 
-  private createdUser(user:User){
+  private createdUser(user:UserDto){
   //  const sub = this.userService.post(user).subscribe(user => console.log());
   }*/
 

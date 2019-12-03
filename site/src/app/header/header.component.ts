@@ -9,7 +9,7 @@ export class HeaderComponent implements OnInit {
   logoPath:any = "assets/logo.png";
   readonly PRODUCT: string = "produits";
   readonly ACCUEIL:string ="Accueil";
-  readonly CONTACT:string ="Contact";
+  readonly CONTACT:string ="Admin";
   readonly INSCRIPTION:string="inscription";
 
   constructor() { }

@@ -10,6 +10,6 @@ export interface ProcDTO {
   img:string;
   reduction:number;
   cote:number;
-  dateCote:number;
+  dateCote:string;
   prixReduc:number;
 }

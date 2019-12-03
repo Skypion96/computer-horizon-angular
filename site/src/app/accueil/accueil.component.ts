@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../interfaces/user';
+import {UserDto} from '../interfaces/user-dto';
 import {UserService} from '../services/user.service';
 import {AuthenticationService} from '../services/authentification.service';
 import {first} from 'rxjs/operators';
@@ -16,7 +16,7 @@ export class AccueilComponent implements OnInit {
   processor:any = "assets/pc-ordinateur-processeur.jpg";
   newHorizon:any = "assets/id template.jpg";
 
-  currentUser: User;
+  currentUser: UserDto;
   users = [];
 
   constructor(

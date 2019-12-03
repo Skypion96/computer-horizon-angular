@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {User, UserList} from '../interfaces/user';
+import {UserDto, UserList} from '../interfaces/user-dto';
 import {ProcDTO} from '../interfaces/procDTO';
 
 @Injectable({
@@ -16,11 +16,11 @@ export class UserService {
     return this.http.get<UserList>(UserService.URAL_API);
   }
 
-  post(user: User): Observable<ProcDTO> {
+  post(user: UserDto): Observable<ProcDTO> {
     return this.http.post<ProcDTO>(UserService.URAL_API, user);
   }
 
-  update(user:User): Observable<any>{
+  update(user:UserDto): Observable<any>{
     return this.http.put(UserService.URAL_API,user);
   }
 
@@ -28,7 +28,7 @@ export class UserService {
     return this.http.delete(UserService.URAL_API + "/" + nom);
   }
 
-  register(user: User) {
+  register(user: UserDto) {
     return this.http.post(`${UserService.URAL_API}/users/register`, user);
   }
 

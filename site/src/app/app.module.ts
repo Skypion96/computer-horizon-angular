@@ -14,6 +14,10 @@ import { DisqueDPipe } from './pipes/disque-d.pipe';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
+import { AdminComponent } from './admin/admin.component';
+import { AjoutComponentComponent } from './Admin/Ajout/ajout-component/ajout-component.component';
+import { CarteGComponent } from './admin/ajout/carte-g/carte-g.component';
+import { DisqueDComponent } from './admin/ajout/disque-d/disque-d.component';
 
 
 @NgModule({
@@ -27,6 +31,9 @@ import { AlertComponent } from './alert/alert.component';
     DisqueDPipe,
     LoginComponent,
     AlertComponent,
+    AjoutComponentComponent,
+    CarteGComponent,
+    DisqueDComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,8 @@ import { AlertComponent } from './alert/alert.component';
   ],
   exports: [
     HeaderComponent,
-    ProcesseurPipePipe
+    ProcesseurPipePipe,
+    AjoutComponentComponent
   ],
   bootstrap: [AppComponent]
 })

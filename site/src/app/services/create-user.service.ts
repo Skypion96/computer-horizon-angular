@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {User} from '../interfaces/user';
+import {UserDto} from '../interfaces/user-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreateUserService {
 
-  private subject:Subject<User> = new Subject<User>();
-  public $userCreated:Observable<User> = this.subject.asObservable();
+  private subject:Subject<UserDto> = new Subject<UserDto>();
+  public $userCreated:Observable<UserDto> = this.subject.asObservable();
 
   constructor() { }
 
-  notify(user : User){
+  notify(user : UserDto){
     this.subject.next(user);
   }
 
