@@ -11,5 +11,4 @@ export interface UserDto {
   numRue:string;
   cp:number;
   ville:string;
-  token: string;
 }
