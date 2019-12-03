@@ -8,12 +8,11 @@ import {InscriptionComponent} from '../inscription/inscription.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppModule} from '../app.module';
 import {ComponentAllComponent} from '../component-all/component-all.component';
-import {AdminComponent} from '../admin/admin.component';
 
 const routes:Routes =[
   {
     path: "Accueil",
-    component: AdminComponent
+    component: AccueilComponent
   },
   {
     path:'',
@@ -35,15 +34,11 @@ const routes:Routes =[
   {
     path:"Tout",
     component: ComponentAllComponent
-  },
-  {
-    path:"Admin",
-    component: AdminComponent
   }
 ];
 
 @NgModule({
-  declarations: [AccueilComponent, ProductsComponent,ContactComponent, InscriptionComponent,ComponentAllComponent,AdminComponent],
+  declarations: [AccueilComponent, ProductsComponent,ContactComponent, InscriptionComponent,ComponentAllComponent],
   exports: [
     AccueilComponent,
     ComponentAllComponent
@@ -53,7 +48,6 @@ const routes:Routes =[
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule,
-    AppModule,
   ]
 })
 export class RoutingModule { }
