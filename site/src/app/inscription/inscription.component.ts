@@ -126,8 +126,6 @@ export class InscriptionComponent implements OnInit {
       numRue:this.form.get("num").value,
       cp:this.form.get("cp").value,
       ville:this.form.get("ville").value,
-      //Modifier !!!!!!!!!!!!!!!!!!!!!!!!
-      token: null
     };
   }
 
