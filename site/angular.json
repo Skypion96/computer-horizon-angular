@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "C:/Users/krefel/Google Drive/HELHA/Bloc 3/Projet/DEPO TI C#/computer-horizon-c/ComputerHorizon/ComputerHorizon/wwwroot/js",
+            "outputPath": "D:/HELHA/bloc3/projetRider/computer-horizon-c/ComputerHorizon/ComputerHorizon/wwwroot/js",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",

@@ -7,7 +7,6 @@ import {log} from 'util';
 import {first} from 'rxjs/operators';
 import {AuthenticationService} from '../services/authentification.service';
 import {UserService} from '../services/user.service';
-import {AlertService} from '../services/alert.service';
 import {RoutingModule} from '../routing/routing.module';
 import {RouterModule} from '@angular/router';
 
@@ -20,17 +19,15 @@ export class InscriptionComponent implements OnInit {
 
 
   registerForm: FormGroup;
-  loading = false;
-  submitted = false;
   readonly ACCUEIL:string ="Accueil";
   readonly LOGIN:string ="Login";
 
   private nomUtilisateur:string;
-  private userService: UserService;
+  //private
 
   form: FormGroup = this.fb.group({
-    name : this.fb.control('', Validators.required),
-    firstName : this.fb.control('', Validators.required),
+    nom : this.fb.control('', Validators.required),
+    prenom : this.fb.control('', Validators.required),
     mail : this.fb.control('', Validators.required),
     mdp : this.fb.control('', Validators.required),
     mdpC : this.fb.control('', Validators.required),
@@ -42,7 +39,7 @@ export class InscriptionComponent implements OnInit {
   });
 
 
-  constructor(public fb: FormBuilder, public streamUserCreated: CreateUserService) { }
+  constructor(public fb: FormBuilder, public streamUserCreated: CreateUserService, public userService: UserService) { }
 
   ngOnInit() {
     this.listenStreamUserCreated();
@@ -59,8 +56,8 @@ export class InscriptionComponent implements OnInit {
 
   private buildUser():UserDto {
     return {
-      nomUtilisateur: this.form.get("name").value,
-      prenomUtilisateur: this.form.get("firstName").value,
+      nomUtilisateur: this.form.get("nom").value,
+      prenomUtilisateur: this.form.get("prenom").value,
       mail: this.form.get("mail").value,
       mdp: this.form.get("mdp").value,
       tel: this.form.get("tel").value,
@@ -73,7 +70,7 @@ export class InscriptionComponent implements OnInit {
 
   private createdUser(user:UserDto){
     const sub = this.userService.post(user).subscribe(user => console.log());
+    //const sub = this.userService.post(user).subscribe(user => console.log());
   }
-
 }
 

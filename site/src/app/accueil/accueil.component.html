@@ -11,13 +11,3 @@
 </div>
 <br><br><br><br>
 
-<h1>Hi {{currentUser.nomUtilisateur}} {{currentUser.prenomUtilisateur}}!</h1>
-<p>You're logged in with Angular 8!!</p>
-<h3>All registered users:</h3>
-<ul>
-  <li *ngFor="let user of users">
-    {{user.username}} ({{user.nomUtilisateur}} {{user.prenomUtilisateur}})
-    - <a (click)="deleteUser(user.mail)" class="text-danger">Delete</a>
-  </li>
-</ul>
-

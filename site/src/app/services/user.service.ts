@@ -16,8 +16,8 @@ export class UserService {
     return this.http.get<UserList>(UserService.URAL_API);
   }
 
-  post(user: UserDto): Observable<ProcDTO> {
-    return this.http.post<ProcDTO>(UserService.URAL_API, user);
+  post(user: UserDto): Observable<UserDto> {
+    return this.http.post<UserDto>(UserService.URAL_API, user);
   }
 
   update(user:UserDto): Observable<any>{

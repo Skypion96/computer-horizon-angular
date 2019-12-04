@@ -1,78 +1,34 @@
-<h2 style="margin-top: 20%">Register</h2>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="nomUtilisateur">Nom</label>
-    <input type="text" formControlName="nomUtilisateur" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nomUtilisateur.errors }" />
-    <div *ngIf="submitted && f.nomUtilisateur.errors" class="invalid-feedback">
-      <div *ngIf="f.nomUtilisateur.errors.required">Nom is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="prenomUtilisateur">Prenom</label>
-    <input type="text" formControlName="prenomUtilisateur" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenomUtilisateur.errors }" />
-    <div *ngIf="submitted && f.prenomUtilisateur.errors" class="invalid-feedback">
-      <div *ngIf="f.prenomUtilisateur.errors.required">Prenom is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="mail">Mail</label>
-    <input type="text" formControlName="mail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mail.errors }" />
-    <div *ngIf="submitted && f.mail.errors" class="invalid-feedback">
-      <div *ngIf="f.mail.errors.required">Mail is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="mdp">Mot de passe</label>
-    <input type="password" formControlName="mdp" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mdp.errors }" />
-    <div *ngIf="submitted && f.mdp.errors" class="invalid-feedback">
-      <div *ngIf="f.mdp.errors.required">Mot de passe is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="tel">Tel</label>
-    <input type="text" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" />
-    <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
-      <div *ngIf="f.tel.errors.required">Tel is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="rue">Rue</label>
-    <input type="text" formControlName="rue" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rue.errors }" />
-    <div *ngIf="submitted && f.rue.errors" class="invalid-feedback">
-      <div *ngIf="f.rue.errors.required">Rue is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="numRue">Numéro</label>
-    <input type="text" formControlName="numRue" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numRue.errors }" />
-    <div *ngIf="submitted && f.numRue.errors" class="invalid-feedback">
-      <div *ngIf="f.numRue.errors.required">Numéro is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="cp">Code postal</label>
-    <input type="text" formControlName="cp" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cp.errors }" />
-    <div *ngIf="submitted && f.cp.errors" class="invalid-feedback">
-      <div *ngIf="f.cp.errors.required">Code postal is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="ville">Ville</label>
-    <input type="text" formControlName="ville" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ville.errors }" />
-    <div *ngIf="submitted && f.ville.errors" class="invalid-feedback">
-      <div *ngIf="f.ville.errors.required">Ville is required</div>
-    </div>
-  </div>
+<h2 style="margin-top: 20%">Inscription</h2>
+<form [formGroup]="form" (ngSubmit)="createUser($event)">
+  <label for="nom">Nom: </label>
+  <input id="nom" type="text" placeholder="ex: Dupont" formControlName="nom" [required]>
 
+  <label for="prenom">Prénom: </label>
+  <input id="prenom" type="text" placeholder="ex: Jean" formControlName="prenom">
 
+  <label for="mail">E-mail: </label>
+  <input id="mail" type="text" placeholder="ex: dupont@gmail.com" formControlName="mail">
 
+  <label for="mdp">Mot de passe: </label>
+  <input id="mdp" type="password" formControlName="mdp">
 
+  <label for="mdpC">Confirmer le mot de passe: </label>
+  <input id="mdpC" type="password" formControlName="mdpC">
 
-  <div class="form-group">
-    <button [disabled]="loading" class="btn btn-primary">
-      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-      Register
-    </button>
-    <a [routerLink]="'/'+ACCUEIL" class="btn btn-link">Cancel</a>
-  </div>
+  <label for="tel">Numéro de téléphone: </label>
+  <input id="tel" type="number" placeholder="ex: 0468802058" formControlName="tel">
+
+  <label for="rue">Rue: </label>
+  <input id="rue" type="text" placeholder="ex: Rue de l'Église" formControlName="rue">
+
+  <label for="num">Numéro: </label>
+  <input id="num" type="text" placeholder="20A" formControlName="num">
+
+  <label for="cp">Code postal: </label>
+  <input id="cp" type="number" placeholder="ex: 7000" formControlName="cp">
+
+  <label for="ville">Ville: </label>
+  <input id="ville" type="text" placeholder="ex: Mons" formControlName="ville">
+
+  <button>S'inscrire</button>
 </form>

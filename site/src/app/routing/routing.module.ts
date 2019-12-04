@@ -10,6 +10,7 @@ import {AppModule} from '../app.module';
 import {ComponentAllComponent} from '../component-all/component-all.component';
 import {AdminComponent} from '../admin/admin.component';
 import {AjoutComponentComponent} from '../admin/Ajout/ajout-component/ajout-component.component';
+import {LoginComponent} from '../login/login.component';
 
 const routes:Routes =[
   {
@@ -44,6 +45,10 @@ const routes:Routes =[
   {
     path:"Ajout",
     component: AjoutComponentComponent
+  },
+  {
+    path:"login",
+    component: LoginComponent
   }
 ];
 
