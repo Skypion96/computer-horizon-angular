@@ -1,3 +1,7 @@
+<div style="margin-top: 10%">
+  <button [routerLink]="'/'+ADMIN">Retour en arrière</button>
+</div>
+
 <div class="processeur">
   <h3>AJOUT PROCESSEUR</h3>
   <form [formGroup]="form" (ngSubmit)="createProc($event)">
@@ -29,7 +33,7 @@
       <label for="img">Img : </label>
       <input type="text" formControlName="img" id="img">
     </div>
-    <button [disabled]="!form.valid">create</button>
+    <button class="addbtn" [disabled]="!form.valid">Ajouter</button>
   </form>
 </div>
 
@@ -64,7 +68,7 @@
       <label for="imgCG">Img : </label>
       <input type="text" formControlName="imgCG" id="imgCG">
     </div>
-    <button [disabled]="!formCG.valid">create</button>
+    <button class="addbtn" [disabled]="!formCG.valid">Ajouter</button>
   </form>
 </div>
 
@@ -104,7 +108,7 @@
       <label for="imgDD">Img : </label>
       <input type="text" formControlName="imgDD" id="imgDD">
     </div>
-    <button [disabled]="!formDD.valid">create</button>
+    <button class="addbtn" [disabled]="!formDD.valid">Ajouter</button>
   </form>
 </div>
 
@@ -159,6 +163,6 @@
       <label for="imgOrdi">Img : </label>
       <input type="text" formControlName="imgOrdi" id="imgOrdi">
     </div>
-    <button [disabled]="!formOrdi.valid">create</button>
+    <button class="addbtn" [disabled]="!formOrdi.valid">Ajouter</button>
   </form>
 </div>

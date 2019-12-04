@@ -1,23 +1,36 @@
 .processeur{
   margin-left: 5%;
-  margin-top: 15%;
+  margin-top: 5%;
   float: left;
 }
 
 .disqueD{
-  margin-top: 15%;
+  margin-top: 5%;
   margin-left: 5%;
   float: left;
 }
 
 .carteG{
-  margin-top: 15%;
+  margin-top: 5%;
   margin-left: 5%;
   float: left;
 }
 
 .ordinateur{
-  margin-top: 15%;
+  margin-top: 5%;
   margin-left: 5%;
   float: left;
+}
+
+button{
+  margin-left: 2%;
+}
+
+ul{
+  list-style: none;
+  margin-top: 10%;
+}
+
+.addbtn{
+  margin-top: 2%;
 }

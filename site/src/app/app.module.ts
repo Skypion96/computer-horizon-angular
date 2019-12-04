@@ -14,7 +14,6 @@ import { DisqueDPipe } from './pipes/disque-d.pipe';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
-import {CarteGComponent} from './admin/Ajout/carte-g/carte-g.component';
 
 
 @NgModule({
@@ -28,7 +27,6 @@ import {CarteGComponent} from './admin/Ajout/carte-g/carte-g.component';
     DisqueDPipe,
     LoginComponent,
     AlertComponent,
-    CarteGComponent
   ],
   imports: [
     BrowserModule,

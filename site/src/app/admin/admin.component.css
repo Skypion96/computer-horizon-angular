@@ -25,3 +25,13 @@ img{
   font-size: 10px;
 }
 
+button{
+  margin-left: 2%;
+}
+
+ul{
+  list-style: none;
+  margin-top: 10%;
+  text-align: center;
+}
+

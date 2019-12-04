@@ -22,6 +22,8 @@ import {OrdiDTO} from '../../../interfaces/ordiDTO';
 })
 export class AjoutComponentComponent implements OnInit {
 
+  readonly AJOUTPROC:string="AjoutProc";
+  readonly ADMIN:string ="Admin";
 
 
   form: FormGroup = this.fb.group({
@@ -120,6 +122,7 @@ export class AjoutComponentComponent implements OnInit {
   }
 
   //////////////////////////////////////////////////////
+  private _ssdbool:boolean=false;
 
   formDD: FormGroup = this.fbDD.group({
     nomDD : this.fbDD.control('', Validators.required),
@@ -132,6 +135,15 @@ export class AjoutComponentComponent implements OnInit {
     imgDD : this.fbDD.control('', Validators.required),
   });
 
+
+  get ssdbool(): boolean {
+    return this._ssdbool;
+  }
+
+  set ssdbool(value: boolean) {
+    this._ssdbool = value;
+  }
+
   createDD($event: any) {
     console.log(this.formDD.get("ssdDD").value);
     this.streamDDCreated.notify(this.buildDD());
@@ -143,58 +155,17 @@ export class AjoutComponentComponent implements OnInit {
   }
 
   private buildDD():DisqueDDTO {
-    if(this.formDD.get("interneDD").value==true && this.formDD.get("ssdDD").value==true){
       return {
         nom:this.formDD.get("nomDD").value,
         marque:this.formDD.get("marqueDD").value,
         capacite:this.formDD.get("capaciteDD").value,
-        ssd:true,
+        ssd:this.formDD.get("ssdDD").value,
         prix:this.formDD.get("prixDD").value,
-        interne:true,
+        interne:this.formDD.get("interneDD").value,
         qte:this.formDD.get("qteDD").value,
         img:this.formDD.get("imgDD").value,
         prixReduc:0.00,
       };
-    }
-    else if (this.formDD.get("interneDD").value==false && this.formDD.get("ssdDD").value==true){
-      return {
-        nom:this.formDD.get("nomDD").value,
-        marque:this.formDD.get("marqueDD").value,
-        capacite:this.formDD.get("capaciteDD").value,
-        ssd:false,
-        prix:this.formDD.get("prixDD").value,
-        interne:true,
-        qte:this.formDD.get("qteDD").value,
-        img:this.formDD.get("imgDD").value,
-        prixReduc:0.00,
-      };
-    }
-    else if (this.formDD.get("interneDD").value==true && this.formDD.get("ssdDD").value==false){
-      return {
-        nom:this.formDD.get("nomDD").value,
-        marque:this.formDD.get("marqueDD").value,
-        capacite:this.formDD.get("capaciteDD").value,
-        ssd:true,
-        prix:this.formDD.get("prixDD").value,
-        interne:false,
-        qte:this.formDD.get("qteDD").value,
-        img:this.formDD.get("imgDD").value,
-        prixReduc:0.00,
-      };
-    }
-    else{
-      return {
-        nom:this.formDD.get("nomDD").value,
-        marque:this.formDD.get("marqueDD").value,
-        capacite:this.formDD.get("capaciteDD").value,
-        ssd:false,
-        prix:this.formDD.get("prixDD").value,
-        interne:false,
-        qte:this.formDD.get("qteDD").value,
-        img:this.formDD.get("imgDD").value,
-        prixReduc:0.00,
-      };
-    }
   }
 
   private createdDD(dd:DisqueDDTO){
