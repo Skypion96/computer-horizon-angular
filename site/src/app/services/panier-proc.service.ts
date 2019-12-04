@@ -22,5 +22,9 @@ export class PanierProcService {
     return this.http.post<PanierProcDTO>(PanierProcService.URAL_API, procs);
   }
 
+  delete(nom:string): Observable<any>{
+    return this.http.delete(PanierProcService.URAL_API + "/" + nom);
+  }
+
 
 }

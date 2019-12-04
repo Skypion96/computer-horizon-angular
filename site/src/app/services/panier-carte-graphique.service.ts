@@ -21,4 +21,8 @@ export class PanierCarteGraphiqueService {
   post(cartesGs: PanierCarteGraphiqueDto): Observable<PanierCarteGraphiqueDto> {
     return this.http.post<PanierCarteGraphiqueDto>(PanierCarteGraphiqueService.URAL_API, cartesGs);
   }
+
+  delete(nom:string): Observable<any>{
+    return this.http.delete(PanierCarteGraphiqueService.URAL_API + "/" + nom);
+  }
 }

@@ -21,4 +21,8 @@ export class PanierDisqueDurService {
   post(disqueDs: PanierDisqueDurDto): Observable<PanierDisqueDurDto> {
     return this.http.post<PanierDisqueDurDto>(PanierDisqueDurService.URAL_API, disqueDs);
   }
+
+  delete(nom:string): Observable<any>{
+    return this.http.delete(PanierDisqueDurService.URAL_API + "/" + nom);
+  }
 }

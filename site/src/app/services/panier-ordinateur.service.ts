@@ -21,4 +21,8 @@ export class PanierOrdinateurService {
   post(ordis: PanierOrdinateurDto): Observable<PanierOrdinateurDto> {
     return this.http.post<PanierOrdinateurDto>(PanierOrdinateurService.URAL_API, ordis);
   }
+
+  delete(nom:string): Observable<any>{
+    return this.http.delete(PanierOrdinateurService.URAL_API + "/" + nom);
+  }
 }

@@ -14,7 +14,6 @@ import { DisqueDPipe } from './pipes/disque-d.pipe';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
-import { PanierComponent } from './panier/panier.component';
 
 
 @NgModule({
@@ -28,7 +27,6 @@ import { PanierComponent } from './panier/panier.component';
     DisqueDPipe,
     LoginComponent,
     AlertComponent,
-    PanierComponent,
   ],
   imports: [
     BrowserModule,
