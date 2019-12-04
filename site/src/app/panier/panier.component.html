@@ -15,7 +15,7 @@
                 </tr>
               </table>
             </div>
-            <button>Supprimer du panier</button>
+            <button (click)="deleteAndSaveProcList(proc)">Supprimer du panier</button>
           </ng-template>
       </li>
     </div>
@@ -35,7 +35,7 @@
             </tr>
           </table>
         </div>
-        <button>Supprimer du panier</button>
+        <button (click)="deleteAndSaveDDList(dd)">Supprimer du panier</button>
       </div>
     </li>
   </ul>
@@ -56,7 +56,7 @@
               </tr>
             </table >
           </div>
-          <button>Supprimer du panier</button>
+          <button (click)="deleteAndSaveCGList(CG)">Supprimer du panier</button>
         </ng-template>
       </li>
     </div>
@@ -76,7 +76,7 @@
             </tr>
           </table>
         </div>
-        <button>Supprimer du panier</button>
+        <button (click)="deleteAndSaveOrdiList(ordi)">Supprimer du panier</button>
       </div>
     </li>
   </ul>
