@@ -4,14 +4,13 @@ import {PanierCarteGraphiqueService} from '../services/panier-carte-graphique.se
 import {PanierDisqueDurService} from '../services/panier-disque-dur.service';
 import {PanierOrdinateurService} from '../services/panier-ordinateur.service';
 import {Subscription} from 'rxjs';
+import {DisqueDList} from '../interfaces/disque-dDTO';
 import {PanierPList} from '../interfaces/panier-proc-dto';
 import {ProcList} from '../interfaces/procDTO';
 import {CarteGList} from '../interfaces/carte-gDTO';
+import {OrdiList} from '../interfaces/ordiDTO';
 import {ProcServiceService} from '../services/proc-service.service';
 import {CarteGServiceService} from '../services/carte-gservice.service';
-import {PanierCGList} from '../interfaces/panier-carte-graphique-dto';
-import {PanierOList, PanierOrdinateurDto} from '../interfaces/panier-ordinateur-dto';
-import {PanierDDList, PanierDisqueDurDto} from '../interfaces/panier-disque-dur-dto';
 
 @Component({
   selector: 'app-panier',
@@ -38,7 +37,7 @@ export class PanierComponent implements OnInit {
 
   //Liste de processeur car le panier contient des processeurs
   //A VERIFIER
-  private panierPList: PanierPList;
+  private panierPList: ProcList=[];
   private _procList: ProcList;
 
 
@@ -52,39 +51,39 @@ export class PanierComponent implements OnInit {
   private loadProcList():void{
     this.subQuery =this.panierProc
       .queryBase()
-      .subscribe(panierP =>  panierP);
+      .subscribe(panierP => this.panierPList = panierP);
   }
 
-  private panierDDList: PanierDisqueDurDto[];
+  private panierDDList: DisqueDList=[];
 
   private loadDisqueDList():void{
     this.subQuery =this.panierDD
       .queryBase()
-      .subscribe(panierDD =>  panierDD);
+      .subscribe(panierDD => this.panierDDList = panierDD);
   }
 
-  private panierCGList: PanierCGList;
+  private panierCGList: CarteGList=[];
 
   private loadCGListCG():void{
     this.subQuery =this.carteGService
       .queryBase()
-      .subscribe(carteG => carteG);
+      .subscribe(carteG => this.carteGList = carteG);
   }
   private loadCGList():void{
     this.subQuery =this.panierCG
       .queryBase()
-      .subscribe(panierCG =>  panierCG);
+      .subscribe(panierCG => this.panierCGList = panierCG);
   }
 
-  private panierOrdiList: PanierOList;
+  private panierOrdiList: OrdiList=[];
 
   private loadOrdiList():void{
     this.subQuery =this.panierOrdi
       .queryBase()
-      .subscribe(panierO => panierO);
+      .subscribe(panierO => this.panierOrdiList = panierO);
   }
 
-  /*private totalCalculate():void{
+  private totalCalculate():void{
     for(let proc of this.panierPList){
       this.total = this.total + proc.prix;
     }
@@ -97,6 +96,6 @@ export class PanierComponent implements OnInit {
     for(let ordi of this.panierOrdiList){
       this.total = this.total + ordi.prix;
     }
-  }*/
+  }
 
 }

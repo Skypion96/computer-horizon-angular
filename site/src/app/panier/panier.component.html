@@ -43,7 +43,7 @@
   <ul>
     <div *ngFor="let paniercg of panierCGList">
       <li *ngFor="let CG of carteGList">
-        <div class="card" *ngIf="CG.nom == paniercg;then thenBlock"></div>
+        <div class="card" *ngIf="CG.nom == paniercg.nom;then thenBlock"></div>
         <ng-template #thenBlock>
           <img src="{{CG.img}}"/>
           <div>
