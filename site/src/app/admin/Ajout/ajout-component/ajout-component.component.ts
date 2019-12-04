@@ -199,41 +199,22 @@ export class AjoutComponentComponent implements OnInit {
   }
 
   private buildOrdi():OrdiDTO {
-    if(this.formOrdi.get("ssdOrdi").value==true){
-      return {
-        nom:this.formOrdi.get("nomOrdi").value,
-        marque:this.formOrdi.get("marqueOrdi").value,
-        prix:this.formOrdi.get("prixOrdi").value,
-        nomProc:this.formOrdi.get("nomProcOrdi").value,
-        nomCg:this.formOrdi.get("nomCgOrdi").value,
-        capacite:this.formOrdi.get("capaciteOrdi").value,
-        memoireV:this.formOrdi.get("memoireVOrdi").value,
-        ssd:true,
-        description:this.formOrdi.get("descriptionOrdi").value,
-        qte:this.formOrdi.get("qteOrdi").value,
-        capaciteSsd:this.formOrdi.get("capaciteSsdOrdi").value,
-        img:this.formOrdi.get("imgOrdi").value,
-        prixReduc:0.00,
-      };
-    }
-    else{
-      return {
-        nom:this.formOrdi.get("nomOrdi").value,
-        marque:this.formOrdi.get("marqueOrdi").value,
-        prix:this.formOrdi.get("prixOrdi").value,
-        nomProc:this.formOrdi.get("nomProcOrdi").value,
-        nomCg:this.formOrdi.get("nomCgOrdi").value,
-        capacite:this.formOrdi.get("capaciteOrdi").value,
-        memoireV:this.formOrdi.get("memoireVOrdi").value,
-        ssd:false,
-        description:this.formOrdi.get("descriptionOrdi").value,
-        qte:this.formOrdi.get("qteOrdi").value,
-        capaciteSsd:this.formOrdi.get("capaciteSsdOrdi").value,
-        img:this.formOrdi.get("imgOrdi").value,
-        prixReduc:0.00,
-      };
-    }
 
+      return {
+        nom:this.formOrdi.get("nomOrdi").value,
+        marque:this.formOrdi.get("marqueOrdi").value,
+        prix:this.formOrdi.get("prixOrdi").value,
+        nomProc:this.formOrdi.get("nomProcOrdi").value,
+        nomCg:this.formOrdi.get("nomCgOrdi").value,
+        capacite:this.formOrdi.get("capaciteOrdi").value,
+        memoireV:this.formOrdi.get("memoireVOrdi").value,
+        ssd:this.formOrdi.get("ssdOrdi").value,
+        description:this.formOrdi.get("descriptionOrdi").value,
+        qte:this.formOrdi.get("qteOrdi").value,
+        capaciteSsd:this.formOrdi.get("capaciteSsdOrdi").value,
+        img:this.formOrdi.get("imgOrdi").value,
+        prixReduc:0.00,
+      };
   }
 
   private createdOrdi(ordi:OrdiDTO){
