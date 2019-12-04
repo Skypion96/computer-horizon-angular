@@ -15,6 +15,9 @@ export class AccueilComponent implements OnInit {
   laptop:any = "assets/home-featured-cat-pc.png";
   processor:any = "assets/pc-ordinateur-processeur.jpg";
   newHorizon:any = "assets/id template.jpg";
+  desc1:any = "assets/home1.jpg";
+  desc2:any = "assets/home2.jpg";
+  desc3:any = "assets/home3.jpg";
 
   currentUser: UserDto;
   users = [];

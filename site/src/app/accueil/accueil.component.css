@@ -4,6 +4,19 @@
   margin-right: 50%;
 }
 
+.desc{
+  font-family: 'Titillium Web', sans-serif;
+}
+
+#home3{
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+}
+
+.imgDesc{
+  float: left;
+}
+
 .welcome{
   font-family: 'Titillium Web', sans-serif;
   color: deepskyblue;
@@ -11,10 +24,13 @@
 .card{
   border-color: dimgray;
   border-radius: 8px;
-  border-style: double;
+  border-style: solid;
   display: inline-block;
-  margin-right: 10px;
+  margin-bottom: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
   text-align: center;
+  width: 80%;
 }
 
 
