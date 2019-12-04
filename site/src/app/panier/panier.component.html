@@ -43,8 +43,8 @@
   <ul>
     <div *ngFor="let paniercg of panierCGList">
       <li *ngFor="let CG of carteGList">
-        <div class="card" *ngIf="CG.nom == paniercg.nom;then thenBlock"></div>
-        <ng-template #thenBlock>
+        <div class="card" *ngIf="CG.nom == paniercg.nom;then thenBlock "></div>
+        <ng-template #thenBlock >
           <img src="{{CG.img}}"/>
           <div>
             <table>
@@ -54,7 +54,7 @@
               <tr>
                 {{CG.prix}}
               </tr>
-            </table>
+            </table >
           </div>
           <button>Supprimer du panier</button>
         </ng-template>
@@ -81,7 +81,8 @@
     </li>
   </ul>
 
-  <b>Total: {{total}}</b>
   <!--[routerLink]=""-->
-  <button>Confirmer l'achat</button>
+  <button >Confirmer l'achat</button>
 </div>
+
+<b>Total: {{totalCalculate()}}</b>

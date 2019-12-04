@@ -20,7 +20,7 @@ import {CarteGServiceService} from '../services/carte-gservice.service';
 export class PanierComponent implements OnInit {
 
   private subQuery:Subscription;
-  private total:number;
+  private _total:number=0;
   private carteGList: CarteGList=[];
 
   constructor(public panierProc: PanierProcService, public panierCG: PanierCarteGraphiqueService, public panierDD: PanierDisqueDurService,
@@ -83,19 +83,25 @@ export class PanierComponent implements OnInit {
       .subscribe(panierO => this.panierOrdiList = panierO);
   }
 
-  private totalCalculate():void{
-    for(let proc of this.panierPList){
-      this.total = this.total + proc.prix;
-    }
-    for(let dd of this.panierDDList){
-      this.total = this.total + dd.prix;
-    }
-    for(let cg of this.panierCGList){
-      this.total = this.total + cg.prix;
-    }
-    for(let ordi of this.panierOrdiList){
-      this.total = this.total + ordi.prix;
-    }
+  get total(): number {
+    return this._total;
   }
+
+  set total(value: number) {
+    this._total += value;
+  }
+
+  private totalCalculate():number{
+
+      for(let i of this.carteGList){
+        for(let cg of this.panierCGList){
+          if(i.nom==cg.nom){
+            this.total = i.prix;
+        }
+      }
+    }
+      return this.total;
+  }
+
 
 }
