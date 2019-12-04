@@ -1,3 +1,81 @@
-<div>
+<div class="panier">
+  <ul>
+    <li *ngFor="let proc of panierPList">
+      <div class="card">
+        <img src="{{proc.img}}"/>
+        <div>
+          <table>
+            <tr>
+              {{proc.nom}}
+            </tr>
+            <tr>
+              {{proc.prix}}
+            </tr>
+          </table>
+        </div>
+        <button>Supprimer du panier</button>
+      </div>
+    </li>
+  </ul>
 
+  <ul>
+    <li *ngFor="let dd of panierDDList">
+      <div class="card">
+        <img src="{{dd.img}}"/>
+        <div>
+          <table>
+            <tr>
+              {{dd.nom}}
+            </tr>
+            <tr>
+              {{dd.prix}}
+            </tr>
+          </table>
+        </div>
+        <button>Supprimer du panier</button>
+      </div>
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let cg of panierCGList">
+      <div class="card">
+        <img src="{{cg.img}}"/>
+        <div>
+          <table>
+            <tr>
+              {{cg.nom}}
+            </tr>
+            <tr>
+              {{cg.prix}}
+            </tr>
+          </table>
+        </div>
+        <button>Supprimer du panier</button>
+      </div>
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let ordi of panierOrdiList">
+      <div class="card">
+        <img src="{{ordi.img}}"/>
+        <div>
+          <table>
+            <tr>
+              {{ordi.nom}}
+            </tr>
+            <tr>
+              {{ordi.prix}}
+            </tr>
+          </table>
+        </div>
+        <button>Supprimer du panier</button>
+      </div>
+    </li>
+  </ul>
+
+  <b>Total: {{total}}</b>
+  <!--[routerLink]=""-->
+  <button>Confirmer l'achat</button>
 </div>

@@ -11,6 +11,7 @@ import {ComponentAllComponent} from '../component-all/component-all.component';
 import {AdminComponent} from '../admin/admin.component';
 import {AjoutComponentComponent} from '../admin/Ajout/ajout-component/ajout-component.component';
 import {LoginComponent} from '../login/login.component';
+import {PanierComponent} from '../panier/panier.component';
 
 const routes:Routes =[
   {
@@ -49,11 +50,15 @@ const routes:Routes =[
   {
     path:"login",
     component: LoginComponent
+  },
+  {
+    path:"panier",
+    component: PanierComponent
   }
 ];
 
 @NgModule({
-  declarations: [AccueilComponent, ProductsComponent,ContactComponent, InscriptionComponent,ComponentAllComponent,AdminComponent,AjoutComponentComponent],
+  declarations: [AccueilComponent, ProductsComponent,ContactComponent, InscriptionComponent,ComponentAllComponent,AdminComponent,AjoutComponentComponent, LoginComponent, PanierComponent],
   exports: [
     AccueilComponent,
     ComponentAllComponent
