@@ -6,11 +6,9 @@ import {ProductsComponent} from '../products/products.component';
 import {ContactComponent} from '../contact/contact/contact.component';
 import {InscriptionComponent} from '../inscription/inscription.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AppModule} from '../app.module';
 import {ComponentAllComponent} from '../component-all/component-all.component';
 import {AdminComponent} from '../admin/admin.component';
 import {AjoutComponentComponent} from '../admin/Ajout/ajout-component/ajout-component.component';
-import {LoginComponent} from '../login/login.component';
 import {PanierComponent} from '../panier/panier.component';
 
 const routes:Routes =[
@@ -48,11 +46,7 @@ const routes:Routes =[
     component: AjoutComponentComponent
   },
   {
-    path:"login",
-    component: LoginComponent
-  },
-  {
-    path:"panier",
+    path:"panierpanier",
     component: PanierComponent
   }
 ];

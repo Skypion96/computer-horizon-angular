@@ -1,21 +1,24 @@
 <div class="panier" style="margin-top: 20%">
   <ul>
-    <li *ngFor="let proc of panierPList">
-      <div class="card">
-        <img src="{{proc.img}}"/>
-        <div>
-          <table>
-            <tr>
-              {{proc.nom}}
-            </tr>
-            <tr>
-              {{proc.prix}}
-            </tr>
-          </table>
-        </div>
-        <button>Supprimer du panier</button>
-      </div>
-    </li>
+    <div *ngFor="let procp of panierPList">
+      <li *ngFor="let proc of _procList">
+        <div class="card" *ngIf="proc.nom == procp.nom;then thenBlock"></div>
+          <ng-template #thenBlock>
+            <img src="{{proc.img}}"/>
+            <div>
+              <table>
+                <tr>
+                  {{proc.nom}}
+                </tr>
+                <tr>
+                  {{proc.prix}}
+                </tr>
+              </table>
+            </div>
+            <button>Supprimer du panier</button>
+          </ng-template>
+      </li>
+    </div>
   </ul>
 
   <ul>
@@ -38,22 +41,25 @@
   </ul>
 
   <ul>
-    <li *ngFor="let cg of panierCGList">
-      <div class="card">
-        <img src="{{cg.img}}"/>
-        <div>
-          <table>
-            <tr>
-              {{cg.nom}}
-            </tr>
-            <tr>
-              {{cg.prix}}
-            </tr>
-          </table>
-        </div>
-        <button>Supprimer du panier</button>
-      </div>
-    </li>
+    <div *ngFor="let paniercg of panierCGList">
+      <li *ngFor="let CG of carteGList">
+        <div class="card" *ngIf="CG.nom == paniercg;then thenBlock"></div>
+        <ng-template #thenBlock>
+          <img src="{{CG.img}}"/>
+          <div>
+            <table>
+              <tr>
+                {{CG.nom}}
+              </tr>
+              <tr>
+                {{CG.prix}}
+              </tr>
+            </table>
+          </div>
+          <button>Supprimer du panier</button>
+        </ng-template>
+      </li>
+    </div>
   </ul>
 
   <ul>

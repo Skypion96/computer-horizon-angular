@@ -4,11 +4,14 @@ import {PanierCarteGraphiqueService} from '../services/panier-carte-graphique.se
 import {PanierDisqueDurService} from '../services/panier-disque-dur.service';
 import {PanierOrdinateurService} from '../services/panier-ordinateur.service';
 import {Subscription} from 'rxjs';
-import {DisqueDList} from '../interfaces/disque-dDTO';
 import {PanierPList} from '../interfaces/panier-proc-dto';
 import {ProcList} from '../interfaces/procDTO';
 import {CarteGList} from '../interfaces/carte-gDTO';
-import {OrdiList} from '../interfaces/ordiDTO';
+import {ProcServiceService} from '../services/proc-service.service';
+import {CarteGServiceService} from '../services/carte-gservice.service';
+import {PanierCGList} from '../interfaces/panier-carte-graphique-dto';
+import {PanierOList, PanierOrdinateurDto} from '../interfaces/panier-ordinateur-dto';
+import {PanierDDList, PanierDisqueDurDto} from '../interfaces/panier-disque-dur-dto';
 
 @Component({
   selector: 'app-panier',
@@ -19,52 +22,69 @@ export class PanierComponent implements OnInit {
 
   private subQuery:Subscription;
   private total:number;
+  private carteGList: CarteGList=[];
 
   constructor(public panierProc: PanierProcService, public panierCG: PanierCarteGraphiqueService, public panierDD: PanierDisqueDurService,
-              public panierOrdi: PanierOrdinateurService) { }
+              public panierOrdi: PanierOrdinateurService,public procService:ProcServiceService,public carteGService:CarteGServiceService) { }
 
   ngOnInit() {
+    this.loadProcListProc();
     this.loadProcList();
     this.loadDisqueDList();
     this.loadCGList();
     this.loadOrdiList();
+    this.loadCGListCG();
   }
 
   //Liste de processeur car le panier contient des processeurs
   //A VERIFIER
-  private panierPList: ProcList=[];
+  private panierPList: PanierPList;
+  private _procList: ProcList;
 
+
+
+
+  private loadProcListProc():void{
+    this.subQuery =this.procService
+      .queryBase()
+      .subscribe(procs => this._procList = procs);
+  }
   private loadProcList():void{
     this.subQuery =this.panierProc
       .queryBase()
-      .subscribe(panierP => this.panierPList = panierP);
+      .subscribe(panierP =>  panierP);
   }
 
-  private panierDDList: DisqueDList=[];
+  private panierDDList: PanierDisqueDurDto[];
 
   private loadDisqueDList():void{
     this.subQuery =this.panierDD
       .queryBase()
-      .subscribe(panierDD => this.panierDDList = panierDD);
+      .subscribe(panierDD =>  panierDD);
   }
 
-  private panierCGList: CarteGList=[];
+  private panierCGList: PanierCGList;
 
+  private loadCGListCG():void{
+    this.subQuery =this.carteGService
+      .queryBase()
+      .subscribe(carteG => carteG);
+  }
   private loadCGList():void{
     this.subQuery =this.panierCG
       .queryBase()
-      .subscribe(panierCG => this.panierCGList = panierCG);
+      .subscribe(panierCG =>  panierCG);
   }
 
-  private panierOrdiList: OrdiList=[];
+  private panierOrdiList: PanierOList;
 
   private loadOrdiList():void{
     this.subQuery =this.panierOrdi
       .queryBase()
-      .subscribe(panierO => this.panierOrdiList = panierO);
+      .subscribe(panierO => panierO);
   }
 
-  private totalCalculate():void{
+  /*private totalCalculate():void{
     for(let proc of this.panierPList){
       this.total = this.total + proc.prix;
     }
@@ -77,6 +97,6 @@ export class PanierComponent implements OnInit {
     for(let ordi of this.panierOrdiList){
       this.total = this.total + ordi.prix;
     }
-  }
+  }*/
 
 }
