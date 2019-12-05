@@ -5,12 +5,17 @@ import {PanierDisqueDurService} from '../services/panier-disque-dur.service';
 import {PanierOrdinateurService} from '../services/panier-ordinateur.service';
 import {Subscription} from 'rxjs';
 import {DisqueDDTO, DisqueDList} from '../interfaces/disque-dDTO';
-import {PanierPList} from '../interfaces/panier-proc-dto';
+import {PanierPList, PanierProcDTO} from '../interfaces/panier-proc-dto';
 import {ProcDTO, ProcList} from '../interfaces/procDTO';
 import {CarteGDTO, CarteGList} from '../interfaces/carte-gDTO';
 import {OrdiDTO, OrdiList} from '../interfaces/ordiDTO';
 import {ProcServiceService} from '../services/proc-service.service';
 import {CarteGServiceService} from '../services/carte-gservice.service';
+import {PanierCarteGraphiqueDto, PanierCGList} from '../interfaces/panier-carte-graphique-dto';
+import {PanierOList, PanierOrdinateurDto} from '../interfaces/panier-ordinateur-dto';
+import {PanierDDList, PanierDisqueDurDto} from '../interfaces/panier-disque-dur-dto';
+import {OrdiServiceService} from '../services/ordi-service.service';
+import {DisqueDServiceService} from '../services/disque-dservice.service';
 
 @Component({
   selector: 'app-panier',
@@ -25,9 +30,11 @@ export class PanierComponent implements OnInit {
   private procList: ProcList=[];
   private disqueDList: DisqueDList=[];
   private ordiList: OrdiList=[];
+  private _panierCalcTot:number=0;
 
   constructor(public panierProc: PanierProcService, public panierCG: PanierCarteGraphiqueService, public panierDD: PanierDisqueDurService,
-              public panierOrdi: PanierOrdinateurService,public procService:ProcServiceService,public carteGService:CarteGServiceService) { }
+              public panierOrdi: PanierOrdinateurService,public procService:ProcServiceService,public carteGService:CarteGServiceService,
+              public ordiService:OrdiServiceService,public disqueDService:DisqueDServiceService) { }
 
   ngOnInit() {
     this.loadProcListProc();
@@ -36,11 +43,13 @@ export class PanierComponent implements OnInit {
     this.loadCGList();
     this.loadOrdiList();
     this.loadCGListCG();
+    this.loadOrdiListOrdi();
+    this.loadDisqueDListDD();
   }
 
   //Liste de processeur car le panier contient des processeurs
   //A VERIFIER
-  private panierPList: ProcList=[];
+  private panierPList: PanierPList=[];
   private _procList: ProcList;
 
 
@@ -57,7 +66,7 @@ export class PanierComponent implements OnInit {
       .subscribe(panierP => this.panierPList = panierP);
   }
 
-  private panierDDList: DisqueDList=[];
+  private panierDDList: PanierDDList=[];
   private _ddList: DisqueDList;
 
   private loadDisqueDList():void{
@@ -65,8 +74,13 @@ export class PanierComponent implements OnInit {
       .queryBase()
       .subscribe(panierDD => this.panierDDList = panierDD);
   }
+  private loadDisqueDListDD():void{
+    this.subQuery =this.disqueDService
+      .queryBase()
+      .subscribe(disqueD => this.disqueDList = disqueD);
+  }
 
-  private panierCGList: CarteGList=[];
+  private panierCGList: PanierCGList=[];
   private _cgList: CarteGList;
 
   private loadCGListCG():void{
@@ -80,7 +94,7 @@ export class PanierComponent implements OnInit {
       .subscribe(panierCG => this.panierCGList = panierCG);
   }
 
-  private panierOrdiList: OrdiList=[];
+  private panierOrdiList: PanierOList=[];
   private _oList: OrdiList;
 
   private loadOrdiList():void{
@@ -88,64 +102,78 @@ export class PanierComponent implements OnInit {
       .queryBase()
       .subscribe(panierO => this.panierOrdiList = panierO);
   }
+  private loadOrdiListOrdi():void{
+    this.subQuery =this.ordiService
+      .queryBase()
+      .subscribe(ordi => this.ordiList = ordi);
+  }
 
   get total(): number {
     return this._total;
   }
 
   set total(value: number) {
-    this._total += value;
+    this._total = value;
   }
 
-  private totalCalculate():number{
+  private totalCalculate(value:number):void{
 
     for(let i of this.carteGList){
       for(let cg of this.panierCGList){
         if(i.nom==cg.nom){
-          this.total = i.prix;
+          this.total += i.prix;
         }
       }
     }
     for(let i of this.procList){
       for(let p of this.panierPList){
         if(i.nom==p.nom){
-          this.total = i.prix;
+          this.total += i.prix;
         }
       }
     }
     for(let i of this.disqueDList){
       for(let dd of this.panierDDList){
         if(i.nom==dd.nom){
-          this.total = i.prix;
+          this.total += i.prix;
         }
       }
     }
     for(let i of this.ordiList){
       for(let o of this.panierOrdiList){
         if(i.nom==o.nom){
-          this.total = i.prix;
+          this.total += i.prix;
         }
       }
     }
-    return this.total;
+    this.panierCalcTot=value;
   }
 
-  deleteAndSaveProcList(proc:ProcDTO) {
+
+  get panierCalcTot(): number {
+    return this._panierCalcTot;
+  }
+
+  set panierCalcTot(value: number) {
+    this._panierCalcTot = value;
+  }
+
+  deleteAndSaveProcList(proc:PanierProcDTO) {
     this.panierProc
       .delete(proc.nom)
       .subscribe(() => this.loadProcList());
   }
-  deleteAndSaveOrdiList(ordi:OrdiDTO) {
+  deleteAndSaveOrdiList(ordi:PanierOrdinateurDto) {
     this.panierOrdi
       .delete(ordi.nom)
       .subscribe(() => this.loadOrdiList());
   }
-  deleteAndSaveCGList(carteG:CarteGDTO) {
+  deleteAndSaveCGList(carteG:PanierCarteGraphiqueDto) {
     this.panierCG
       .delete(carteG.nom)
       .subscribe(() => this.loadCGList());
   }
-  deleteAndSaveDDList(dd:DisqueDDTO) {
+  deleteAndSaveDDList(dd:PanierDisqueDurDto) {
     this.panierDD
       .delete(dd.nom)
       .subscribe(() => this.loadDisqueDList());

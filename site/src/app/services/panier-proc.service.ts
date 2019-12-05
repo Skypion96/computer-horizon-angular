@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {PanierProcDTO} from '../interfaces/panier-proc-dto';
+import {PanierPList, PanierProcDTO} from '../interfaces/panier-proc-dto';
 import {HttpClient} from '@angular/common/http';
 import {ProcList} from '../interfaces/procDTO';
 
@@ -14,8 +14,8 @@ export class PanierProcService {
   constructor(public http:HttpClient) { }
 
 
-  queryBase():Observable<ProcList>{
-    return this.http.get<ProcList>(PanierProcService.URAL_API);
+  queryBase():Observable<PanierPList>{
+    return this.http.get<PanierPList>(PanierProcService.URAL_API);
   }
 
   post(procs: PanierProcDTO): Observable<PanierProcDTO> {

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ProcDTO, ProcList} from "../interfaces/procDTO";
 import {CarteGDTO, CarteGList} from '../interfaces/carte-gDTO';
 
 @Injectable({

@@ -1,9 +1,9 @@
-<div class="panier" style="margin-top: 20%">
+<div class="panier" style="margin-top: 20%" >
   <ul>
     <div *ngFor="let procp of panierPList">
       <li *ngFor="let proc of _procList">
-        <div class="card" *ngIf="proc.nom == procp.nom;then thenBlock"></div>
-          <ng-template #thenBlock>
+        <div class="card" *ngIf="proc.nom == procp.nom;then thenBlockP"></div>
+          <ng-template #thenBlockP>
             <img src="{{proc.img}}"/>
             <div>
               <table>
@@ -15,36 +15,39 @@
                 </tr>
               </table>
             </div>
-            <button (click)="deleteAndSaveProcList(proc)">Supprimer du panier</button>
+            <button (click)="deleteAndSaveProcList(procp)">Supprimer du panier</button>
           </ng-template>
       </li>
     </div>
   </ul>
 
   <ul>
-    <li *ngFor="let dd of panierDDList">
-      <div class="card">
-        <img src="{{dd.img}}"/>
-        <div>
-          <table>
-            <tr>
-              {{dd.nom}}
-            </tr>
-            <tr>
-              {{dd.prix}}
-            </tr>
-          </table>
-        </div>
-        <button (click)="deleteAndSaveDDList(dd)">Supprimer du panier</button>
-      </div>
+    <div *ngFor="let panDD of panierDDList">
+      <li *ngFor="let dd of disqueDList">
+        <div class="card" *ngIf="dd.nom == panDD.nom;then thenBlockDD "></div>
+          <ng-template #thenBlockDD>
+          <img src="{{dd.img}}"/>
+          <div>
+            <table>
+              <tr>
+                {{dd.nom}}
+              </tr>
+              <tr>
+                {{dd.prix}}
+              </tr>
+            </table>
+          </div>
+          <button (click)="deleteAndSaveDDList(panDD)">Supprimer du panier</button>
+      </ng-template>
     </li>
+    </div>
   </ul>
 
   <ul>
     <div *ngFor="let paniercg of panierCGList">
       <li *ngFor="let CG of carteGList">
-        <div class="card" *ngIf="CG.nom == paniercg.nom;then thenBlock "></div>
-        <ng-template #thenBlock >
+        <div class="card" *ngIf="CG.nom == paniercg.nom;then thenBlockCG"></div>
+        <ng-template #thenBlockCG >
           <img src="{{CG.img}}"/>
           <div>
             <table>
@@ -54,35 +57,45 @@
               <tr>
                 {{CG.prix}}
               </tr>
-            </table >
+            </table>
           </div>
-          <button (click)="deleteAndSaveCGList(CG)">Supprimer du panier</button>
+          <button (click)="deleteAndSaveCGList(paniercg)">Supprimer du panier</button>
         </ng-template>
       </li>
     </div>
   </ul>
 
   <ul>
-    <li *ngFor="let ordi of panierOrdiList">
-      <div class="card">
-        <img src="{{ordi.img}}"/>
-        <div>
-          <table>
-            <tr>
-              {{ordi.nom}}
-            </tr>
-            <tr>
-              {{ordi.prix}}
-            </tr>
-          </table>
-        </div>
-        <button (click)="deleteAndSaveOrdiList(ordi)">Supprimer du panier</button>
-      </div>
-    </li>
+    <div *ngFor="let panOrdi of panierOrdiList">
+      <li *ngFor="let ordi of ordiList">
+        <div class="card" *ngIf="ordi.nom == panOrdi.nom;then thenBlockOrdi "></div>
+        <ng-template #thenBlockOrdi >
+          <img src="{{ordi.img}}"/>
+          <div>
+            <table>
+              <tr>
+                {{ordi.nom}}
+              </tr>
+              <tr>
+                {{ordi.prix}}
+              </tr>
+            </table >
+          </div>
+          <button (click)="deleteAndSaveOrdiList(panOrdi)">Supprimer du panier</button>
+        </ng-template>
+      </li>
+    </div>
   </ul>
+  <div *ngIf="panierCalcTot==1;then thenBlockDesact;else elseBlockDesact"></div>
+  <ng-template #thenBlockDesact>
+    <button>Calculer le total</button>
+  </ng-template>
+  <ng-template #elseBlockDesact>
+    <button (click)="totalCalculate(1)">Calculer le total</button>
+  </ng-template>
 
   <!--[routerLink]=""-->
   <button >Confirmer l'achat</button>
 </div>
 
-<b>Total: {{totalCalculate()}}</b>
+<b >Total: {{total}}</b>
