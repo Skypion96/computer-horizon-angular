@@ -19,8 +19,8 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(username, password) {
-    return this.http.post<any>(`${UserService.getURAL_API()}/users/authenticate`, { username, password })
+  login(mail, mdp) {
+    return this.http.post<any>(`${UserService.getURAL_API()}/authenticate`, { mail, mdp })
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));

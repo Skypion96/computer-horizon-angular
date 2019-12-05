@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   error = '';
   readonly INSCRIPTION:string="inscription";
+  readonly ACCUEIL:string ="Accueil";
 
   constructor(
     private formBuilder: FormBuilder,
