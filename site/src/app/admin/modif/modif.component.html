@@ -1,0 +1,156 @@
+<div style="margin-top: 10%">
+  <button (click)="iElement=1">Modifier les cartes graphiques</button>
+  <button (click)="iElement=2">Modifier les disques durs</button>
+  <button (click)="iElement=3">Modifier les ordinateurs</button>
+  <button (click)="iElement=4">Modifier les processeurs</button>
+  <button [routerLink]="'/'+ADMIN">Modifier des données</button>
+</div>
+
+<!-- *********************************************** CARTES GRAPHIQUES *********************************************** -->
+<div class="carteGg" *ngIf="iElement==1;then thenBlockCG"></div>
+<ng-template #thenBlockCG>
+  <ul>
+    <li class="cg" *ngFor="let cg of carteGList; index as i">
+      <div class="card" >
+        <img src="{{cg.img}}"/>
+        <div>
+          <table>
+            <tr>
+              <b class="nom">Nom : {{cg.nom}}</b>
+            </tr>
+            <br><br>
+            <tr>
+              <b class="prixICG" >Prix : {{cg.prix}} €</b>
+            </tr>
+            <tr>
+              <b class="freq" >Marque : {{cg.marque}} </b>
+            </tr>
+            <tr>
+              <b class="freq" >Frequence : {{cg.frequence}} </b>
+            </tr>
+            <tr>
+              <b class="freq" >Mémoire vidéo : {{cg.memoireVideo}} </b>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </li>
+  </ul>
+</ng-template>
+<!-- *********************************************** DISQUE DUR *********************************************** -->
+<div class="disque" >
+  <div class="disqueD" *ngIf="iElement==2;then thenBlockDD"></div>
+  <ng-template #thenBlockDD>
+    <ul>
+      <li class="dd" *ngFor="let dd of disqueDList; index as i">
+        <div class="card" >
+          <img src="{{dd.img}}"/>
+          <div>
+            <table>
+              <tr>
+                <b class="nom">Nom : {{dd.nom}}</b>
+              </tr>
+              <br><br>
+              <tr>
+                <b class="prixI" >Prix : {{dd.prix}} €</b>
+              </tr>
+              <tr>
+                <b class="prixI">Marque : {{dd.marque}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">SSD : {{dd.ssd}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">Interne : {{dd.interne}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">Capacite : {{dd.capacite}} </b>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ng-template>
+</div>
+<br><br>
+<!-- ************************************* ORDINATEUR ***********************************************-->
+<div class="ordinateurAll" >
+  <div class="ordinateur" *ngIf="iElement==3;then thenBlockOrdi"></div>
+  <ng-template #thenBlockOrdi>
+    <ul>
+      <li class="ordi" *ngFor="let ordi of ordiList; index as i">
+        <div class="card" >
+          <img src="{{ordi.img}}"/>
+          <div>
+            <table>
+              <tr>
+                <b class="nom">Nom : {{ordi.nom}}</b>
+              </tr>
+              <br><br>
+              <tr>
+                <b class="prixI">Prix : {{ordi.prix}} €</b>
+              </tr>
+              <tr>
+                <b class="prixI">Marque : {{ordi.marque}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">Description : {{ordi.description}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">Capacite : {{ordi.capacite}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">Nom carte graphique : {{ordi.nomCg}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">Nom processeur : {{ordi.nomProc}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">SSD : {{ordi.ssd}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">Capacite SSD : {{ordi.capaciteSsd}} </b>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ng-template>
+</div>
+<!-- *********************************************** PROCESSEUR *********************************************** -->
+<div>
+  <div class="processeur" *ngIf="iElement==4;then thenBlockProc">  </div>
+  <ng-template #thenBlockProc>
+    <ul>
+      <li class="proc" *ngFor="let proc of _procList ; index as i" >
+        <div class="card">
+          <img src="{{proc.img}}"/>
+          <div>
+            <table>
+              <tr>
+                <b class="nom">Nom : </b>
+              </tr>
+              <br><br>
+              <tr>
+                <b class="prixI">Prix : {{proc.prix}} €</b>
+              </tr>
+              <tr>
+                <b class="prixI">Marque : {{proc.marque}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">Frequence : {{proc.frequence}} </b>
+              </tr>
+              <tr>
+                <b class="prixI">Nombre de coeurs : {{proc.nbCoeurs}} </b>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ng-template>
+</div>
+
+
