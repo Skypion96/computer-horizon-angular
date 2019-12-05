@@ -1,42 +1,58 @@
 <div style="margin-top: 10%">
+  <button [routerLink]="'/'+ADMIN">Retour en arrière</button>
   <button (click)="iElement=1">Modifier les cartes graphiques</button>
   <button (click)="iElement=2">Modifier les disques durs</button>
   <button (click)="iElement=3">Modifier les ordinateurs</button>
   <button (click)="iElement=4">Modifier les processeurs</button>
-  <button [routerLink]="'/'+ADMIN">Modifier des données</button>
 </div>
 
 <!-- *********************************************** CARTES GRAPHIQUES *********************************************** -->
 <div class="carteGg" *ngIf="iElement==1;then thenBlockCG"></div>
-<ng-template #thenBlockCG>
-  <ul>
-    <li class="cg" *ngFor="let cg of carteGList; index as i">
-      <div class="card" >
-        <img src="{{cg.img}}"/>
-        <div>
-          <table>
-            <tr>
-              <b class="nom">Nom : {{cg.nom}}</b>
-            </tr>
-            <br><br>
-            <tr>
-              <b class="prixICG" >Prix : {{cg.prix}} €</b>
-            </tr>
-            <tr>
-              <b class="freq" >Marque : {{cg.marque}} </b>
-            </tr>
-            <tr>
-              <b class="freq" >Frequence : {{cg.frequence}} </b>
-            </tr>
-            <tr>
-              <b class="freq" >Mémoire vidéo : {{cg.memoireVideo}} </b>
-            </tr>
-          </table>
+  <ng-template #thenBlockCG>
+    <ul>
+      <li class="cg" *ngFor="let cg of carteGList; index as i">
+        <div class="card"  >
+          <img src="{{cg.img}}"/>
+          <form [formGroup]="formCG" (ngSubmit)="updateCG($event)">
+            <div>
+              <label for="nomCG">Nom : </label>
+              <input type="text" formControlName="nomCG" id="nomCG" [value]="cg.nom">
+            </div>
+            <div>
+              <label for="marqueCG">Marque : </label>
+              <input type="text" formControlName="marqueCG" id="marqueCG" [value]="cg.marque">
+            </div>
+            <div>
+              <label for="prixCG">Prix : </label>
+              <input type="text" formControlName="prixCG" id="prixCG" [value]="cg.prix">
+            </div>
+            <div>
+              <label for="frequenceCG">Frequence : </label>
+              <input type="text" formControlName="frequenceCG" id="frequenceCG" [value]="cg.frequence">
+            </div>
+            <div>
+              <label for="memoireVideoCG">mMémoire Video : </label>
+              <input type="text" formControlName="memoireVideoCG" id="memoireVideoCG" [value]="cg.memoireVideo">
+            </div>
+            <div>
+              <label for="qteCG">Quantite : </label>
+              <input type="text" formControlName="qteCG" id="qteCG" [value]="cg.qte">
+            </div>
+            <div>
+              <label for="imgCG">Img : </label>
+              <input type="text" formControlName="imgCG" id="imgCG" [value]="cg.img">
+            </div>
+            <div>
+              <label for="prixReducCG">Prix Reduc : </label>
+              <input type="text" formControlName="prixReducCG" id="prixReducCG" [value]="cg.prixReduc">
+            </div>
+            <button class="addbtn" >Ajouter</button>
+          </form>
         </div>
-      </div>
-    </li>
-  </ul>
-</ng-template>
+      </li>
+    </ul>
+  </ng-template>
+
 <!-- *********************************************** DISQUE DUR *********************************************** -->
 <div class="disque" >
   <div class="disqueD" *ngIf="iElement==2;then thenBlockDD"></div>
@@ -45,29 +61,45 @@
       <li class="dd" *ngFor="let dd of disqueDList; index as i">
         <div class="card" >
           <img src="{{dd.img}}"/>
-          <div>
-            <table>
-              <tr>
-                <b class="nom">Nom : {{dd.nom}}</b>
-              </tr>
-              <br><br>
-              <tr>
-                <b class="prixI" >Prix : {{dd.prix}} €</b>
-              </tr>
-              <tr>
-                <b class="prixI">Marque : {{dd.marque}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">SSD : {{dd.ssd}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">Interne : {{dd.interne}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">Capacite : {{dd.capacite}} </b>
-              </tr>
-            </table>
-          </div>
+          <form [formGroup]="formDD" >
+            <div>
+              <label for="nomDD">Nom : </label>
+              <input type="text" formControlName="nomDD" id="nomDD" [value]="dd.nom">
+            </div>
+            <div>
+              <label for="marqueDD">Marque : </label>
+              <input type="text" formControlName="marqueDD" id="marqueDD" [value]="dd.marque">
+            </div>
+            <div>
+              <label for="capaciteDD">Capacite : </label>
+              <input type="text" formControlName="capaciteDD" id="capaciteDD" [value]="dd.capacite">
+            </div>
+            <div>
+              <label for="ssdDD">SSD : </label>
+              <input type="checkbox" formControlName="ssdDD" id="ssdDD" [value]="dd.ssd">
+            </div>
+            <div>
+              <label for="prixDD">Prix : </label>
+              <input type="text" formControlName="prixDD" id="prixDD" [value]="dd.prix">
+            </div>
+            <div>
+              <label for="interneDD">Interne : </label>
+              <input type="checkbox"  formControlName="interneDD" id="interneDD" [value]="dd.interne">
+            </div>
+            <div>
+              <label for="qteDD">Quantite : </label>
+              <input type="text" formControlName="qteDD" id="qteDD" [value]="dd.qte">
+            </div>
+            <div>
+              <label for="imgDD">Img : </label>
+              <input type="text" formControlName="imgDD" id="imgDD" [value]="dd.img">
+            </div>
+            <div>
+              <label for="prixReducDD">Prix Reduc : </label>
+              <input type="text" formControlName="prixReducDD" id="prixReducDD" [value]="dd.prixReduc">
+            </div>
+            <button class="addbtn" [disabled]="!formDD.valid">Ajouter</button>
+          </form>
         </div>
       </li>
     </ul>
@@ -82,38 +114,61 @@
       <li class="ordi" *ngFor="let ordi of ordiList; index as i">
         <div class="card" >
           <img src="{{ordi.img}}"/>
-          <div>
-            <table>
-              <tr>
-                <b class="nom">Nom : {{ordi.nom}}</b>
-              </tr>
-              <br><br>
-              <tr>
-                <b class="prixI">Prix : {{ordi.prix}} €</b>
-              </tr>
-              <tr>
-                <b class="prixI">Marque : {{ordi.marque}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">Description : {{ordi.description}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">Capacite : {{ordi.capacite}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">Nom carte graphique : {{ordi.nomCg}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">Nom processeur : {{ordi.nomProc}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">SSD : {{ordi.ssd}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">Capacite SSD : {{ordi.capaciteSsd}} </b>
-              </tr>
-            </table>
-          </div>
+          <form [formGroup]="formOrdi">
+            <div>
+              <label for="nomOrdi">Nom : </label>
+              <input type="text" formControlName="nomOrdi" id="nomOrdi" [value]="ordi.nom">
+            </div>
+            <div>
+              <label for="marqueOrdi">Marque : </label>
+              <input type="text" formControlName="marqueOrdi" id="marqueOrdi" [value]="ordi.marque">
+            </div>
+            <div>
+              <label for="prixOrdi">Prix : </label>
+              <input type="text" formControlName="prixOrdi" id="prixOrdi" [value]="ordi.prix">
+            </div>
+            <div>
+              <label for="nomProcOrdi">Nom processeur : </label>
+              <input type="text" formControlName="nomProcOrdi" id="nomProcOrdi" [value]="ordi.nomProc">
+            </div>
+            <div>
+              <label for="nomCgOrdi">Nom carte graphique : </label>
+              <input type="text" formControlName="nomCgOrdi" id="nomCgOrdi" [value]="ordi.nomCg">
+            </div>
+            <div>
+              <label for="capaciteOrdi">Capacite : </label>
+              <input type="text" formControlName="capaciteOrdi" id="capaciteOrdi" [value]="ordi.capacite">
+            </div>
+            <div>
+              <label for="memoireVOrdi">Memoire V : </label>
+              <input type="text" formControlName="memoireVOrdi" id="memoireVOrdi" [value]="ordi.memoireV">
+            </div>
+            <div>
+              <label for="ssdOrdi">SSD : </label>
+              <input type="checkbox" formControlName="ssdOrdi" id="ssdOrdi" [value]="ordi.ssd">
+            </div>
+            <div>
+              <label for="descriptionOrdi">Description : </label>
+              <input type="text" formControlName="descriptionOrdi" id="descriptionOrdi" [value]="ordi.description">
+            </div>
+            <div>
+              <label for="qteOrdi">Quantite : </label>
+              <input type="text" formControlName="qteOrdi" id="qteOrdi" [value]="ordi.qte">
+            </div>
+            <div>
+              <label for="capaciteSsdOrdi">Capacite SSD : </label>
+              <input type="text"  formControlName="capaciteSsdOrdi" id="capaciteSsdOrdi" [value]="ordi.capaciteSsd">
+            </div>
+            <div>
+              <label for="imgOrdi">Img : </label>
+              <input type="text" formControlName="imgOrdi" id="imgOrdi" [value]="ordi.img">
+            </div>
+            <div>
+              <label for="prixReducOrdi">Prix Reduc : </label>
+              <input type="text" formControlName="prixReducOrdi" id="prixReducOrdi" [value]="ordi.prixReduc">
+            </div>
+            <button class="addbtn" [disabled]="!formOrdi.valid">Ajouter</button>
+          </form>
         </div>
       </li>
     </ul>
@@ -127,26 +182,41 @@
       <li class="proc" *ngFor="let proc of _procList ; index as i" >
         <div class="card">
           <img src="{{proc.img}}"/>
-          <div>
-            <table>
-              <tr>
-                <b class="nom">Nom : </b>
-              </tr>
-              <br><br>
-              <tr>
-                <b class="prixI">Prix : {{proc.prix}} €</b>
-              </tr>
-              <tr>
-                <b class="prixI">Marque : {{proc.marque}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">Frequence : {{proc.frequence}} </b>
-              </tr>
-              <tr>
-                <b class="prixI">Nombre de coeurs : {{proc.nbCoeurs}} </b>
-              </tr>
-            </table>
+          <form [formGroup]="formP">
+            <div>
+            <label for="nomP">Nom : </label>
+            <input type="text" formControlName="nomP" id="nomP" [value]="proc.nom">
           </div>
+          <div>
+            <label for="marqueP">Marque : </label>
+            <input type="text" formControlName="marqueP" id="marqueP" [value]="proc.marque">
+          </div>
+          <div>
+            <label for="nbCoeursP">nbCoeurs : </label>
+            <input type="text" formControlName="nbCoeursP" id="nbCoeursP" [value]="proc.nbCoeurs">
+          </div>
+          <div>
+            <label for="frequenceP">Frequence : </label>
+            <input type="text" formControlName="frequenceP" id="frequenceP" [value]="proc.frequence">
+          </div>
+          <div>
+            <label for="prixP">Prix : </label>
+            <input type="text" formControlName="prixP" id="prixP" [value]="proc.prix">
+          </div>
+          <div>
+            <label for="qteP">Quantite : </label>
+            <input type="text" formControlName="qteP" id="qteP" [value]="proc.qte">
+          </div>
+          <div>
+            <label for="imgP">Img : </label>
+            <input type="text" formControlName="imgP" id="imgP" [value]="proc.img">
+          </div>
+            <div>
+              <label for="prixReducP">Prix Reduc : </label>
+              <input type="text" formControlName="prixReducP" id="prixReducP" [value]="proc.prixReduc">
+            </div>
+          <button class="addbtn" [disabled]="!formP.valid">Ajouter</button>
+          </form>
         </div>
       </li>
     </ul>
