@@ -13,7 +13,7 @@
       <li class="cg" *ngFor="let cg of carteGList; index as i">
         <div class="card"  >
           <img src="{{cg.img}}"/>
-          <form [formGroup]="formCG" (ngSubmit)="updateCG($event)">
+          <form [formGroup]="formCG" (ngSubmit)="updateCG(cg)">
             <div>
               <label for="nomCG">Nom : </label>
               <input type="text" formControlName="nomCG" id="nomCG" [value]="cg.nom">
@@ -61,7 +61,7 @@
       <li class="dd" *ngFor="let dd of disqueDList; index as i">
         <div class="card" >
           <img src="{{dd.img}}"/>
-          <form [formGroup]="formDD" >
+          <form [formGroup]="formDD" (ngSubmit)="updateDD(dd)">
             <div>
               <label for="nomDD">Nom : </label>
               <input type="text" formControlName="nomDD" id="nomDD" [value]="dd.nom">
@@ -114,7 +114,7 @@
       <li class="ordi" *ngFor="let ordi of ordiList; index as i">
         <div class="card" >
           <img src="{{ordi.img}}"/>
-          <form [formGroup]="formOrdi">
+          <form [formGroup]="formOrdi" (ngSubmit)="updateOrdi(ordi)">
             <div>
               <label for="nomOrdi">Nom : </label>
               <input type="text" formControlName="nomOrdi" id="nomOrdi" [value]="ordi.nom">
@@ -182,7 +182,7 @@
       <li class="proc" *ngFor="let proc of _procList ; index as i" >
         <div class="card">
           <img src="{{proc.img}}"/>
-          <form [formGroup]="formP">
+          <form [formGroup]="formP" (ngSubmit)="updateProc(proc)">
             <div>
             <label for="nomP">Nom : </label>
             <input type="text" formControlName="nomP" id="nomP" [value]="proc.nom">
@@ -211,6 +211,18 @@
             <label for="imgP">Img : </label>
             <input type="text" formControlName="imgP" id="imgP" [value]="proc.img">
           </div>
+            <div>
+              <label for="reductionP">Prix Reduc : </label>
+              <input type="text" formControlName="reductionP" id="reductionP" [value]="proc.reduction">
+            </div>
+            <div>
+              <label for="coteP">Prix Reduc : </label>
+              <input type="text" formControlName="coteP" id="coteP" [value]="proc.cote">
+            </div>
+            <div>
+              <label for="dateCoteP">Prix Reduc : </label>
+              <input type="text" formControlName="dateCoteP" id="dateCoteP" [value]="proc.dateCote">
+            </div>
             <div>
               <label for="prixReducP">Prix Reduc : </label>
               <input type="text" formControlName="prixReducP" id="prixReducP" [value]="proc.prixReduc">

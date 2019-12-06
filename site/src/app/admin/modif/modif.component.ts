@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ProcList} from '../../interfaces/procDTO';
+import {ProcDTO, ProcList} from '../../interfaces/procDTO';
 import {CarteGDTO, CarteGList} from '../../interfaces/carte-gDTO';
-import {DisqueDList} from '../../interfaces/disque-dDTO';
-import {OrdiList} from '../../interfaces/ordiDTO';
+import {DisqueDDTO, DisqueDList} from '../../interfaces/disque-dDTO';
+import {OrdiDTO, OrdiList} from '../../interfaces/ordiDTO';
 import {Subscription} from 'rxjs';
 import {ProcServiceService} from '../../services/proc-service.service';
 import {DisqueDServiceService} from '../../services/disque-dservice.service';
@@ -18,14 +18,14 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class ModifComponent implements OnInit {
 
   formCG: FormGroup = this.fbCG.group({
-    nomCG : this.fbCG.control('', Validators.required),
-    marqueCG : this.fbCG.control('', Validators.required),
-    prixCG : this.fbCG.control('', Validators.required),
-    frequenceCG : this.fbCG.control('', Validators.required),
-    memoireVideoCG : this.fbCG.control('', Validators.required),
-    qteCG : this.fbCG.control('', Validators.required),
-    imgCG : this.fbCG.control('', Validators.required),
-    prixReducCG : this.fbCG.control('', Validators.required),
+    nomCG : this.fbCG,
+    marqueCG : this.fbCG,
+    prixCG : this.fbCG,
+    frequenceCG : this.fbCG,
+    memoireVideoCG : this.fbCG,
+    qteCG : this.fbCG,
+    imgCG : this.fbCG,
+    prixReducCG : this.fbCG,
   });
 
   formDD: FormGroup = this.fbDD.group({
@@ -64,6 +64,9 @@ export class ModifComponent implements OnInit {
     prixP : this.fbP.control('', Validators.required),
     qteP : this.fbP.control('', Validators.required),
     imgP : this.fbP.control('', Validators.required),
+    reductionP : this.fbP.control('', Validators.required),
+    coteP : this.fbP.control('', Validators.required),
+    dateCoteP : this.fbP.control('', Validators.required),
     prixReducP : this.fbP.control('', Validators.required),
   });
 
@@ -125,10 +128,96 @@ export class ModifComponent implements OnInit {
   }
 
 
-  updateCG($event: CarteGDTO) {
+  updateCG(carte: CarteGDTO) {
+    carte = this.buildCG();
+    console.log(carte.marque);
     this.carteGService
-      .update($event)
+      .update(carte)
       .subscribe();
+  }
 
+  updateProc(proc: ProcDTO) {
+    proc = this.buildUser();
+    console.log(proc.marque);
+    this.procService
+      .update(proc)
+      .subscribe();
+  }
+
+  updateDD(dd: DisqueDDTO) {
+    dd = this.buildDD();
+    console.log(dd.marque);
+    this.disqueDService
+      .update(dd)
+      .subscribe();
+  }
+
+  updateOrdi(ordi: OrdiDTO) {
+    ordi = this.buildOrdi();
+    console.log(ordi.marque);
+    this.ordiService
+      .update(ordi)
+      .subscribe();
+  }
+
+  private buildCG():CarteGDTO {
+    return {
+      nom:this.formCG.get("nomCG").value,
+      marque:this.formCG.get("marqueCG").value,
+      prix:this.formCG.get("prixCG").value,
+      frequence:this.formCG.get("frequenceCG").value,
+      memoireVideo:this.formCG.get("memoireVideoCG").value,
+      qte:this.formCG.get("qteCG").value,
+      img:this.formCG.get("imgCG").value,
+      prixReduc:this.formCG.get("prixReducCG").value,
+    };
+  }
+
+  private buildDD():DisqueDDTO {
+    return {
+      nom:this.formDD.get("nomDD").value,
+      marque:this.formDD.get("marqueDD").value,
+      capacite:this.formDD.get("capaciteDD").value,
+      ssd:this.formDD.get("ssdDD").value,
+      prix:this.formDD.get("prixDD").value,
+      interne:this.formDD.get("interneDD").value,
+      qte:this.formDD.get("qteDD").value,
+      img:this.formDD.get("imgDD").value,
+      prixReduc:this.formDD.get("prixReducDD").value,
+    };
+  }
+
+  private buildOrdi():OrdiDTO {
+    return {
+      nom:this.formOrdi.get("nomOrdi").value,
+      marque:this.formOrdi.get("marqueOrdi").value,
+      prix:this.formOrdi.get("prixOrdi").value,
+      nomProc:this.formOrdi.get("nomProcOrdi").value,
+      nomCg:this.formOrdi.get("nomCgOrdi").value,
+      capacite:this.formOrdi.get("capaciteOrdi").value,
+      memoireV:this.formOrdi.get("memoireVOrdi").value,
+      ssd:this.formOrdi.get("ssdOrdi").value,
+      description:this.formOrdi.get("descriptionOrdi").value,
+      qte:this.formOrdi.get("qteOrdi").value,
+      capaciteSsd:this.formOrdi.get("capaciteSsdOrdi").value,
+      img:this.formOrdi.get("imgOrdi").value,
+      prixReduc:this.formOrdi.get("prixReducOrdi").value,
+    };
+  }
+
+  private buildUser():ProcDTO {
+    return {
+      nom:this.formP.get("nomP").value,
+      marque:this.formP.get("marqueP").value,
+      nbCoeurs:this.formP.get("nbCoeursP").value,
+      frequence:this.formP.get("frequenceP").value,
+      prix:this.formP.get("prixP").value,
+      qte:this.formP.get("qteP").value,
+      img:this.formP.get("imgP").value,
+      reduction:this.formP.get("reductionP").value,
+      cote:this.formP.get("coteP").value,
+      dateCote:this.formP.get("dateCoteP").value,
+      prixReduc:this.formP.get("prixReducP").value,
+    };
   }
 }
