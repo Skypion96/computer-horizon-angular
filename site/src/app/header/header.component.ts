@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {UserDto} from '../interfaces/user-dto';
+import {AuthenticationService} from '../services/authentification.service';
+import {AuthGuard} from '../routing/AuthGuard';
+import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
 
 @Component({
   selector: 'app-header',
