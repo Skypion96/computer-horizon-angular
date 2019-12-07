@@ -117,7 +117,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
 
 
   get filteredProcList(): ProcList {
-    return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelectedPrix,this.filterSelectedMarque);
+    return this._processeurPipe.transform(this.procList,this.nameSearched,this.filterSelectedPrix,this.filterSelectedMarque,this.filterSelectedSSD);
   }
 
   get iProc(): number {
@@ -267,7 +267,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   }
 
   get filteredOrdinateur(): OrdiList {
-    return this._ordiPipe.transform(this.ordiList,this.nameSearched,this.filterSelectedPrix,this.filterSelectedMarque);
+    return this._ordiPipe.transform(this.ordiList,this.nameSearched,this.filterSelectedPrix,this.filterSelectedMarque,this.filterSelectedSSD);
   }
 
   //AJOUT DANS PANIER
@@ -305,7 +305,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   }
 
   get filteredCarteG(): CarteGList {
-    return this._carteGPipe.transform(this.carteGList,this.filterSelectedPrix,this.nameSearched,this.filterSelectedMarque);
+    return this._carteGPipe.transform(this.carteGList,this.filterSelectedPrix,this.nameSearched,this.filterSelectedMarque,this.filterSelectedSSD);
   }
 
 
