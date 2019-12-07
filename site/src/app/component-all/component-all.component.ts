@@ -333,4 +333,14 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
       .post(this.paniercg)
       .subscribe(thePP => console.log(thePP));
   }
+
+
+
+  isConnected() {
+    if(localStorage.getItem("currentUser") != null){
+      return true;
+    }
+    return false;
+  }
+
 }

@@ -15,19 +15,15 @@
       <a [routerLink]="'/'+CONTACT">Nous contacter</a>
     </li>
     <li class="btnContainer">
-      <!--<div *ngIf="isConnected() == true;then connected else notConnected"></div>
+      <div *ngIf="isConnected() == true;then connected else notConnected"></div>
 
       <ng-template #connected>
-          <button class="btn" [routerLink]="'/'+ACCUEIL">Déconnexion</button>
+          <button class="btn" [routerLink]="'/'+ACCUEIL" (click)="logout()">Déconnexion</button>
           <button class="btn" [routerLink]="'/'+PANIER">Panier</button>
         </ng-template>
         <ng-template #notConnected>
           <button class="btn" id="connexion" [routerLink]="'/'+LOGIN">Connexion</button>
-          <button class="btn" [routerLink]="'/'+PANIER">Panier</button>
-        </ng-template>-->
-      <button class="btn"  [routerLink]="'/'+ACCUEIL">Déconnexion</button>
-      <button class="btn" id="connexion" [routerLink]="'/'+LOGIN">Connexion</button>
-      <button class="btn" [routerLink]="'/'+PANIER">Panier</button>
+        </ng-template>
     </li>
   </ul>
 </nav>

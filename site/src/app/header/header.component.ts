@@ -18,9 +18,21 @@ export class HeaderComponent implements OnInit {
   readonly LOGIN:string ="login";
   readonly PANIER:string="panierpanier";
 
-  constructor() { }
+
+
+  constructor(public authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
 
+  isConnected() {
+    if(localStorage.getItem("currentUser") != null){
+      return true;
+    }
+    return false;
+  }
+
+  logout(){
+    this.authenticationService.logout();
+  }
 }

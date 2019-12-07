@@ -31,6 +31,8 @@
   <div class="filter">
   </div>
 </div>
+<div *ngIf="isConnected()==false;then thenBlockConnect;else elseBlockConnect"></div>
+<ng-template #thenBlockConnect>
 <!-- *********************************************** CARTES GRAPHIQUES *********************************************** -->
 <div class="carteGg">
   <ul>
@@ -58,7 +60,6 @@
             </tr>
           </table>
             <button (click)="changeretroICG(i)">Afficher moins</button>
-            <button (click)="createdCG(cg.nom)">Ajouter au Panier</button>
           </ng-template>
           <ng-template #elseBlock>
             <table>
@@ -71,7 +72,6 @@
               <br><br>
             </table>
             <button (click)="changeICG(i)">Afficher plus</button>
-            <button (click)="createdCG(cg.nom)">Ajouter au Panier</button>
           </ng-template>
       </div>
     </li>
@@ -108,7 +108,6 @@
                 </tr>
               </table>
               <button (click)="changeretroDD(i)">Afficher moins</button>
-              <button (click)="createdDD(dd.nom)">Ajouter au Panier</button>
             </ng-template>
           <ng-template #elseBlock>
             <table>
@@ -121,7 +120,6 @@
               </tr>
             </table>
             <button (click)="changeDD(i)">Afficher plus</button>
-            <button (click)="createdDD(dd.nom)">Ajouter au Panier</button>
           </ng-template>
         </div>
       </li>
@@ -169,7 +167,6 @@
               </tr>
             </table>
             <button (click)="changeretroIOrdi(i)">Afficher moins</button>
-            <button (click)="createdOrdi(ordi.nom)">Ajouter au Panier</button>
           </ng-template>
           <ng-template #elseBlock>
             <table>
@@ -182,7 +179,6 @@
               </tr>
             </table>
             <button (click)="changeIOrdi(i)">Afficher plus</button>
-            <button (click)="createdOrdi(ordi.nom)">Ajouter au Panier</button>
           </ng-template>
         </div>
       </li>
@@ -217,8 +213,6 @@
               </tr>
             </table>
             <button (click)="changeretroProc(i)">Afficher moins</button>
-            <button (click)="createdProc(proc.nom)">Ajouter au Panier</button>
-
           </ng-template>
           <ng-template #elseBlock>
             <table>
@@ -231,10 +225,219 @@
               </tr>
             </table>
             <button (click)="changeProc(i)">Afficher plus</button>
-            <button (click)="createdProc(proc.nom)">Ajouter au Panier</button>
           </ng-template>
         </div>
       </li>
     </ul>
   </div>
 </div>
+</ng-template>
+<ng-template #elseBlockConnect>
+  <!-- *********************************************** CARTES GRAPHIQUES *********************************************** -->
+  <div class="carteGg">
+    <ul>
+      <li class="cg" *ngFor="let cg of filteredCarteG; index as i">
+        <div class="card" >
+          <img src="{{cg.img}}"/>
+          <div *ngIf="i==icg; then thenBlock else elseBlock"></div>
+          <ng-template #thenBlock>
+            <table>
+              <tr>
+                <b class="nom">Nom : {{cg.nom}}</b>
+              </tr>
+              <br><br>
+              <tr>
+                <b class="prixICG" >Prix : {{cg.prix}} €</b>
+              </tr>
+              <tr>
+                <b class="freq" >Marque : {{cg.marque}} </b>
+              </tr>
+              <tr>
+                <b class="freq" >Frequence : {{cg.frequence}} </b>
+              </tr>
+              <tr>
+                <b class="freq" >Mémoire vidéo : {{cg.memoireVideo}} </b>
+              </tr>
+            </table>
+            <button (click)="changeretroICG(i)">Afficher moins</button>
+            <button (click)="createdCG(cg.nom)">Ajouter au Panier</button>
+          </ng-template>
+          <ng-template #elseBlock>
+            <table>
+              <tr>
+                <b class="nom">Nom : {{cg.nom}}</b>
+              </tr>
+              <tr>
+                <b class="prixICG" >Prix : {{cg.prix}} €</b>
+              </tr>
+              <br><br>
+            </table>
+            <button (click)="changeICG(i)">Afficher plus</button>
+            <button (click)="createdCG(cg.nom)">Ajouter au Panier</button>
+          </ng-template>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- *********************************************** DISQUE DUR *********************************************** -->
+  <div class="disque">
+    <div class="disqueD">
+      <ul>
+        <li class="dd" *ngFor="let dd of filteredDisqueD; index as i">
+          <div class="card" >
+            <img src="{{dd.img}}"/>
+            <div *ngIf="i==iDD; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+              <table>
+                <tr>
+                  <b class="nom">Nom : {{dd.nom}}</b>
+                </tr>
+                <br><br>
+                <tr>
+                  <b class="prixI" >Prix : {{dd.prix}} €</b>
+                </tr>
+                <tr>
+                  <b class="prixI">Marque : {{dd.marque}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">SSD : {{dd.ssd}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">Interne : {{dd.interne}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">Capacite : {{dd.capacite}} </b>
+                </tr>
+              </table>
+              <button (click)="changeretroDD(i)">Afficher moins</button>
+              <button (click)="createdDD(dd.nom)">Ajouter au Panier</button>
+            </ng-template>
+            <ng-template #elseBlock>
+              <table>
+                <tr>
+                  <b class="nom">Nom : {{dd.nom}}</b>
+                </tr>
+                <br><br>
+                <tr>
+                  <b class="prixI">Prix : {{dd.prix}} €</b>
+                </tr>
+              </table>
+              <button (click)="changeDD(i)">Afficher plus</button>
+              <button (click)="createdDD(dd.nom)">Ajouter au Panier</button>
+            </ng-template>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <br><br>
+  <!-- ************************************* ORDINATEUR ***********************************************-->
+  <div class="ordinateurAll">
+    <div class="ordinateur">
+      <ul>
+        <li class="ordi" *ngFor="let ordi of filteredOrdinateur; index as i">
+          <div class="card" >
+            <img src="{{ordi.img}}"/>
+            <div *ngIf="i==iOrdi; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+              <table>
+                <tr>
+                  <b class="nom">Nom : {{ordi.nom}}</b>
+                </tr>
+                <br><br>
+                <tr>
+                  <b class="prixI">Prix : {{ordi.prix}} €</b>
+                </tr>
+                <tr>
+                  <b class="prixI">Marque : {{ordi.marque}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">Description : {{ordi.description}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">Capacite : {{ordi.capacite}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">Nom carte graphique : {{ordi.nomCg}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">Nom processeur : {{ordi.nomProc}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">SSD : {{ordi.ssd}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">Capacite SSD : {{ordi.capaciteSsd}} </b>
+                </tr>
+              </table>
+              <button (click)="changeretroIOrdi(i)">Afficher moins</button>
+              <button (click)="createdOrdi(ordi.nom)">Ajouter au Panier</button>
+            </ng-template>
+            <ng-template #elseBlock>
+              <table>
+                <tr>
+                  <b class="nom">Nom : {{ordi.nom}}</b>
+                </tr>
+                <br><br>
+                <tr>
+                  <b class="prixI">Prix : {{ordi.prix}} €</b>
+                </tr>
+              </table>
+              <button (click)="changeIOrdi(i)">Afficher plus</button>
+              <button (click)="createdOrdi(ordi.nom)">Ajouter au Panier</button>
+            </ng-template>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- *********************************************** PROCESSEUR *********************************************** -->
+  <div>
+    <div class="processeur">
+      <ul>
+        <li class="proc" *ngFor="let proc of filteredProcList ; index as i" >
+          <div class="card">
+            <img src="{{proc.img}}"/>
+            <div *ngIf="i==iProc; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+              <table>
+                <tr>
+                  <b class="nom">Nom : {{proc.nom}}</b>
+                </tr>
+                <br><br>
+                <tr>
+                  <b class="prixI">Prix : {{proc.prix}} €</b>
+                </tr>
+                <tr>
+                  <b class="prixI">Marque : {{proc.marque}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">Frequence : {{proc.frequence}} </b>
+                </tr>
+                <tr>
+                  <b class="prixI">Nombre de coeurs : {{proc.nbCoeurs}} </b>
+                </tr>
+              </table>
+              <button (click)="changeretroProc(i)">Afficher moins</button>
+              <button (click)="createdProc(proc.nom)">Ajouter au Panier</button>
+
+            </ng-template>
+            <ng-template #elseBlock>
+              <table>
+                <tr>
+                  <b class="nom">Nom : {{proc.nom}}</b>
+                </tr>
+                <br><br>
+                <tr>
+                  <b class="prixI">Prix : {{proc.prix}} €</b>
+                </tr>
+              </table>
+              <button (click)="changeProc(i)">Afficher plus</button>
+              <button (click)="createdProc(proc.nom)">Ajouter au Panier</button>
+            </ng-template>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
