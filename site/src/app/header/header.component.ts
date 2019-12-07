@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   logoPath:any = "assets/logo.png";
   readonly PRODUCT: string = "produits";
   readonly ACCUEIL:string ="Accueil";
-  readonly CONTACT:string ="Admin";
+  readonly CONTACT:string ="Contact";
   readonly INSCRIPTION:string="inscription";
   readonly LOGIN:string ="login";
   readonly PANIER:string="panierpanier";
