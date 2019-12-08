@@ -1,0 +1,27 @@
+h2{
+  font-size: 40px;
+  text-decoration: underline;
+  color: dodgerblue;
+  text-align: center;
+}
+
+.log{
+  border: solid;
+  border-radius: 8px;
+  padding: 5px;
+  margin-left: 2%;
+  display: inline-block;
+  margin-left: 41%;
+  }
+
+.form-group{
+  padding: 5px;
+}
+
+button{
+  font-size: 15px;
+  color: white;
+  background-color: dodgerblue;
+  border-radius: 8px;
+  border: none;
+}
