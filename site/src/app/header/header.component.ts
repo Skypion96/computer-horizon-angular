@@ -32,7 +32,18 @@ export class HeaderComponent implements OnInit {
     return false;
   }
 
+  isConnectedAdmin() {
+    if(localStorage.getItem("currentAdmin") != null){
+      return true;
+    }
+    return false;
+  }
+
   logout(){
     this.authenticationService.logout();
+  }
+
+  logoutAdmin(){
+    this.authenticationService.logoutAdmin();
   }
 }
