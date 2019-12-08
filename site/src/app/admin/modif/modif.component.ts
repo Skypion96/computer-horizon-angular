@@ -130,34 +130,30 @@ export class ModifComponent implements OnInit {
 
   updateCG(carte: CarteGDTO) {
     carte = this.buildCG();
-    console.log(carte.marque);
     this.carteGService
       .update(carte)
-      .subscribe();
+      .subscribe(cg => this.loadCGList());
   }
 
   updateProc(proc: ProcDTO) {
     proc = this.buildUser();
-    console.log(proc.marque);
     this.procService
       .update(proc)
-      .subscribe();
+      .subscribe(proc => this.loadProcList());
   }
 
   updateDD(dd: DisqueDDTO) {
     dd = this.buildDD();
-    console.log(dd.marque);
     this.disqueDService
       .update(dd)
-      .subscribe();
+      .subscribe(dd=>this.loadDDList());
   }
 
   updateOrdi(ordi: OrdiDTO) {
     ordi = this.buildOrdi();
-    console.log(ordi.marque);
     this.ordiService
       .update(ordi)
-      .subscribe();
+      .subscribe(ordi=>this.loadOrdiList());
   }
 
   private buildCG():CarteGDTO {
