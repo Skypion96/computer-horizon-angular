@@ -4,7 +4,7 @@
     <div *ngFor="let procp of panierPList">
       <div *ngIf="procp.id == idPanier;then thenBlockProcPan"></div>
       <ng-template #thenBlockProcPan>
-        <li *ngFor="let proc of _procList">
+        <li *ngFor="let proc of procList">
           <div class="card" *ngIf="proc.nom == procp.nom;then thenBlockP"></div>
             <ng-template #thenBlockP>
               <img src="{{proc.img}}"/>

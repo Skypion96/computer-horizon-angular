@@ -67,7 +67,6 @@ export class PanierComponent implements OnInit {
   //Liste de processeur car le panier contient des processeurs
   //A VERIFIER
   private panierPList: PanierPList=[];
-  private _procList: ProcList;
 
 
 
@@ -75,8 +74,9 @@ export class PanierComponent implements OnInit {
   private loadProcListProc():void{
     this.subQuery =this.procService
       .queryBase()
-      .subscribe(procs => this._procList = procs);
+      .subscribe(procs => this.procList = procs);
   }
+
   private loadProcList():void{
     this.subQuery =this.panierProc
       .queryBase()
@@ -134,32 +134,35 @@ export class PanierComponent implements OnInit {
   }
 
   private totalCalculate(value:number):void{
-
-    for(let i of this.carteGList){
-      for(let cg of this.panierCGList){
-        if(i.nom==cg.nom){
-          this.total += i.prix;
+    for(let pan of this.panier){
+      if(pan.id == this.idPanier){
+        for(let i of this.carteGList){
+          for(let cg of this.panierCGList){
+            if(i.nom==cg.nom){
+              this.total += i.prix;
+            }
+          }
         }
-      }
-    }
-    for(let i of this.procList){
-      for(let p of this.panierPList){
-        if(i.nom==p.nom){
-          this.total += i.prix;
+        for(let j of this.procList){
+          for(let p of this.panierPList){
+            if(j.nom==p.nom){
+              this.total += j.prix;
+            }
+          }
         }
-      }
-    }
-    for(let i of this.disqueDList){
-      for(let dd of this.panierDDList){
-        if(i.nom==dd.nom){
-          this.total += i.prix;
+        for(let k of this.disqueDList){
+          for(let dd of this.panierDDList){
+            if(k.nom==dd.nom){
+              this.total += k.prix;
+            }
+          }
         }
-      }
-    }
-    for(let i of this.ordiList){
-      for(let o of this.panierOrdiList){
-        if(i.nom==o.nom){
-          this.total += i.prix;
+        for(let l of this.ordiList){
+          for(let o of this.panierOrdiList){
+            if(l.nom==o.nom){
+              this.total += l.prix;
+            }
+          }
         }
       }
     }

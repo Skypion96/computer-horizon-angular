@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {UserDto} from '../interfaces/user-dto';
 import {UserService} from '../services/user.service';
 import {AuthenticationService} from '../services/authentification.service';
-import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-accueil',
