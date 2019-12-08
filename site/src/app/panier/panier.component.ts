@@ -134,38 +134,36 @@ export class PanierComponent implements OnInit {
   }
 
   private totalCalculate(value:number):void{
-    for(let pan of this.panier){
-      if(pan.id == this.idPanier){
         for(let i of this.carteGList){
           for(let cg of this.panierCGList){
-            if(i.nom==cg.nom){
+            if(i.nom==cg.nom && cg.id == this.idPanier){
               this.total += i.prix;
             }
           }
         }
         for(let j of this.procList){
           for(let p of this.panierPList){
-            if(j.nom==p.nom){
+            if(j.nom==p.nom && p.id == this.idPanier){
               this.total += j.prix;
             }
           }
         }
         for(let k of this.disqueDList){
           for(let dd of this.panierDDList){
-            if(k.nom==dd.nom){
+            if(k.nom==dd.nom && dd.id == this.idPanier){
               this.total += k.prix;
             }
           }
         }
         for(let l of this.ordiList){
-          for(let o of this.panierOrdiList){
-            if(l.nom==o.nom){
+          for(let o of this.panierOrdiList ){
+            if(l.nom==o.nom && o.id == this.idPanier){
               this.total += l.prix;
             }
           }
         }
-      }
-    }
+
+
     this.total = Math.round(this.total*100)/100;
     this.panierCalcTot=value;
   }
