@@ -166,6 +166,7 @@ export class PanierComponent implements OnInit {
         }
       }
     }
+    this.total = Math.round(this.total*100)/100;
     this.panierCalcTot=value;
   }
 
