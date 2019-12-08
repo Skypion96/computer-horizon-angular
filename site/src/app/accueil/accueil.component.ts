@@ -30,19 +30,8 @@ export class AccueilComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadAllUsers();
   }
 
-  deleteUser(mail: string) {
-    this.userService.delete(mail)
-      .pipe(first())
-      .subscribe(() => this.loadAllUsers());
-  }
 
-  private loadAllUsers() {
-    this.userService.queryBase()
-      .pipe(first())
-      .subscribe(users => this.users = users);
-  }
 
 }
