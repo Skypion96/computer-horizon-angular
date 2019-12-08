@@ -3,13 +3,16 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {UserDto, UserList} from '../interfaces/user-dto';
 import {AdminDto} from '../interfaces/admin-dto';
+import {AuthenticationService} from './authentification.service';
+import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class AdminService implements CanActivate{
 
   private static URL_API: string = '/Admin';
+
   constructor(public http:HttpClient) { }
 
 
@@ -23,5 +26,13 @@ export class AdminService {
 
   static getURL_API():string {
     return AdminService.URL_API;
+  }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+    Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if(localStorage.getItem("currentAdmin") != null){
+      return true;
+    }
+    return false;
   }
 }

@@ -15,15 +15,24 @@
       <a [routerLink]="'/'+CONTACT">Nous contacter</a>
     </li>
     <li class="btnContainer">
-      <div *ngIf="isConnected() == true || isConnectedAdmin() == true;then connected else notConnected"></div>
-
+      <div *ngIf="isConnected() == true || isConnectedAdmin()==true;then connected; else notConnected"></div>
       <ng-template #connected>
           <button class="btn" [routerLink]="'/'+ACCUEIL" (click)="logout() || logoutAdmin()">Déconnexion</button>
+          <div *ngIf="isConnected() ==true;then userConnectedButton;else adminConnectedButton"></div>
+      </ng-template>
+      <ng-template #notConnected>
+        <button class="btn" id="connexion" [routerLink]="'/'+LOGIN">Connexion</button>
+      </ng-template>
+
+
+        <ng-template #adminConnectedButton>
+          <button class="btn" [routerLink]="'/'+ADMIN">Admin</button>
+        </ng-template>
+        <ng-template #userConnectedButton>
           <button class="btn" [routerLink]="'/'+PANIER">Panier</button>
         </ng-template>
-        <ng-template #notConnected>
-          <button class="btn" id="connexion" [routerLink]="'/'+LOGIN">Connexion</button>
-        </ng-template>
+
+
     </li>
   </ul>
 </nav>

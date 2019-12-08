@@ -12,6 +12,8 @@ import {AjoutComponentComponent} from '../admin/Ajout/ajout-component/ajout-comp
 import {PanierComponent} from '../panier/panier.component';
 import {LoginComponent} from '../login/login.component';
 import {ModifComponent} from '../admin/modif/modif.component';
+import {AuthenticationService} from '../services/authentification.service';
+import {AdminService} from '../services/admin.service';
 
 const routes:Routes =[
   {
@@ -41,15 +43,19 @@ const routes:Routes =[
   },
   {
     path:"Admin",
-    component: AdminComponent
+    component: AdminComponent,
+    canActivate: [AdminService]
+
   },
   {
     path:"Ajout",
-    component: AjoutComponentComponent
+    component: AjoutComponentComponent,
+    canActivate: [AdminService]
   },
   {
     path:"panierpanier",
-    component: PanierComponent
+    component: PanierComponent,
+    canActivate: [AuthenticationService]
   },
   {
     path:"login",
@@ -57,7 +63,8 @@ const routes:Routes =[
   },
   {
     path:"Modif",
-    component:ModifComponent
+    component:ModifComponent,
+    canActivate: [AdminService]
   }
 ];
 
