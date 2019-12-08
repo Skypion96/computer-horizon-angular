@@ -1,34 +1,44 @@
-<h2 style="margin-top: 20%">Inscription</h2>
-<form [formGroup]="form" (ngSubmit)="createUser($event)">
+<h2 style="margin-top: 10%">Inscription</h2>
+<form [formGroup]="form" (ngSubmit)="createUser($event)" class="form">
   <label for="nom">Nom: </label>
   <input id="nom" type="text" placeholder="ex: Dupont" formControlName="nom" [required]>
+  <br/><br/>
 
   <label for="prenom">Prénom: </label>
   <input id="prenom" type="text" placeholder="ex: Jean" formControlName="prenom">
+  <br/><br/>
 
   <label for="mail">E-mail: </label>
   <input id="mail" type="text" placeholder="ex: dupont@gmail.com" formControlName="mail">
+  <br/><br/>
 
   <label for="mdp">Mot de passe: </label>
   <input id="mdp" type="password" formControlName="mdp">
+  <br/><br/>
 
   <label for="mdpC">Confirmer le mot de passe: </label>
   <input id="mdpC" type="password" formControlName="mdpC">
+  <br/><br/>
 
   <label for="tel">Numéro de téléphone: </label>
   <input id="tel" type="number" placeholder="ex: 0468802058" formControlName="tel">
+  <br/><br/>
 
   <label for="rue">Rue: </label>
   <input id="rue" type="text" placeholder="ex: Rue de l'Église" formControlName="rue">
+  <br/><br/>
 
   <label for="num">Numéro: </label>
   <input id="num" type="text" placeholder="20A" formControlName="num">
+  <br/><br/>
 
   <label for="cp">Code postal: </label>
   <input id="cp" type="number" placeholder="ex: 7000" formControlName="cp">
+  <br/><br/>
 
   <label for="ville">Ville: </label>
   <input id="ville" type="text" placeholder="ex: Mons" formControlName="ville">
+  <br/><br/>
 
   <button>S'inscrire</button>
 </form>

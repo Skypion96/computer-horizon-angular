@@ -17,7 +17,7 @@
     <li class="btnContainer">
       <div *ngIf="isConnected() == true || isConnectedAdmin()==true;then connected; else notConnected"></div>
       <ng-template #connected>
-          <button class="btn" [routerLink]="'/'+ACCUEIL" (click)="logout() || logoutAdmin()">Déconnexion</button>
+          <button class="btn" [routerLink]="'/'+ACCUEIL" (click)="logout() || logoutAdmin()" id="deco">Déconnexion</button>
           <div *ngIf="isConnected() ==true;then userConnectedButton;else adminConnectedButton"></div>
       </ng-template>
       <ng-template #notConnected>
@@ -26,10 +26,10 @@
 
 
         <ng-template #adminConnectedButton>
-          <button class="btn" [routerLink]="'/'+ADMIN">Admin</button>
+          <button class="btn" [routerLink]="'/'+ADMIN" id="admin">Admin</button>
         </ng-template>
         <ng-template #userConnectedButton>
-          <button class="btn" [routerLink]="'/'+PANIER">Panier</button>
+          <button class="btn" [routerLink]="'/'+PANIER" id="panier">Panier</button>
         </ng-template>
 
 

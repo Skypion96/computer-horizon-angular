@@ -1,10 +1,11 @@
 button{
-  background-color: darkcyan;
+  background-color: dodgerblue;
   border: none;
   border-radius: 8px;
   color: white;
   cursor: pointer;
   margin-right: 5px;
+  font-size: 15px;
 }
 
 .btnShow{
@@ -93,6 +94,7 @@ table{
   margin-left: 2%;
   width: 200px;
   float: left;
+  padding: 5px;
 }
 
 .filterSSDDD{
@@ -102,6 +104,7 @@ table{
   border-style: solid;
   width: 200px;
   height: auto;
+  padding: 5px;
 }
 .filterMarque{
   margin-top: 1%;
@@ -110,6 +113,7 @@ table{
   border-style: solid;
   width: 200px;
   height: auto;
+  padding: 5px;
 }
 
 .filterMarqueOrdi{
@@ -119,6 +123,7 @@ table{
   border-style: solid;
   width: 200px;
   height: auto;
+  padding: 5px;
 }
 
 .filterPrix{
@@ -129,6 +134,7 @@ table{
   width: 200px;
   height: auto;
   float: bottom;
+  padding: 5px;
 }
 
 .disqueD{
