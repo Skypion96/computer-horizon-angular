@@ -1,50 +1,59 @@
 <div class="panier" style="margin-top: 20%" >
+  <b>{{chargerUtilisateur()}}</b>
   <ul>
     <div *ngFor="let procp of panierPList">
-      <li *ngFor="let proc of _procList">
-        <div class="card" *ngIf="proc.nom == procp.nom;then thenBlockP"></div>
-          <ng-template #thenBlockP>
-            <img src="{{proc.img}}"/>
-            <div>
-              <table>
-                <tr>
-                  {{proc.nom}}
-                </tr>
-                <tr>
-                  {{proc.prix}}
-                </tr>
-              </table>
-            </div>
-            <button (click)="deleteAndSaveProcList(procp)">Supprimer du panier</button>
-          </ng-template>
-      </li>
+      <div *ngIf="procp.id == idPanier;then thenBlockProcPan"></div>
+      <ng-template #thenBlockProcPan>
+        <li *ngFor="let proc of _procList">
+          <div class="card" *ngIf="proc.nom == procp.nom;then thenBlockP"></div>
+            <ng-template #thenBlockP>
+              <img src="{{proc.img}}"/>
+              <div>
+                <table>
+                  <tr>
+                    {{proc.nom}}
+                  </tr>
+                  <tr>
+                    {{proc.prix}}
+                  </tr>
+                </table>
+              </div>
+              <button (click)="deleteAndSaveProcList(procp)">Supprimer du panier</button>
+            </ng-template>
+        </li>
+      </ng-template>
     </div>
   </ul>
 
   <ul>
     <div *ngFor="let panDD of panierDDList">
-      <li *ngFor="let dd of disqueDList">
-        <div class="card" *ngIf="dd.nom == panDD.nom;then thenBlockDD "></div>
-          <ng-template #thenBlockDD>
-          <img src="{{dd.img}}"/>
-          <div>
-            <table>
-              <tr>
-                {{dd.nom}}
-              </tr>
-              <tr>
-                {{dd.prix}}
-              </tr>
-            </table>
-          </div>
-          <button (click)="deleteAndSaveDDList(panDD)">Supprimer du panier</button>
+      <div *ngIf="panDD.id == idPanier;then thenBlockDDPan"></div>
+      <ng-template #thenBlockDDPan>
+        <li *ngFor="let dd of disqueDList">
+          <div class="card" *ngIf="dd.nom == panDD.nom;then thenBlockDD "></div>
+            <ng-template #thenBlockDD>
+            <img src="{{dd.img}}"/>
+            <div>
+              <table>
+                <tr>
+                  {{dd.nom}}
+                </tr>
+                <tr>
+                  {{dd.prix}}
+                </tr>
+              </table>
+            </div>
+            <button (click)="deleteAndSaveDDList(panDD)">Supprimer du panier</button>
+          </ng-template>
+        </li>
       </ng-template>
-    </li>
     </div>
   </ul>
 
   <ul>
     <div *ngFor="let paniercg of panierCGList">
+      <div *ngIf="paniercg.id == idPanier;then thenBlockCGPan"></div>
+      <ng-template #thenBlockCGPan>
       <li *ngFor="let CG of carteGList">
         <div class="card" *ngIf="CG.nom == paniercg.nom;then thenBlockCG"></div>
         <ng-template #thenBlockCG >
@@ -62,11 +71,14 @@
           <button (click)="deleteAndSaveCGList(paniercg)">Supprimer du panier</button>
         </ng-template>
       </li>
+      </ng-template>
     </div>
   </ul>
 
   <ul>
     <div *ngFor="let panOrdi of panierOrdiList">
+      <div *ngIf="panOrdi.id == idPanier;then thenBlockOrdiPan"></div>
+      <ng-template #thenBlockOrdiPan>
       <li *ngFor="let ordi of ordiList">
         <div class="card" *ngIf="ordi.nom == panOrdi.nom;then thenBlockOrdi "></div>
         <ng-template #thenBlockOrdi >
@@ -84,6 +96,7 @@
           <button (click)="deleteAndSaveOrdiList(panOrdi)">Supprimer du panier</button>
         </ng-template>
       </li>
+      </ng-template>
     </div>
   </ul>
   <div *ngIf="panierCalcTot==1;then thenBlockDesact;else elseBlockDesact"></div>
@@ -98,4 +111,5 @@
   <button >Confirmer l'achat</button>
 </div>
 
-<b >Total: {{total}}</b>
+<b >Total: {{total}}</b> <br>
+<b>{{idPanier}}</b>

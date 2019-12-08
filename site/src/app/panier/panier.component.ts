@@ -18,6 +18,8 @@ import {OrdiServiceService} from '../services/ordi-service.service';
 import {DisqueDServiceService} from '../services/disque-dservice.service';
 import {PanierDTO, PanierList} from '../interfaces/panier-dto';
 import {PanierService} from '../services/panier.service';
+import {UserDto} from '../interfaces/user-dto';
+import {AuthenticationService} from '../services/authentification.service';
 
 @Component({
   selector: 'app-panier',
@@ -34,12 +36,16 @@ export class PanierComponent implements OnInit {
   private ordiList: OrdiList=[];
   private _panierCalcTot:number=0;
   private panier:PanierList=[];
+  private _user:UserDto;
+  private _idPanier:number=0;
 
   constructor(public panierProc: PanierProcService, public panierCG: PanierCarteGraphiqueService, public panierDD: PanierDisqueDurService,
               public panierOrdi: PanierOrdinateurService,public procService:ProcServiceService,public carteGService:CarteGServiceService,
-              public ordiService:OrdiServiceService,public disqueDService:DisqueDServiceService,public panierService:PanierService) { }
+              public ordiService:OrdiServiceService,public disqueDService:DisqueDServiceService,public panierService:PanierService,
+              public auth:AuthenticationService) { }
 
   ngOnInit() {
+    this.loadPanierList()
     this.loadProcListProc();
     this.loadProcList();
     this.loadDisqueDList();
@@ -49,12 +55,13 @@ export class PanierComponent implements OnInit {
     this.loadOrdiListOrdi();
     this.loadDisqueDListDD();
     this.loadPanierList();
+    this.chargerUtilisateur();
   }
 
   private loadPanierList():void{
     this.subQuery = this.panierService
       .queryBase()
-      .subscribe();
+      .subscribe(procs => this.panier = procs);
   }
 
   //Liste de processeur car le panier contient des processeurs
@@ -189,4 +196,31 @@ export class PanierComponent implements OnInit {
       .subscribe(() => this.loadDisqueDList());
   }
 
+
+  get user(): UserDto {
+    return this._user;
+  }
+
+  set user(value: UserDto) {
+    this._user = value;
+  }
+
+  chargerUtilisateur():void{
+    var hhh;
+    hhh = this.auth.getMail();
+    for(let p of this.panier){
+      if(hhh== p.mail){
+        this.idPanier = p.id;
+      }
+    }
+  }
+
+
+  get idPanier(): number {
+    return this._idPanier;
+  }
+
+  set idPanier(value: number) {
+    this._idPanier = value;
+  }
 }

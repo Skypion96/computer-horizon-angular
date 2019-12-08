@@ -23,6 +23,9 @@ import {PanierCarteGraphiqueService} from '../services/panier-carte-graphique.se
 import {PanierDisqueDurService} from '../services/panier-disque-dur.service';
 import {PanierOrdinateurService} from '../services/panier-ordinateur.service';
 import {Marques} from '../enums/marques.enum';
+import {AuthenticationService} from '../services/authentification.service';
+import {PanierService} from '../services/panier.service';
+import {PanierList} from '../interfaces/panier-dto';
 
 @Component({
   selector: 'app-component-all',
@@ -36,6 +39,45 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   private nameSearched: string;
   private _processeurPipe: ProcesseurPipePipe = new ProcesseurPipePipe();
   private _iProc:number;
+  private _idPanier:number=0;
+  private panier:PanierList=[];
+
+  private disqueDList: DisqueDList=[];
+  private _disqueDPipe: DisqueDPipe = new DisqueDPipe();
+  private _iDD:number;
+  //AJOUT DANS PANIER
+  private _panierdd:PanierDisqueDurDto=new class implements PanierDisqueDurDto {
+    id: 2;
+    nom: "test";
+  };
+
+
+  readonly TYPE_FILTER_SSD =[{
+    id: 'Tout',
+    value: DisqueDSsd.ALL
+  },{
+    id: 'SSD',
+    value: DisqueDSsd.AVEC
+  },{
+    id: 'Non SSD',
+    value: DisqueDSsd.SANS
+  }];
+  filterSelectedSSD: DisqueDSsd = DisqueDSsd.ALL;
+
+  readonly TYPE_FILTER_PRIX =[{
+    id: 'Tout',
+    value: Prix.ALL
+  },{
+    id: 'Inférieur à 400',
+    value: Prix.INF400
+  },{
+    id: 'Entre 400 et 1000',
+    value: Prix.INF1000
+  },{
+    id: 'Supérieur à 1000',
+    value: Prix.SUP1000
+  }];
+  filterSelectedPrix: Prix = Prix.ALL;
 
   readonly TYPE_FILTER_MARQUE =[{
     id: 'Tout',
@@ -74,31 +116,24 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   filterSelectedMarque: Marques = Marques.ALL;
 
 
-
   //AJOUT DANS PANIER
   private _panierp:PanierProcDTO=new class implements PanierProcDTO {
     id: 2;
     nom: "test";
   };
-  get panierp(): PanierProcDTO {
-    return this._panierp;
-  }
-  set panierp(value: PanierProcDTO) {
-    this._panierp = value;
-  }
 
-  @Output()
-  procCharged:EventEmitter<ProcDTO> = new EventEmitter<ProcDTO>();
 
   constructor(public procService: ProcServiceService,public disqueDService: DisqueDServiceService,public ordiService: OrdiServiceService,
   public carteGService: CarteGServiceService,public panierpService:PanierProcService,public panieCGService:PanierCarteGraphiqueService,
-              public panierDDService:PanierDisqueDurService,public panierOrdinateurService:PanierOrdinateurService ) { }
+              public panierDDService:PanierDisqueDurService,public panierOrdinateurService:PanierOrdinateurService,public auth:AuthenticationService,
+    public panierService:PanierService) { }
 
   ngOnInit() {
     this.loadProcList();
     this.loadDDList();
     this.loadOrdiList();
     this.loadCGList();
+    this.loadPanierList();
   }
 
   ngOnDestroy(): void {
@@ -110,9 +145,20 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
       .queryBase()
       .subscribe(procs => this._procList = procs);
   }
+  get panierp(): PanierProcDTO {
+    return this._panierp;
+  }
+  set panierp(value: PanierProcDTO) {
+    this._panierp = value;
+  }
 
   get procList(): ProcList {
     return this._procList;
+  }
+  private loadPanierList():void{
+    this.subQuery = this.panierService
+      .queryBase()
+      .subscribe(procs => this.panier = procs);
   }
 
 
@@ -138,7 +184,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   //AJOUT DANS PANIER
   private createdProc(nom:string){
     this.panierp.nom=nom;
-    this.panierp.id = 1;
+    this.panierp.id = this.idPanier;
 
     const sub = this.panierpService
       .post(this.panierp)
@@ -148,49 +194,15 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
 //********************************************************************************************************************************
 //DISQUE DUR
 
-  private disqueDList: DisqueDList=[];
-  private _disqueDPipe: DisqueDPipe = new DisqueDPipe();
-  private _iDD:number;
-  //AJOUT DANS PANIER
-  private _panierdd:PanierDisqueDurDto=new class implements PanierDisqueDurDto {
-    id: 2;
-    nom: "test";
-  };
+
+
+
   get panierdd(): PanierDisqueDurDto {
     return this._panierdd;
   }
   set panierdd(value: PanierDisqueDurDto) {
     this._panierdd = value;
   }
-
-  readonly TYPE_FILTER_SSD =[{
-    id: 'Tout',
-    value: DisqueDSsd.ALL
-  },{
-    id: 'SSD',
-    value: DisqueDSsd.AVEC
-  },{
-    id: 'Non SSD',
-    value: DisqueDSsd.SANS
-  }];
-  filterSelectedSSD: DisqueDSsd = DisqueDSsd.ALL;
-
-  readonly TYPE_FILTER_PRIX =[{
-    id: 'Tout',
-    value: Prix.ALL
-  },{
-    id: 'Inférieur à 400',
-    value: Prix.INF400
-  },{
-    id: 'Entre 400 et 1000',
-    value: Prix.INF1000
-  },{
-    id: 'Supérieur à 1000',
-    value: Prix.SUP1000
-  }];
-  filterSelectedPrix: Prix = Prix.ALL;
-
-
   private loadDDList():void{
     this.subQuery =this.disqueDService
       .queryBase()
@@ -219,7 +231,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   //AJOUT DANS PANIER
   private createdDD(nom:string){
     this.panierdd.nom=nom;
-    this.panierdd.id = 1;
+    this.panierdd.id = this.idPanier;
 
     const sub = this.panierDDService
       .post(this.panierdd)
@@ -273,7 +285,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   //AJOUT DANS PANIER
   private createdOrdi(nom:string){
     this.paniero.nom=nom;
-    this.paniero.id = 1;
+    this.paniero.id = this.idPanier;
 
     const sub = this.panierOrdinateurService
       .post(this.paniero)
@@ -327,7 +339,7 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
   //AJOUT DANS PANIER
   private createdCG(nom:string){
     this.paniercg.nom=nom;
-    this.paniercg.id = 1;
+    this.paniercg.id = this.idPanier;
 
     const sub = this.panieCGService
       .post(this.paniercg)
@@ -343,4 +355,22 @@ export class ComponentAllComponent implements OnInit,OnDestroy {
     return false;
   }
 
+
+  get idPanier(): number {
+    return this._idPanier;
+  }
+
+  set idPanier(value: number) {
+    this._idPanier = value;
+  }
+
+  chargerUtilisateur():void{
+    var hhh;
+    hhh = this.auth.getMail();
+    for(let p of this.panier){
+      if(hhh== p.mail){
+        this.idPanier = p.id;
+      }
+    }
+  }
 }
