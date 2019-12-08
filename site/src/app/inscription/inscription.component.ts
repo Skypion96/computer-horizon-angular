@@ -9,6 +9,9 @@ import {AuthenticationService} from '../services/authentification.service';
 import {UserService} from '../services/user.service';
 import {RoutingModule} from '../routing/routing.module';
 import {RouterModule} from '@angular/router';
+import {PanierDTO} from '../interfaces/panier-dto';
+import {CreatePanierService} from '../services/create-panier.service';
+import {PanierService} from '../services/panier.service';
 
 @Component({
   selector: 'app-inscription',
@@ -39,14 +42,17 @@ export class InscriptionComponent implements OnInit {
   });
 
 
-  constructor(public fb: FormBuilder, public streamUserCreated: CreateUserService, public userService: UserService) { }
+  constructor(public fb: FormBuilder, public streamUserCreated: CreateUserService, public userService: UserService,
+              public streamPanierCreated: CreatePanierService, public panierService:PanierService) { }
 
   ngOnInit() {
     this.listenStreamUserCreated();
+    this.listenStreamPanierCreated();
   }
 
   createUser($event: any) {
     this.streamUserCreated.notify(this.buildUser());
+    this.streamPanierCreated.notify(this.buildPanier());
     this.form.reset();
   }
 
@@ -72,5 +78,22 @@ export class InscriptionComponent implements OnInit {
     const sub = this.userService.post(user).subscribe(user => console.log());
     //const sub = this.userService.post(user).subscribe(user => console.log());
   }
+
+  private buildPanier():PanierDTO{
+    return{
+      mail:this.form.get("mail").value
+    }
+  }
+
+
+  private listenStreamPanierCreated():void{
+    const sub : Subscription = this.streamPanierCreated.$panierCreated.subscribe(panier=>this.createdPanier(panier));
+  }
+
+  private createdPanier(panier:PanierDTO){
+    const sub = this.panierService.post(panier).subscribe(panier => console.log());
+    //const sub = this.userService.post(user).subscribe(user => console.log());
+  }
+
 }
 

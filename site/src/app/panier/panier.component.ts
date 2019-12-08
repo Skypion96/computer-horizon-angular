@@ -16,6 +16,8 @@ import {PanierOList, PanierOrdinateurDto} from '../interfaces/panier-ordinateur-
 import {PanierDDList, PanierDisqueDurDto} from '../interfaces/panier-disque-dur-dto';
 import {OrdiServiceService} from '../services/ordi-service.service';
 import {DisqueDServiceService} from '../services/disque-dservice.service';
+import {PanierDTO, PanierList} from '../interfaces/panier-dto';
+import {PanierService} from '../services/panier.service';
 
 @Component({
   selector: 'app-panier',
@@ -31,10 +33,11 @@ export class PanierComponent implements OnInit {
   private disqueDList: DisqueDList=[];
   private ordiList: OrdiList=[];
   private _panierCalcTot:number=0;
+  private panier:PanierList=[];
 
   constructor(public panierProc: PanierProcService, public panierCG: PanierCarteGraphiqueService, public panierDD: PanierDisqueDurService,
               public panierOrdi: PanierOrdinateurService,public procService:ProcServiceService,public carteGService:CarteGServiceService,
-              public ordiService:OrdiServiceService,public disqueDService:DisqueDServiceService) { }
+              public ordiService:OrdiServiceService,public disqueDService:DisqueDServiceService,public panierService:PanierService) { }
 
   ngOnInit() {
     this.loadProcListProc();
@@ -45,6 +48,13 @@ export class PanierComponent implements OnInit {
     this.loadCGListCG();
     this.loadOrdiListOrdi();
     this.loadDisqueDListDD();
+    this.loadPanierList();
+  }
+
+  private loadPanierList():void{
+    this.subQuery = this.panierService
+      .queryBase()
+      .subscribe();
   }
 
   //Liste de processeur car le panier contient des processeurs
